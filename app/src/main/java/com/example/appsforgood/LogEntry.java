@@ -12,13 +12,13 @@ public class LogEntry
 
     // Constructor
 
-    public LogEntry(String n, double h, String d, String cN, String cE)
+    public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email)
     {
-        charityName = n;
-        hours = h;
-        date = d;
-        contactName = cN;
-        contactEmail = cE;
+        charityName = name;
+        hours = hoursServed;
+        date = dateServed;
+        contactName = contactPerson;
+        contactEmail = email;
     }
 
     public LogEntry()
