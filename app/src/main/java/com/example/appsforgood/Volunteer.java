@@ -37,14 +37,25 @@ public class Volunteer extends User
 
     public String getLog()
     {
-        // STILL NEED TO IMPLEMENT
-        return "";
+        String log = "Charity \t Hours \t Date";
+        for (LogEntry entry: logEntries)
+        {
+            log = "\n" + entry.getCharityName() + "\t" + entry.getHours() + "\t" + entry.getDate();
+        }
+        return log;
     }
 
     public double getSpecificCharityHours(String charityName)
     {
-        // STILL NEED TO IMPLEMENT
-        return 0;
+        for (LogEntry entry: logEntries)
+        {
+            int hours = 0;
+            if (entry.getCharityName().equals(charityName))
+            {
+                hours+=entry.getHours();
+            }
+        }
+        return hours;
     }
 
 }
