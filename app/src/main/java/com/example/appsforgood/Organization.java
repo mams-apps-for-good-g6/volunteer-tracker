@@ -1,13 +1,14 @@
 package com.example.appsforgood;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Organization
 {
     // This is push V2 2:18 3/25/19
 
     // Data
-    private String code;
+    private int code;
     private String name;
     private User advisor;
     private ArrayList<Volunteer> volunteers;
@@ -15,10 +16,12 @@ public class Organization
     // Constructors
     public Organization(String organizationName, User advisorName)
     {
-        code = ""; //generate random String
         name = organizationName;
         advisor = advisorName;
         volunteers = new ArrayList<>();
+
+        Random rand = new Random();
+        code = rand.nextInt(8999) + 1000;
     }
 
     public Organization()
@@ -38,7 +41,16 @@ public class Organization
 
     public void removeVolunteer(Volunteer v)
     {
-        volunteers.remove(v);
+        int index = 0;
+        for (Volunteer item: volunteers)
+        {
+            if (v==item)
+            {
+                volunteers.remove(index);
+                break;
+            }
+            index++;
+        }
     }
 
     public String getCode()
