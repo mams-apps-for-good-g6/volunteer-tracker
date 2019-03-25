@@ -47,9 +47,9 @@ public class Volunteer extends User
 
     public double getSpecificCharityHours(String charityName)
     {
+        int hours = 0;
         for (LogEntry entry: logEntries)
         {
-            int hours = 0;
             if (entry.getCharityName().equals(charityName))
             {
                 hours+=entry.getHours();
