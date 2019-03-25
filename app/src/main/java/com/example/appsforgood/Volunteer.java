@@ -35,6 +35,10 @@ public class Volunteer extends User
 
     public double getTotalHours() {return totalHours;}
 
+    /**
+     * Returns a string object that displays all log entries. Each entry is displayed on its own line in the following form: charity Name, hours served, date served.
+     * @return the log of entries, with each entry displayed on its own line.
+     */
     public String getLog()
     {
         String log = "Charity \t Hours \t Date";
@@ -45,6 +49,11 @@ public class Volunteer extends User
         return log;
     }
 
+    /**
+     * Gets the number of hours served at a specified charity.
+     * @param charityName name of charity
+     * @return hours served at specified charity
+     */
     public double getSpecificCharityHours(String charityName)
     {
         int hours = 0;
