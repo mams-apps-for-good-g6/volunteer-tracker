@@ -10,15 +10,15 @@ public class Organization
     private String code;
     private String name;
     private User advisor;
-    private ArrayList<Volunteer> list;
+    private ArrayList<Volunteer> volunteers;
 
     // Constructors
-    public Organization(String n, User a)
+    public Organization(String organizationName, User advisorName)
     {
         code = ""; //generate random String
-        name = n;
-        advisor = a;
-        list = new ArrayList<>();
+        name = organizationName;
+        advisor = advisorName;
+        volunteers = new ArrayList<>();
     }
 
     public Organization()
@@ -26,19 +26,19 @@ public class Organization
         code = ""; //generate random String
         name = "";
         advisor = new User("", "", "");
-        list = new ArrayList<>();
+        volunteers = new ArrayList<>();
     }
 
     // Methods
 
-    public void addStudent(Volunteer s)
+    public void addVolunteer(Volunteer v)
     {
-        list.add(s);
+        volunteers.add(v);
     }
 
-    public void removeStudent(int number)
+    public void removeVolunteer(Volunteer v)
     {
-        list.remove(number);
+        volunteers.remove(v);
     }
 
     public String getCode()
@@ -65,9 +65,9 @@ public class Organization
     {
         String r = new String("");
 
-        for(int i = 0; i < list.size(); i++)
+        for(int i = 0; i < volunteers.size(); i++)
         {
-            r = r + list.get(i).getFullName() + " - " + list.get(i).getTotalHours() + "\n";
+            r = r + volunteers.get(i).getFullName() + " - " + volunteers.get(i).getTotalHours() + "\n";
         }
 
         return r;
@@ -75,16 +75,16 @@ public class Organization
 
     public String getStudentLog(int number)
     {
-        return "Name: " + list.get(number).getFullName() + "\n" + "Email: " + list.get(number).getEmail() + "\n" + "Total Hours: " + list.get(number).getTotalHours();
+        return "Name: " + volunteers.get(number).getFullName() + "\n" + "Email: " + volunteers.get(number).getEmail() + "\n" + "Total Hours: " + volunteers.get(number).getTotalHours();
     }
 
     public double getAllTotalHours()
     {
         double total = 0;
 
-        for(int i = 0; i < list.size(); i++)
+        for(int i = 0; i < volunteers.size(); i++)
         {
-            total = total + list.get(i).getTotalHours();
+            total = total + volunteers.get(i).getTotalHours();
         }
 
         return total;
