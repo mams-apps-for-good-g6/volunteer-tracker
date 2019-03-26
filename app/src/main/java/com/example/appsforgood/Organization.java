@@ -90,6 +90,12 @@ public class Organization
         return volunteer.getLog();
     }
 
+    public double getStudentHours(Volunteer volunteer)
+    {
+        return volunteer.getTotalHours();
+    }
+
+
     public double getAllTotalHours()
     {
         double total = 0;
