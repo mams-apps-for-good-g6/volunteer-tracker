@@ -79,15 +79,15 @@ public class Organization
 
         for(int i = 0; i < volunteers.size(); i++)
         {
-            r = r + volunteers.get(i).getFullName() + " - " + volunteers.get(i).getTotalHours() + "\n";
+            r += volunteers.get(i).getFullName() + ": " + volunteers.get(i).getTotalHours() + " hours \n";
         }
 
         return r;
     }
 
-    public String getStudentLog(int number)
+    public String getStudentLog(Volunteer volunteer)
     {
-        return "Name: " + volunteers.get(number).getFullName() + "\n" + "Email: " + volunteers.get(number).getEmail() + "\n" + "Total Hours: " + volunteers.get(number).getTotalHours();
+        return volunteer.getLog();
     }
 
     public double getAllTotalHours()
