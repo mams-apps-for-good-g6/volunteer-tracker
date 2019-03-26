@@ -9,6 +9,7 @@ public class LogEntry
     private String date;
     private String contactName;
     private String contactEmail;
+    private int validate; // 0 = PENDING, 1 = APPROVED, -1 = NOT APPROVED
 
     // Constructor
 
@@ -19,6 +20,7 @@ public class LogEntry
         date = dateServed;
         contactName = contactPerson;
         contactEmail = email;
+        validate = 0;
     }
 
     public LogEntry()
@@ -28,6 +30,7 @@ public class LogEntry
         date = "";
         contactName = "";
         contactEmail = "";
+        validate = 0;
     }
 
     // Methods
@@ -60,12 +63,14 @@ public class LogEntry
     public void requestApproval()
     {
         // Request Approval
+        // Send email, and update the boolean to true when someone responds
+        // If they approve (validate = 1;)
+        // If they DO NOT approve (validate = -1;)
     }
 
-    public boolean getApprovalStatus()
+    public int getApprovalStatus()
     {
-        return true;
-        // Return boolean that's related to request approval
+        return validate;
     }
 
 
