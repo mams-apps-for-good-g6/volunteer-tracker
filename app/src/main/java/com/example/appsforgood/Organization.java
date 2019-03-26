@@ -26,7 +26,7 @@ public class Organization
 
     public Organization()
     {
-        code = ""; //generate random String
+        code = 0; //generate random String
         name = "";
         advisor = new User("", "", "");
         volunteers = new ArrayList<>();
@@ -53,7 +53,7 @@ public class Organization
         }
     }
 
-    public String getCode()
+    public int getCode()
     {
         return code;
     }
