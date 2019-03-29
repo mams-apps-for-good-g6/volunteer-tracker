@@ -75,6 +75,7 @@
             android:id="@+id/generateCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="displayCode"
             android:text="Create Account and Generate Organization Code" />
 
     </LinearLayout>
