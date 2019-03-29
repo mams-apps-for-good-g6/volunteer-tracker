@@ -13,6 +13,14 @@ public class LogEntry
 
     // Constructor
 
+    /**
+     * Create an instance of Log Entry
+     * @param name The name of the charity
+     * @param hoursServed The number of hours volunteered
+     * @param dateServed When the volunteering occurred
+     * @param contactPerson The name of the contact that will be contacted in order to approve your hours
+     * @param email The email of the person that should be contacted to approve your hours
+     */
     public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email)
     {
         charityName = name;
@@ -23,6 +31,9 @@ public class LogEntry
         validate = 0;
     }
 
+    /**
+     * Creates an empty instance of Log Entry
+     */
     public LogEntry()
     {
         charityName = "";
@@ -35,31 +46,54 @@ public class LogEntry
 
     // Methods
 
+    /**
+     * Gets the hours this entry volunteered for
+     * @return the number of hours volunteered
+     */
     public double getHours()
     {
         return hours;
     }
 
+    /**
+     * Gets the date of the volunteering
+     * @return the date of the volunteering
+     */
     public String getDate()
     {
         return date;
     }
 
+    /**
+     * Gets the name of the contact for this volunteering
+     * @return the name of the approval contact
+     */
     public String getContactName()
     {
         return contactName;
     }
 
+    /**
+     * Gets the email of the approval contact for this Log Entry
+     * @return the email of the contact for this Log Entry
+     */
     public String getContactEmail()
     {
         return contactEmail;
     }
 
+    /**
+     * Gets the charity name for this Log Entry
+     * @return the charity name for this Log Entry
+     */
     public String getCharityName()
     {
         return charityName;
     }
 
+    /**
+     * Requests approval for this Log Entry (Should probably be done when initiating an instance of Log Entry)
+     */
     public void requestApproval()
     {
         // Request Approval
@@ -68,6 +102,13 @@ public class LogEntry
         // If they DO NOT approve (validate = -1;)
     }
 
+    /**
+     * Gets the status of approval for this Log Entry
+     * -1 = NOT APPROVED
+     * 0 = PENDING APPROVAL (default upon construction)
+     * 1 = APPROVED
+     * @return the status of approval as an int
+     */
     public int getApprovalStatus()
     {
         return validate;
