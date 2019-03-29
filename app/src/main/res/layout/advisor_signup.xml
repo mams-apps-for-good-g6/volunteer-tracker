@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/advisorSignUp_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up as an Advisor"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Organization Name" />
+
+        <EditText
+            android:id="@+id/organizationName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Mass Academy NHS"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/firstNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="First Name" />
+
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Your First Name"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/lastNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Name" />
+
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Your Last Name"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email Address" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="NotAFakeEmail@gmail.com"
+            android:inputType="textEmailAddress" />
+
+        <Button
+            android:id="@+id/generateCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Account and Generate Organization Code" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

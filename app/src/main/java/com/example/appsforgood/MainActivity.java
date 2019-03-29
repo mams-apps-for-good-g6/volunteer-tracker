@@ -1,7 +1,9 @@
 package com.example.appsforgood;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -21,5 +23,17 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World!");
+    }
+
+    public void toVolunteerSignUp(View v)
+    {
+        Intent intent = new Intent(this, VolunteerSignUp.class);
+        startActivity(intent);
+    }
+
+    public void toAdvisorSignUp(View v)
+    {
+        Intent intent = new Intent(this, AdvisorSignUp.class);
+        startActivity(intent);
     }
 }
