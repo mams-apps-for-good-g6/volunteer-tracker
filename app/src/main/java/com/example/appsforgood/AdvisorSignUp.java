@@ -16,7 +16,8 @@ public class AdvisorSignUp extends AppCompatActivity
 
     public void displayCode(View v)
     {
-        // take input and generate code by creating an organization object and calling the generateCode method
+        // Convert user input to String objects
+
         EditText OrgName = findViewById(R.id.organizationName);
         EditText first = findViewById(R.id.firstName);
         EditText last = findViewById(R.id.lastName);
@@ -27,7 +28,12 @@ public class AdvisorSignUp extends AppCompatActivity
         String lastStr = last.getText().toString();
         String emailStr = email.getText().toString();
 
+        // Create an organization using inputted information
+
         Organization org = new Organization(OrgNameStr, new User(firstStr, lastStr, emailStr));
+
+        // NEED TO IMPLEMENT: store org in Firebase
+
         String code = Integer.toString(org.getCode());
 
         Intent intent = new Intent(this, DisplayCode.class);

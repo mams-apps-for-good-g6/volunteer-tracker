@@ -12,6 +12,7 @@
         <activity android:name=".VolunteerSignUp" />
         <activity android:name=".AdvisorSignUp" />
         <activity android:name=".DisplayCode" />
+        <activity android:name=".LogHours" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
