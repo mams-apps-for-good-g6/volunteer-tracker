@@ -10,5 +10,5 @@ public class LogHours extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_hours);
     }
-
+    // need to implement
 }
