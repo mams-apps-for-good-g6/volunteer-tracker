@@ -13,6 +13,8 @@
         <activity android:name=".AdvisorSignUp" />
         <activity android:name=".DisplayCode" />
         <activity android:name=".LogHours" />
+        <activity android:name=".VolunteerProfile" />
+        <activity android:name=".HourLog"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

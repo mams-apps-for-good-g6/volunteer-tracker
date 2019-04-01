@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class AdvisorSignUp extends AppCompatActivity
 {
     protected void onCreate(Bundle savedInstanceState)
@@ -31,6 +34,11 @@ public class AdvisorSignUp extends AppCompatActivity
         // Create an organization using inputted information
 
         Organization org = new Organization(OrgNameStr, new User(firstStr, lastStr, emailStr));
+
+        // Add organization to database under tag "users"
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("organizations");
+        myRef.setValue(org);
 
         // NEED TO IMPLEMENT: store org in Firebase
 

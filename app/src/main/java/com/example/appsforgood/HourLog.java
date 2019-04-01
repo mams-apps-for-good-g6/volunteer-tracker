@@ -5,20 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class LogHours extends AppCompatActivity
+public class HourLog extends AppCompatActivity
 {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_hours);
+        setContentView(R.layout.hour_log);
     }
 
-    public void logHours(View v)
+    public void toVolunteerProfile(View v)
     {
-        // DO STUFF HERE TO ADD HOURS TO HOUR LOG
-
-        // After hours are logged, user is sent to their hour log
-        Intent intent = new Intent(this, HourLog.class);
+        Intent intent = new Intent(this, VolunteerProfile.class);
         startActivity(intent);
     }
 }
