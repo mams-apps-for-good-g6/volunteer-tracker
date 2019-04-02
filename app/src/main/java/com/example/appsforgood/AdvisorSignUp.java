@@ -42,10 +42,10 @@ public class AdvisorSignUp extends AppCompatActivity
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations");
 
-        DatabaseReference usersRef = ref.child("Organizations [Official Test]");
+        DatabaseReference usersRef = ref.child(OrgNameStr);
 
         Map<String, Organization> orgs = new HashMap<>();
-        orgs.put("Org1", org);
+        orgs.put(OrgNameStr, org);
         // Instead of first org put the name of the organization
 
         usersRef.setValue(orgs);
