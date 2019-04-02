@@ -40,7 +40,7 @@ public class VolunteerSignUp extends AppCompatActivity
 
         // Find organization with the user's code in firebase
 
-        Organization post = dataSnapshot.getValue(Organization.class);
+        //Organization post = dataSnapshot.getValue(Organization.class);
 
         // Add volunteer to this organization (NEED TO COMPLETE)
 
