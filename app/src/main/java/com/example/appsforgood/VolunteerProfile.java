@@ -18,4 +18,10 @@ public class VolunteerProfile extends AppCompatActivity
         Intent intent = new Intent(this, LogHours.class);
         startActivity(intent);
     }
+
+    public void toHourLog(View v)
+    {
+        Intent intent = new Intent(this, HourLog.class);
+        startActivity(intent);
+    }
 }

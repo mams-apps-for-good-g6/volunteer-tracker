@@ -3,6 +3,7 @@ package com.example.appsforgood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class DisplayCode extends AppCompatActivity
@@ -18,5 +19,11 @@ public class DisplayCode extends AppCompatActivity
 
         TextView displayCode = findViewById(R.id.displayCode);
         displayCode.setText(code);
+    }
+
+    public void toAdvisorProfile(View v)
+    {
+        Intent intent = new Intent(this, AdvisorProfile.class);
+        startActivity(intent);
     }
 }

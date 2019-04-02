@@ -40,6 +40,13 @@
             android:textSize="18sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="494dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toAdvisorProfile"
+            android:text="Go To My Profile" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

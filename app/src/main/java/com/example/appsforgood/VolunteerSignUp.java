@@ -35,10 +35,11 @@ public class VolunteerSignUp extends AppCompatActivity
 
         Volunteer vol = new Volunteer(firstStr, lastStr, emailStr);
 
-        // Get organization with the user's code (NEED TO COMPLETE)
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("organizations");
+
+        // Find organization with the user's code in firebase
+
 
 
         // Add volunteer to this organization (NEED TO COMPLETE)

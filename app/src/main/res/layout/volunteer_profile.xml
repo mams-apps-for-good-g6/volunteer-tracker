@@ -171,6 +171,7 @@
             android:id="@+id/ViewVolunteerHourLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="toHourLog"
             android:text="View Hour Log" />
 
     </LinearLayout>
