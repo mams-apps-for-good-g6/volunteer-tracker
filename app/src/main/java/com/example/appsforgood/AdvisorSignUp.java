@@ -9,6 +9,9 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AdvisorSignUp extends AppCompatActivity
 {
     protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +41,14 @@ public class AdvisorSignUp extends AppCompatActivity
         // Add organization to database under tag "users"
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations");
+
+        DatabaseReference usersRef = ref.child("Organizations [Official Test]");
+
+        Map<String, Organization> orgs = new HashMap<>();
+        orgs.put("Org1", org);
+        // Instead of first org put the name of the organization
+
+        usersRef.setValue(orgs);
 
         // NEED TO IMPLEMENT: store org in Firebase
 
