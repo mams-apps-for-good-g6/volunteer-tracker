@@ -37,8 +37,7 @@ public class AdvisorSignUp extends AppCompatActivity
 
         // Add organization to database under tag "users"
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("organizations");
-        myRef.setValue(org);
+        DatabaseReference ref = database.getReference("organizations");
 
         // NEED TO IMPLEMENT: store org in Firebase
 
