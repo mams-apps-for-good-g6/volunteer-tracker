@@ -15,12 +15,16 @@
             android:text="Your Hour Log"
             android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/textView12"
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="put hour log here"
-            android:textSize="24sp" />
+            android:scrollbars="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+        </android.support.v7.widget.RecyclerView>
 
         <Button
             android:id="@+id/button4"
