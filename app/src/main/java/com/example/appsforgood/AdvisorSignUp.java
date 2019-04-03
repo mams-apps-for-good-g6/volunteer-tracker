@@ -38,20 +38,19 @@ public class AdvisorSignUp extends AppCompatActivity
 
         Organization org = new Organization(OrgNameStr, new User(firstStr, lastStr, emailStr));
 
-        // Add organization to database under tag "users"
+        // Add organization to database under tag "organizations"
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations");
 
         DatabaseReference usersRef = ref.child(OrgNameStr);
 
+        // Add org as a child of "organizations"
         Map<String, Organization> orgs = new HashMap<>();
         orgs.put(OrgNameStr, org);
-        // Instead of first org put the name of the organization
-
         usersRef.setValue(orgs);
 
-        // NEED TO IMPLEMENT: store org in Firebase
-
+        // Generate random code for the specific organization
         String code = Integer.toString(org.getCode());
 
         Intent intent = new Intent(this, DisplayCode.class);
