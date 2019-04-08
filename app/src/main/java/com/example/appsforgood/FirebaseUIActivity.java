@@ -1,4 +1,4 @@
-//package com.example.appsforgood;
+package com.example.appsforgood;
 package com.google.firebase.quickstart.auth;
 
 import android.content.Intent;
