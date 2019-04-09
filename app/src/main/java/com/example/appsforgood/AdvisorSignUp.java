@@ -46,15 +46,15 @@ public class AdvisorSignUp extends AppCompatActivity
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations");
 
-        DatabaseReference usersRef = ref.child(OrgNameStr);
+        DatabaseReference usersRef = ref.child(org.getCode());
 
         // Add org as a child of "organizations"
         Map<String, Organization> orgs = new HashMap<>();
-        orgs.put(OrgNameStr, org);
+        orgs.put(org.getCode(), org);
         usersRef.setValue(orgs);
 
         Intent intent = new Intent(this, DisplayCode.class);
-        intent.putExtra("organizationName", OrgNameStr);
+        intent.putExtra("organizationCode", org.getCode());
         startActivity(intent);
     }
 }

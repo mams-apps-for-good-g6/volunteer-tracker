@@ -40,6 +40,12 @@ public class Organization
 
     // Methods
 
+    public String toString()
+    {
+        return "name: " + name + " code: " + code;
+    }
+
+
     public void addVolunteer(Volunteer v)
     {
         volunteers.add(v);
@@ -107,6 +113,5 @@ public class Organization
 
         return total;
     }
-
 
 }

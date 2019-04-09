@@ -27,17 +27,16 @@ public class DisplayCode extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String orgName = bundle.getString("organizationName");
+        String orgCode = bundle.getString("organizationCode");
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/" + orgName + "/" + orgName + "/code");
+        DatabaseReference ref = database.getReference("organizations/" + orgCode + "/" + orgCode + "/code");
 
-        // Attach a listener to read the data at our posts reference
+        // Attach a listener to read the data at the reference
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String code = dataSnapshot.getValue(String.class);
-                Log.d(TAG,"The code I got from test16 online was: " + code);
 
                 // generate and display code
                 TextView displayCode = findViewById(R.id.displayCode);
