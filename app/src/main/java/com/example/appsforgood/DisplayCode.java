@@ -2,14 +2,26 @@ package com.example.appsforgood;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class DisplayCode extends AppCompatActivity
 {
+    private String TAG = "EvanTag";
+
     protected void onCreate(Bundle savedInstanceState)
     {
+        Log.d(TAG,"Checkpoint #1");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_code);
 
@@ -17,8 +29,42 @@ public class DisplayCode extends AppCompatActivity
         Bundle bundle = intent.getExtras();
         String code = bundle.getString("organizationCode");
 
+        Log.d(TAG,"Checkpoint #2");
+
         TextView displayCode = findViewById(R.id.displayCode);
         displayCode.setText(code);
+
+        Log.d(TAG,"Checkpoint #3");
+
+        //NEW
+
+        // Get a reference to our posts
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("organizations/test16/test16/code");
+
+        Log.d(TAG,"Checkpoint #4");
+
+        // Possibly try backing the reference up by one (deleting "/code") and try running it from the organization again, but the problem is that it's not printing
+        // https://firebase.google.com/docs/database/admin/retrieve-data#section-reading-once
+
+        // Attach a listener to read the data at our posts reference
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d(TAG,"Checkpoint #5");
+                int codeOnline = dataSnapshot.getValue(Integer.class);
+                Log.d(TAG,"Checkpoint #6");
+                Log.d(TAG,"The code I got from test16 online was: " + codeOnline);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+                Log.d(TAG,"Checkpoint #7");
+            }
+        });
+
+        Log.d(TAG,"Checkpoint #8");
     }
 
     public void toAdvisorProfile(View v)

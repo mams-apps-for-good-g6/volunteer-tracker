@@ -3,6 +3,7 @@ package com.example.appsforgood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -14,6 +15,8 @@ import java.util.Map;
 
 public class AdvisorSignUp extends AppCompatActivity
 {
+    private String TAG = "EvanTag";
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,8 @@ public class AdvisorSignUp extends AppCompatActivity
 
         // Generate random code for the specific organization
         String code = Integer.toString(org.getCode());
+
+        Log.d(TAG,"Checkpoint #0.5");
 
         Intent intent = new Intent(this, DisplayCode.class);
         intent.putExtra("organizationCode", code);

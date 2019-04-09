@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:onClick="toAdvisorProfile"
             android:text="Go To My Profile" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

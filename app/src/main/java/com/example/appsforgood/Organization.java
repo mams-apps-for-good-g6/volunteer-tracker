@@ -1,7 +1,13 @@
 package com.example.appsforgood;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.Random;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Organization
 {
@@ -101,4 +107,6 @@ public class Organization
 
         return total;
     }
+
+
 }
