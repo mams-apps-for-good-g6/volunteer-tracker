@@ -53,13 +53,8 @@ public class AdvisorSignUp extends AppCompatActivity
         orgs.put(OrgNameStr, org);
         usersRef.setValue(orgs);
 
-        // Generate random code for the specific organization
-        String code = Integer.toString(org.getCode());
-
-        Log.d(TAG,"Checkpoint #0.5");
-
         Intent intent = new Intent(this, DisplayCode.class);
-        intent.putExtra("organizationCode", code);
+        intent.putExtra("organizationName", OrgNameStr);
         startActivity(intent);
     }
 }

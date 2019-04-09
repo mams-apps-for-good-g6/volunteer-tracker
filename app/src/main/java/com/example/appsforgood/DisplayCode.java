@@ -27,34 +27,21 @@ public class DisplayCode extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String code = bundle.getString("organizationCode");
+        String orgName = bundle.getString("organizationName");
 
-        Log.d(TAG,"Checkpoint #2");
-
-        TextView displayCode = findViewById(R.id.displayCode);
-        displayCode.setText(code);
-
-        Log.d(TAG,"Checkpoint #3");
-
-        //NEW
-
-        // Get a reference to our posts
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/test16/test16/code");
-
-        Log.d(TAG,"Checkpoint #4");
-
-        // Possibly try backing the reference up by one (deleting "/code") and try running it from the organization again, but the problem is that it's not printing
-        // https://firebase.google.com/docs/database/admin/retrieve-data#section-reading-once
+        DatabaseReference ref = database.getReference("organizations/" + orgName + "/" + orgName + "/code");
 
         // Attach a listener to read the data at our posts reference
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d(TAG,"Checkpoint #5");
-                int codeOnline = dataSnapshot.getValue(Integer.class);
-                Log.d(TAG,"Checkpoint #6");
-                Log.d(TAG,"The code I got from test16 online was: " + codeOnline);
+                String code = dataSnapshot.getValue(String.class);
+                Log.d(TAG,"The code I got from test16 online was: " + code);
+
+                // generate and display code
+                TextView displayCode = findViewById(R.id.displayCode);
+                displayCode.setText(code);
             }
 
             @Override
@@ -63,9 +50,6 @@ public class DisplayCode extends AppCompatActivity
                 Log.d(TAG,"Checkpoint #7");
             }
         });
-
-        Log.d(TAG,"Checkpoint #8");
-        Log.d(TAG,"Checkpoint #18");
     }
 
     public void toAdvisorProfile(View v)
@@ -73,4 +57,5 @@ public class DisplayCode extends AppCompatActivity
         Intent intent = new Intent(this, AdvisorProfile.class);
         startActivity(intent);
     }
+
 }

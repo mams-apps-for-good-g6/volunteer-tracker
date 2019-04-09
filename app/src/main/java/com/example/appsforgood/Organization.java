@@ -59,9 +59,9 @@ public class Organization
         }
     }
 
-    public int getCode()
+    public String getCode()
     {
-        return code;
+        return Integer.toString(code);
     }
 
     public String getName()
