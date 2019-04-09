@@ -65,6 +65,7 @@ public class DisplayCode extends AppCompatActivity
         });
 
         Log.d(TAG,"Checkpoint #8");
+        Log.d(TAG,"Checkpoint #18");
     }
 
     public void toAdvisorProfile(View v)
