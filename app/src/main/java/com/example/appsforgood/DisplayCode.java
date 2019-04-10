@@ -15,8 +15,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class DisplayCode extends AppCompatActivity
-{
-    private String TAG = "EvanTag";
+{private String TAG = "EvanTag";
+
+    private String code = "";
+
+    private void setCode(String codeStr)
+    {
+        code = codeStr;
+    }
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -28,6 +34,8 @@ public class DisplayCode extends AppCompatActivity
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String orgCode = bundle.getString("organizationCode");
+
+        setCode(orgCode);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations/" + orgCode + "/" + orgCode + "/code");
@@ -54,6 +62,7 @@ public class DisplayCode extends AppCompatActivity
     public void toAdvisorProfile(View v)
     {
         Intent intent = new Intent(this, AdvisorProfile.class);
+        intent.putExtra("organizationCode", code);
         startActivity(intent);
     }
 
