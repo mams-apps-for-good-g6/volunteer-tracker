@@ -1,7 +1,13 @@
 package com.example.appsforgood;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.Random;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Organization
 {
@@ -34,6 +40,12 @@ public class Organization
 
     // Methods
 
+    public String toString()
+    {
+        return "name: " + name + " code: " + code;
+    }
+
+
     public void addVolunteer(Volunteer v)
     {
         volunteers.add(v);
@@ -53,9 +65,9 @@ public class Organization
         }
     }
 
-    public int getCode()
+    public String getCode()
     {
-        return code;
+        return Integer.toString(code);
     }
 
     public String getName()
@@ -101,4 +113,5 @@ public class Organization
 
         return total;
     }
+
 }

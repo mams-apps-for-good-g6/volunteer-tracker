@@ -3,6 +3,7 @@ package com.example.appsforgood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -14,6 +15,8 @@ import java.util.Map;
 
 public class AdvisorSignUp extends AppCompatActivity
 {
+    private String TAG = "EvanTag";
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -43,18 +46,15 @@ public class AdvisorSignUp extends AppCompatActivity
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations");
 
-        DatabaseReference usersRef = ref.child(OrgNameStr);
+        DatabaseReference usersRef = ref.child(org.getCode());
 
         // Add org as a child of "organizations"
         Map<String, Organization> orgs = new HashMap<>();
-        orgs.put(OrgNameStr, org);
+        orgs.put(org.getCode(), org);
         usersRef.setValue(orgs);
 
-        // Generate random code for the specific organization
-        String code = Integer.toString(org.getCode());
-
         Intent intent = new Intent(this, DisplayCode.class);
-        intent.putExtra("organizationCode", code);
+        intent.putExtra("organizationCode", org.getCode());
         startActivity(intent);
     }
 }
