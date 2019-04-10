@@ -8,13 +8,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Your Hour Log"
-            android:textSize="30sp" />
-
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
@@ -28,6 +21,11 @@
             android:layout_height="wrap_content"
             android:onClick="toVolunteerProfile"
             android:text="Back to Profile" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/HourLogList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

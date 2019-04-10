@@ -7,11 +7,11 @@ import android.view.View;
 
 public class LogHours extends AppCompatActivity
 {
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_hours);
-    }
+//    protected void onCreate(Bundle savedInstanceState)
+//    {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.log_hours);
+//    }
 
     public void logHours(View v)
     {

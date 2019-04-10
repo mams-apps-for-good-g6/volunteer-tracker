@@ -1,20 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 package com.example.appsforgood;
+
+import java.util.ArrayList;
 
 public class LogEntry
 {
@@ -130,5 +116,13 @@ public class LogEntry
         return validate;
     }
 
+    public static ArrayList<LogEntry> createLogEbntries(int numContacts) {
+        ArrayList<LogEntry> contacts = new ArrayList<LogEntry>();
 
+        for (int i = 1; i <= numContacts; i++) {
+            contacts.add(new LogEntry("name", (i/1.0), "date", "contact person", "email"));
+        }
+
+        return contacts;
+    }
 }
