@@ -14,7 +14,7 @@ public class Organization
     // This is push V2 2:18 3/25/19
 
     // Data
-    private int code;
+    private String code;
     private String name;
     private User advisor;
     private ArrayList<Volunteer> volunteers;
@@ -25,14 +25,13 @@ public class Organization
         name = organizationName;
         advisor = advisorName;
         volunteers = new ArrayList<>();
-
         Random rand = new Random();
-        code = rand.nextInt(8999) + 1000;
+        code = Integer.toString(rand.nextInt(8999) + 1000);
     }
 
     public Organization()
     {
-        code = 0; //generate random String
+        code = ""; //generate random String
         name = "";
         advisor = new User("", "", "");
         volunteers = new ArrayList<>();
@@ -67,7 +66,7 @@ public class Organization
 
     public String getCode()
     {
-        return Integer.toString(code);
+        return code;
     }
 
     public String getName()

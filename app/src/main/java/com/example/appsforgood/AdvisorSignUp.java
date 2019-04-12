@@ -47,11 +47,12 @@ public class AdvisorSignUp extends AppCompatActivity
         DatabaseReference ref = database.getReference("organizations");
 
         DatabaseReference usersRef = ref.child(org.getCode());
+        usersRef.push().setValue(org);
 
         // Add org as a child of "organizations"
-        Map<String, Organization> orgs = new HashMap<>();
-        orgs.put(org.getCode(), org);
-        usersRef.setValue(orgs);
+        //Map<String, Organization> orgs = new HashMap<>();
+        //orgs.put(org.getCode(), org);
+        //usersRef.setValue(orgs);
 
         Intent intent = new Intent(this, DisplayCode.class);
         intent.putExtra("organizationCode", org.getCode());

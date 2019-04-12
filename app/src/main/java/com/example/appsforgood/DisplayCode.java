@@ -38,17 +38,20 @@ public class DisplayCode extends AppCompatActivity
         setCode(orgCode);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/" + orgCode + "/" + orgCode + "/code");
+        DatabaseReference ref = database.getReference("organizations/" + orgCode);
 
         // Attach a listener to read the data at the reference
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String code = dataSnapshot.getValue(String.class);
 
-                // generate and display code
-                TextView displayCode = findViewById(R.id.displayCode);
-                displayCode.setText(code);
+                for(DataSnapshot datasnapshot: dataSnapshot.getChildren()) {
+                    Organization org = datasnapshot.getValue(Organization.class);
+                    Log.d(TAG, org.toString());
+
+                    TextView displayCode = findViewById(R.id.displayCode);
+                    displayCode.setText(org.getCode());
+                }
             }
 
             @Override

@@ -25,12 +25,22 @@ public class User
         email = userEmail;
     }
 
+    public User()
+    {
+        firstName = "";
+        lastName = "";
+        email = "";
+    }
+
     // METHODS
 
     public String getFullName() {return firstName + " " + lastName;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public String getEmail() {return email;}
+    public void setFirstName(String name) {firstName=name;}
+    public void setLastName(String name) {lastName=name;}
+    public void setEmail(String emailStr) {email=emailStr;}
 
     public void createNewPost()
     {
