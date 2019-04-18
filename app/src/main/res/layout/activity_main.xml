@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,10 +19,11 @@
 
         <TextView
             android:id="@+id/labelText"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
             android:text="Volunteer Tracker"
-            android:textSize="36sp"
+            android:textSize="48sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -31,7 +34,9 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="200dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="50dp"
             app:srcCompat="@mipmap/ic_launcher_round"
             tools:layout_editor_absoluteX="145dp"
             tools:layout_editor_absoluteY="217dp" />
@@ -42,6 +47,7 @@
             android:layout_height="wrap_content"
             android:text="Sign up as a(n)"
             android:textSize="24sp"
+            android:paddingLeft="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,28 +56,29 @@
         <Button
             android:id="@+id/toVolunteerSignUp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:onClick="toVolunteerSignUp"
             android:text="Volunteer"
-            android:textSize="24sp"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="126dp"
             tools:layout_editor_absoluteY="419dp" />
 
         <Button
             android:id="@+id/toAdvisorSignUp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:onClick="toAdvisorSignUp"
             android:text="Advisor"
-            android:textSize="24sp"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="126dp"
             tools:layout_editor_absoluteY="484dp" />
 
         <Button
             android:id="@+id/toSignIn"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:text="Or sign in here"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="138dp"
             tools:layout_editor_absoluteY="544dp" />
     </LinearLayout>
