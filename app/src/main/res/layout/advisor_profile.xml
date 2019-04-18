@@ -120,6 +120,7 @@
             android:id="@+id/ViewAdvisorHourLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="toHourLog"
             android:text="View Students' Hour Log" />
 
     </LinearLayout>

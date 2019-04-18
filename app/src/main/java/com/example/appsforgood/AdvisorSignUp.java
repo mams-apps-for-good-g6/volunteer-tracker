@@ -45,9 +45,10 @@ public class AdvisorSignUp extends AppCompatActivity
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations");
-
-        DatabaseReference usersRef = ref.child(org.getCode());
-        usersRef.push().setValue(org);
+        DatabaseReference newRef = ref.push();
+        newRef.setValue(org);
+        String id = newRef.getKey();
+        Log.d("MeganTag", id);
 
         // Add org as a child of "organizations"
         //Map<String, Organization> orgs = new HashMap<>();
@@ -55,7 +56,7 @@ public class AdvisorSignUp extends AppCompatActivity
         //usersRef.setValue(orgs);
 
         Intent intent = new Intent(this, DisplayCode.class);
-        intent.putExtra("organizationCode", org.getCode());
+        intent.putExtra("key", id);
         startActivity(intent);
     }
 }

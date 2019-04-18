@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,11 +19,11 @@ import java.util.Map;
 public class AdvisorProfile extends AppCompatActivity
 {
     private String TAG = "EvanTag";
-    private String code = "";
+    private String key = "";
 
-    private void setCode(String codeStr)
+    private void setKey(String k)
     {
-        code = codeStr;
+        key = k;
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,12 @@ public class AdvisorProfile extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String orgCode = bundle.getString("organizationCode");
+        String key = bundle.getString("organizationKey");
 
-        setCode(orgCode);
+        setKey(key);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/" + orgCode);
+        final DatabaseReference ref = database.getReference("organizations/");
 
         // Attach a listener to read the data at the reference
         ref.addValueEventListener(new ValueEventListener() {
@@ -47,8 +48,8 @@ public class AdvisorProfile extends AppCompatActivity
                     Organization org = datasnapshot.getValue(Organization.class);
                     Log.d(TAG, org.toString());
 
-                    TextView displayCode = findViewById(R.id.AdvisorName);
-                    displayCode.setText(org.getAdvisor().getFullName());
+                    TextView advisorName = findViewById(R.id.AdvisorName);
+                    advisorName.setText(org.getAdvisor().getFullName());
 
                     TextView email = findViewById(R.id.AdvisorEmail);
                     email.setText(org.getAdvisor().getEmail());
@@ -68,5 +69,10 @@ public class AdvisorProfile extends AppCompatActivity
             }
         });
 
+    }
+
+    public void toHourLog(View v) {
+        Intent intent = new Intent(this, HourLog.class);
+        startActivity(intent);
     }
 }

@@ -17,12 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 public class DisplayCode extends AppCompatActivity
 {private String TAG = "EvanTag";
 
-    private String code = "";
+    private String key = "";
 
-    private void setCode(String codeStr)
-    {
-        code = codeStr;
-    }
+    private void setKey(String k) {key = k;}
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,31 +30,26 @@ public class DisplayCode extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String orgCode = bundle.getString("organizationCode");
-
-        setCode(orgCode);
+        String key = bundle.getString("key");
+        setKey(key);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/" + orgCode);
+        DatabaseReference ref = database.getReference("organizations/" + key + "/code");
 
         // Attach a listener to read the data at the reference
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                String code = dataSnapshot.getValue(String.class);
+                Log.d(TAG, code);
 
-                for(DataSnapshot datasnapshot: dataSnapshot.getChildren()) {
-                    Organization org = datasnapshot.getValue(Organization.class);
-                    Log.d(TAG, org.toString());
-
-                    TextView displayCode = findViewById(R.id.displayCode);
-                    displayCode.setText(org.getCode());
-                }
+                TextView displayCode = findViewById(R.id.displayCode);
+                displayCode.setText(code);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
-                Log.d(TAG,"Checkpoint #7");
             }
         });
     }
@@ -65,7 +57,7 @@ public class DisplayCode extends AppCompatActivity
     public void toAdvisorProfile(View v)
     {
         Intent intent = new Intent(this, AdvisorProfile.class);
-        intent.putExtra("organizationCode", code);
+        intent.putExtra("organizationKey", key);
         startActivity(intent);
     }
 

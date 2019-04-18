@@ -3,14 +3,25 @@ package com.example.appsforgood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class VolunteerSignUp extends AppCompatActivity
 {
+    String codeStr;
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -26,7 +37,7 @@ public class VolunteerSignUp extends AppCompatActivity
         EditText last = findViewById(R.id.lastName);
         EditText email = findViewById(R.id.email);
 
-        String codeStr = code.getText().toString();
+        codeStr = code.getText().toString();
         String firstStr = first.getText().toString();
         String lastStr = last.getText().toString();
         String emailStr = email.getText().toString();
@@ -35,12 +46,12 @@ public class VolunteerSignUp extends AppCompatActivity
 
         Volunteer vol = new Volunteer(firstStr, lastStr, emailStr);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("organizations");
-
         // Find organization with the user's code in firebase
 
-        //Organization post = dataSnapshot.getValue(Organization.class);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("organizations/-LcgBkef_KITw7C3pRpw");
+        DatabaseReference volRef = ref.child("volunteers");
+        volRef.push().setValue(vol);
 
         // Add volunteer to this organization (NEED TO COMPLETE)
 

@@ -1,13 +1,8 @@
 package com.example.appsforgood;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DatabaseReference;
-
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Organization
 {
@@ -24,7 +19,7 @@ public class Organization
     {
         name = organizationName;
         advisor = advisorName;
-        volunteers = new ArrayList<>();
+        volunteers = new ArrayList<Volunteer>();
         Random rand = new Random();
         code = Integer.toString(rand.nextInt(8999) + 1000);
     }
@@ -34,7 +29,7 @@ public class Organization
         code = ""; //generate random String
         name = "";
         advisor = new User("", "", "");
-        volunteers = new ArrayList<>();
+        volunteers = new ArrayList<Volunteer>();
     }
 
     // Methods
@@ -84,7 +79,7 @@ public class Organization
         return advisor;
     }
 
-    public String getStudentList()
+    public String GetStudentList()
     {
         String r = new String("");
 
@@ -96,7 +91,7 @@ public class Organization
         return r;
     }
 
-    public String getStudentLog(int number)
+    public String getVolunteerLog(int number)
     {
         return "Name: " + volunteers.get(number).getFullName() + "\n" + "Email: " + volunteers.get(number).getEmail() + "\n" + "Total Hours: " + volunteers.get(number).getTotalHours();
     }
