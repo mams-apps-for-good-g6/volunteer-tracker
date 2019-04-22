@@ -17,10 +17,12 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class VolunteerSignUp extends AppCompatActivity
 {
     String codeStr;
+    Volunteer vol;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,14 +46,38 @@ public class VolunteerSignUp extends AppCompatActivity
 
         // Create a volunteer using inputted information
 
-        Volunteer vol = new Volunteer(firstStr, lastStr, emailStr);
+        vol = new Volunteer(firstStr, lastStr, emailStr);
 
         // Find organization with the user's code in firebase
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/-LcgBkef_KITw7C3pRpw");
-        DatabaseReference volRef = ref.child("volunteers");
-        volRef.push().setValue(vol);
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("organizations/");
+
+        // Attach a listener to read the data at the reference
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Organization org = ds.getValue(Organization.class);
+                    if (org.getCode().equals(codeStr)) {
+                        org.addVolunteer(vol);
+                        ds.getRef().setValue(org);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+        // Add volunteer to proper organization
+
+        //FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+       // DatabaseReference ref2 = database2.getReference("organizations/-Lcqnd6a2mUMUFdEWdFP");
+       // DatabaseReference volRef = ref2.child("volunteers");
+       // volRef.push().setValue(vol);
 
         // Add volunteer to this organization (NEED TO COMPLETE)
 

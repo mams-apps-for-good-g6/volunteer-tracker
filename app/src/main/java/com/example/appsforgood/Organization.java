@@ -34,9 +34,9 @@ public class Organization
 
     // Methods
 
-    public String toString()
+   // public String toString()
     {
-        return "name: " + name + " code: " + code;
+   //     return "name: " + name + " code: " + code;
     }
 
 
@@ -79,16 +79,19 @@ public class Organization
         return advisor;
     }
 
-    public String GetStudentList()
-    {
-        String r = new String("");
-
-        for(int i = 0; i < volunteers.size(); i++)
+     public String getVolunteerList()
+     {
+          String r = new String("");
+          for(int i = 0; i < volunteers.size(); i++)
         {
-            r = r + volunteers.get(i).getFullName() + " - " + volunteers.get(i).getTotalHours() + "\n";
+            r = r + volunteers.get(i).getFullName() + ": " + volunteers.get(i).getTotalHours() + "\n";
         }
-
         return r;
+    }
+
+    public ArrayList<Volunteer> getVolunteers()
+    {
+        return volunteers;
     }
 
     public String getVolunteerLog(int number)

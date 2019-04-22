@@ -17,6 +17,11 @@ public class Volunteer extends User
         totalHours = 0;
     }
 
+    public Volunteer() {
+        super();
+        totalHours=0;
+    }
+
     // METHODS
 
     /**
@@ -39,14 +44,14 @@ public class Volunteer extends User
      * Returns a string object that displays all log entries. Each entry is displayed on its own line in the following form: charity Name, hours served, date served.
      * @return the log of entries, with each entry displayed on its own line.
      */
-    public String getLog()
+    //public String getLog()
     {
-        String log = "Charity \t Hours \t Date";
-        for (LogEntry entry: logEntries)
+    //    String log = "Charity \t Hours \t Date";
+    //    for (LogEntry entry: logEntries)
         {
-            log = "\n" + entry.getCharityName() + "\t" + entry.getHours() + "\t" + entry.getDate();
+    //        log = "\n" + entry.getCharityName() + "\t" + entry.getHours() + "\t" + entry.getDate();
         }
-        return log;
+     //   return log;
     }
 
     /**
