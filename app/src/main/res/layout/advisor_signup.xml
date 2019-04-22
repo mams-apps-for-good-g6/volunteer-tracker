@@ -6,12 +6,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/advisorSignUp_Title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:paddingBottom="20dp"
             android:text="Sign Up as an Advisor"
             android:textSize="36sp" />
 
@@ -19,7 +22,8 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Organization Name" />
+            android:text="Organization Name"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/organizationName"
@@ -27,13 +31,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Mass Academy NHS"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/firstNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="First Name" />
+            android:text="First Name"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/firstName"
@@ -41,13 +47,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Your First Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/lastNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Last Name" />
+            android:text="Last Name"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/lastName"
@@ -55,13 +63,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Your Last Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/emailLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email Address" />
+            android:text="Email Address"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/email"
@@ -69,14 +79,16 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="NotAFakeEmail@gmail.com"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textSize="26sp" />
 
         <Button
             android:id="@+id/generateCode"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="75dp"
             android:onClick="displayCode"
-            android:text="Create Account and Generate Organization Code" />
+            android:text="Create Account and Generate Organization Code"
+            android:textSize="14sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

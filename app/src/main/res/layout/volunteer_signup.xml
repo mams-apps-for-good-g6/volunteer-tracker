@@ -8,12 +8,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/VolunteerSignUp_Title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:paddingBottom="20dp"
             android:text="Sign Up as a Volunteer"
             android:textSize="36sp" />
 
@@ -22,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Organization Code"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/organizationCode"
@@ -30,13 +33,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="####"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/firstNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="First Name" />
+            android:text="First Name"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/firstName"
@@ -44,13 +49,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="First Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/lastNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Last Name" />
+            android:text="Last Name"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/lastName"
@@ -58,13 +65,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Last Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/emailLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email Address" />
+            android:text="Email Address"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/email"
@@ -72,13 +81,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="NotAFakeEmail@gmail.com"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textSize="26sp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="75dp"
             android:onClick="toVolunteerProfile"
+            android:textSize="20dp"
             android:text="Create Account" />
 
     </LinearLayout>

@@ -6,12 +6,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingBottom="100dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:paddingBottom="20dp"
             android:text="Log Hours"
             android:textSize="36sp" />
 
@@ -91,7 +95,7 @@
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="62dp"
             android:onClick="logHours"
             android:text="Log Hours" />
 

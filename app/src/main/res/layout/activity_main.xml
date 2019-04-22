@@ -56,7 +56,7 @@
         <Button
             android:id="@+id/toVolunteerSignUp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
             android:onClick="toVolunteerSignUp"
             android:text="Volunteer"
             android:textSize="30sp"
@@ -66,7 +66,7 @@
         <Button
             android:id="@+id/toAdvisorSignUp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
             android:onClick="toAdvisorSignUp"
             android:text="Advisor"
             android:textSize="30sp"

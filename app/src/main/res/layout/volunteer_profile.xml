@@ -16,6 +16,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +29,7 @@
             android:layout_height="wrap_content"
             android:text="My Account"
             android:textSize="30sp"
+            android:paddingBottom="20dp"
             tools:layout_editor_absoluteX="139dp"
             tools:layout_editor_absoluteY="84dp" />
 
@@ -40,6 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="18sp"
+                android:paddingBottom="2dp"
                 android:text="Verified Hours:" />
 
             <TextView
@@ -47,6 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="18sp"
+                android:paddingBottom="2dp"
                 android:text="Unverified Hours:" />
         </LinearLayout>
 
@@ -59,12 +66,14 @@
                 android:id="@+id/volunteerVerifiedHours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="25sp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/volunteerUnverifiedHours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="25sp"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -81,15 +90,18 @@
 
             <TextView
                 android:id="@+id/VolunteerNameLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="20sp"
+                android:paddingBottom="2dp"
                 android:text="Name:" />
 
             <TextView
                 android:id="@+id/VolunteerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -101,9 +113,10 @@
 
             <TextView
                 android:id="@+id/VolunteerEmailLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="20sp"
                 android:text="Emal:" />
 
             <EditText
@@ -111,6 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="20sp"
                 android:ems="10"
                 android:hint="NotAFakeEmail@gmail.com"
                 android:inputType="textEmailAddress" />
@@ -123,15 +137,18 @@
 
             <TextView
                 android:id="@+id/OrganizationLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="20sp"
+                android:paddingBottom="10dp"
                 android:text="Organization:" />
 
             <TextView
                 android:id="@+id/VolunteerOrganization"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -142,35 +159,39 @@
 
             <TextView
                 android:id="@+id/VolunteerOrganizationCodeLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="20sp"
+                android:paddingBottom="10dp"
                 android:text="Organization Code:" />
 
             <TextView
                 android:id="@+id/VolunteerOrganizationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <Button
             android:id="@+id/SaveVolunteerInformation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="63dp"
             android:text="Update Information" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="63dp"
             android:onClick="toLogHours"
-            android:text="Log Hours" />
+            android:text="Log Hours"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/ViewVolunteerHourLog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="63dp"
             android:onClick="toHourLog"
             android:text="View Hour Log" />
 
