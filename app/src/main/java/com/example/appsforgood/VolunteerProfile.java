@@ -9,10 +9,14 @@ public class VolunteerProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteer_profile);
+
+        // Get the volunteer from Firebase
+
     }
 
     public void toLogHours(View v) {
         Intent intent = new Intent(this, LogHours.class);
+        intent.putExtra("studentId","Student Name Here (that will allow us to find the log entry on the next page in firebase, so some unique identifer");
         startActivity(intent);
     }
 

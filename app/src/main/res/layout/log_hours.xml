@@ -27,7 +27,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/organizationName"
+            android:id="@+id/charityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
