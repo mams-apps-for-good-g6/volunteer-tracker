@@ -43,6 +43,8 @@ public class Organization
     public void addVolunteer(Volunteer v)
     {
         volunteers.add(v);
+        int index = volunteers.size()-1;
+        v.setIndex(index);
     }
 
     public void removeVolunteer(Volunteer v)

@@ -2,6 +2,8 @@ package com.example.appsforgood;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -54,11 +56,12 @@ public class VolunteerSignUp extends AppCompatActivity
         DatabaseReference ref = database.getReference("organizations/");
 
         // Attach a listener to read the data at the reference
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     Organization org = ds.getValue(Organization.class);
+                    Log.d("MeganTag", org.toString());
                     if (org.getCode().equals(codeStr)) {
                         org.addVolunteer(vol);
                         ds.getRef().setValue(org);
@@ -69,6 +72,33 @@ public class VolunteerSignUp extends AppCompatActivity
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Log.d("MeganTag", "Called onChildAdded");
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Log.d("MeganTag", "Called onChildChanged");
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 

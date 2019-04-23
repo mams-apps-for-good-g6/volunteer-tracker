@@ -8,6 +8,7 @@ public class Volunteer extends User
 
     private double totalHours;
     private ArrayList<LogEntry> logEntries;
+    private int index;
 
     // CONSTRUCTOR
 
@@ -15,11 +16,13 @@ public class Volunteer extends User
     {
         super(first, last, email);
         totalHours = 0;
+        index = 0;
     }
 
     public Volunteer() {
         super();
         totalHours=0;
+        index = 0;
     }
 
     // METHODS
@@ -37,6 +40,10 @@ public class Volunteer extends User
         logEntries.add(new LogEntry(charityName, hours, date, contactName, contactEmail));
         totalHours+=hours;
     }
+
+    public void setIndex(int i){index = i;}
+
+    public int getIndex(){return index;}
 
     public double getTotalHours() {return totalHours;}
 
