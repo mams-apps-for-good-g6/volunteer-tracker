@@ -34,7 +34,7 @@ public class VolunteerSignUp extends AppCompatActivity
 
     public void toVolunteerProfile(View v)
     {
-        // Convert user input to String objects
+        // Convert user input to String objects.
 
         EditText code = findViewById(R.id.organizationCode);
         EditText first = findViewById(R.id.firstName);
