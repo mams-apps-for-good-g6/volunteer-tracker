@@ -9,6 +9,9 @@ public class VolunteerProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteer_profile);
+
+        // Get the volunteer from Firebase
+
     }
 
     public void toLogHours(View v) {
