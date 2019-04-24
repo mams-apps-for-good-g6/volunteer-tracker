@@ -17,9 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 public class DisplayCode extends AppCompatActivity
 {private String TAG = "EvanTag";
 
-    private String key = "";
+    private String orgPath = "";
 
-    private void setKey(String k) {key = k;}
+    private void setKey(String k) {orgPath = k;}
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,11 +30,11 @@ public class DisplayCode extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String key = bundle.getString("key");
-        setKey(key);
+        String orgPath = bundle.getString("orgPath");
+        setKey(orgPath);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/" + key + "/code");
+        DatabaseReference ref = database.getReference("organizations/" + orgPath + "/code");
 
         // Attach a listener to read the data at the reference
         ref.addValueEventListener(new ValueEventListener() {
@@ -57,7 +57,7 @@ public class DisplayCode extends AppCompatActivity
     public void toAdvisorProfile(View v)
     {
         Intent intent = new Intent(this, AdvisorProfile.class);
-        intent.putExtra("organizationKey", key);
+        intent.putExtra("orgPath", orgPath);
         startActivity(intent);
     }
 

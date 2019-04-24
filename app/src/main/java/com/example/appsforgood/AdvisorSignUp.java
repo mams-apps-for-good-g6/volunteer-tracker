@@ -47,8 +47,8 @@ public class AdvisorSignUp extends AppCompatActivity
         DatabaseReference ref = database.getReference("organizations");
         DatabaseReference newRef = ref.push();
         newRef.setValue(org);
-        String id = newRef.getKey();
-        Log.d("MeganTag", id);
+        String orgPath = newRef.getKey();
+        Log.d("MeganTag", orgPath);
 
         // Add org as a child of "organizations"
         //Map<String, Organization> orgs = new HashMap<>();
@@ -56,7 +56,7 @@ public class AdvisorSignUp extends AppCompatActivity
         //usersRef.setValue(orgs);
 
         Intent intent = new Intent(this, DisplayCode.class);
-        intent.putExtra("key", id);
+        intent.putExtra("orgPath", orgPath);
         startActivity(intent);
     }
 }

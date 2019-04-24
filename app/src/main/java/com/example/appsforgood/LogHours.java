@@ -35,6 +35,7 @@ public class LogHours extends AppCompatActivity
         //Send it off to firebase
 
 
+
         // After hours are logged, user is sent to their hour log
         Intent intent = new Intent(this, HourLog.class);
         startActivity(intent);

@@ -19,11 +19,11 @@ import java.util.Map;
 public class AdvisorProfile extends AppCompatActivity
 {
     private String TAG = "EvanTag";
-    private String key = "";
+    private String orgPath = "";
 
     private void setKey(String k)
     {
-        key = k;
+        orgPath = k;
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,9 @@ public class AdvisorProfile extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String key = bundle.getString("organizationKey");
+        String orgPath = bundle.getString("orgPath");
 
-        setKey(key);
+        setKey(orgPath);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("organizations/");

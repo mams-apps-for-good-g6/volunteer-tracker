@@ -25,6 +25,8 @@ public class VolunteerSignUp extends AppCompatActivity
 {
     String codeStr;
     Volunteer vol;
+    String orgPath;
+    int index;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -55,15 +57,19 @@ public class VolunteerSignUp extends AppCompatActivity
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations/");
 
+        ref.push().setValue(new Organization());
+
         // Attach a listener to read the data at the reference
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    orgPath = ds.getKey();
+                    Log.d("MeganTag", "reference for ds: " + orgPath);
                     Organization org = ds.getValue(Organization.class);
-                    Log.d("MeganTag", org.toString());
                     if (org.getCode().equals(codeStr)) {
                         org.addVolunteer(vol);
+                        index = vol.getIndex();
                         ds.getRef().setValue(org);
                     }
                 }
@@ -102,16 +108,13 @@ public class VolunteerSignUp extends AppCompatActivity
             }
         });
 
-        // Add volunteer to proper organization
-
-        //FirebaseDatabase database2 = FirebaseDatabase.getInstance();
-       // DatabaseReference ref2 = database2.getReference("organizations/-Lcqnd6a2mUMUFdEWdFP");
-       // DatabaseReference volRef = ref2.child("volunteers");
-       // volRef.push().setValue(vol);
-
         // Add volunteer to this organization (NEED TO COMPLETE)
 
         Intent intent = new Intent(this, VolunteerProfile.class);
+        Log.d("MeganTag", "Sending orgPath to VolunteerProfile: " + orgPath);
+        intent.putExtra("orgPath", orgPath);
+        Log.d("MeganTag", "Sending index to VolunteerProfile: " + index);
+        intent.putExtra("volIndex", index);
         startActivity(intent);
     }
 }
