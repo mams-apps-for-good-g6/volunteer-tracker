@@ -15,14 +15,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogHours extends AppCompatActivity
 {
-//    protected void onCreate(Bundle savedInstanceState)
-//    {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.log_hours);
-//    }
+
+    LogEntry log;
+
+        protected void onCreate(Bundle savedInstanceState)
+        {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.log_hours);
+        }
 
     public void logHours(View v)
     {
+        Log.d("EvanTag", "We are here #1");
         // Get the inputted values
         EditText charityName = findViewById(R.id.charityName);
         EditText hours = findViewById(R.id.hours);
@@ -36,39 +40,47 @@ public class LogHours extends AppCompatActivity
         String contactPersonStr = contactPerson.getText().toString();
         String contactEmailStr = contactEmail.getText().toString();
 
+        Log.d("EvanTag", "We are here #2");
+
         // Create a new LogEntry from the inputted data
-        LogEntry log = new LogEntry(charityNameStr, hoursDouble, dateStr, contactPersonStr, contactEmailStr);
+        log = new LogEntry(charityNameStr, hoursDouble, dateStr, contactPersonStr, contactEmailStr);
 
         //Send it off to firebase
 
         // THIS IS A BIG PASTE HERE
 
-        final int check = 5; // This it the index of the signed in volunteer, which we would need to get
+        Log.d("EvanTag", "We are here #3");
+
+        final int check = 0; // This it the index of the signed in volunteer, which we would need to get
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/-Ld9uKTam5hwU1uK0CFb/volunteers");
+        DatabaseReference ref = database.getReference("organizations/-Ld9uKTam5hwU1uK0CFb/volunteers/0");
+
+        Log.d("EvanTag", "We are here #4");
 
         // Attach a listener to read the data at the reference
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Volunteer vol = ds.getValue(Volunteer.class);
-                    Log.d("MeganTag", "We are here #1");
-                    if (vol.getIndex() == check) {
-                        //vol.addTheLogEntryHere
-                        ds.getRef().setValue(vol);
-                    }
-                }
+                        Volunteer vol = dataSnapshot.getValue(Volunteer.class);
+                        Log.d("EvanTag", "We are here #5");
+                        vol.addLogEntry(log);
+                        Log.d("EvanTag", "We are here #6");
+                        dataSnapshot.getRef().setValue(vol);
+
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
+                Log.d("EvanTag", "We are here #6.5 (BAD!!)");
             }
         });
 
         // END OF THE BIG PASTE HERE
+
+        Log.d("EvanTag", "We are here #7");
 
 
         // After hours are logged, user is sent to their hour log

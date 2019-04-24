@@ -17,12 +17,14 @@ public class Volunteer extends User
         super(first, last, email);
         totalHours = 0;
         index = 0;
+        logEntries = new ArrayList<>();
     }
 
     public Volunteer() {
         super();
         totalHours=0;
         index = 0;
+        logEntries = new ArrayList<>();
     }
 
     // METHODS
@@ -77,6 +79,17 @@ public class Volunteer extends User
             }
         }
         return hours;
+    }
+
+    public void addLogEntry(LogEntry log)
+    {
+        logEntries.add(log);
+        totalHours += log.getHours();
+    }
+
+    public ArrayList<LogEntry> getLogEntries()
+    {
+        return logEntries;
     }
 
 }
