@@ -13,10 +13,22 @@ public class HourLog extends AppCompatActivity
         private RecyclerView.Adapter mAdapter;
         private RecyclerView.LayoutManager layoutManager;
 
+    String orgPath;
+    int index;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.hour_log);
+
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+            orgPath = bundle.getString("orgPath");
+
+            Intent intent2 = getIntent();
+            Bundle bundle2 = intent2.getExtras();
+            index = bundle2.getInt("volIndex");
+
             recyclerView = (RecyclerView) findViewById(R.id.HourLogList);
 
             // use this setting to improve performance if you know that changes
@@ -35,12 +47,16 @@ public class HourLog extends AppCompatActivity
     public void toVolunteerProfile(View v)
     {
         Intent intent = new Intent(this, VolunteerProfile.class);
+        intent.putExtra("orgPath", orgPath);
+        intent.putExtra("volIndex", index);
         startActivity(intent);
     }
 
     public void toLogHours(View v)
     {
         Intent intent = new Intent(this, LogHours.class);
+        intent.putExtra("orgPath", orgPath);
+        intent.putExtra("volIndex", index);
         startActivity(intent);
     }
 }

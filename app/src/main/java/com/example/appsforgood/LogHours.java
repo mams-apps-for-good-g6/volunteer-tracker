@@ -16,12 +16,23 @@ import com.google.firebase.database.ValueEventListener;
 public class LogHours extends AppCompatActivity
 {
 
+    String orgPath;
+    int index;
+
     LogEntry log;
 
         protected void onCreate(Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.log_hours);
+
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+            orgPath = bundle.getString("orgPath");
+
+            Intent intent2 = getIntent();
+            Bundle bundle2 = intent2.getExtras();
+            index = bundle2.getInt("volIndex");
         }
 
     public void logHours(View v)
@@ -85,6 +96,8 @@ public class LogHours extends AppCompatActivity
 
         // After hours are logged, user is sent to their hour log
         Intent intent = new Intent(this, HourLog.class);
+        intent.putExtra("orgPath", orgPath);
+        intent.putExtra("volIndex", index);
         startActivity(intent);
     }
 }

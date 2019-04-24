@@ -60,6 +60,8 @@ public class VolunteerProfile extends AppCompatActivity {
 
     public void toLogHours(View v) {
         Intent intent = new Intent(this, LogHours.class);
+        intent.putExtra("orgPath", orgPath);
+        intent.putExtra("volIndex", index);
         startActivity(intent);
     }
 
