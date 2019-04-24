@@ -39,17 +39,16 @@ public class VolunteerProfile extends AppCompatActivity {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //Volunteer vol = dataSnapshot.getValue(Volunteer.class);
-                //Log.d("MeganTag", vol.getFullName());
+                Volunteer vol = dataSnapshot.getValue(Volunteer.class);
 
-                //TextView verifiedHours = findViewById(R.id.volunteerVerifiedHours);
-                //verifiedHours.setText(Double.toString(vol.getTotalHours()));
+                TextView verifiedHours = findViewById(R.id.volunteerVerifiedHours);
+                verifiedHours.setText(Double.toString(vol.getTotalHours()));
 
-                //TextView name = findViewById(R.id.VolunteerName);
-                //name.setText(vol.getFullName());
+                TextView name = findViewById(R.id.VolunteerName);
+                name.setText(vol.getFullName());
 
-                //TextView email = findViewById(R.id.VolunteerEmail);
-                //email.setText(vol.getEmail());
+                TextView email = findViewById(R.id.VolunteerEmail);
+                email.setText(vol.getEmail());
             }
 
             @Override
