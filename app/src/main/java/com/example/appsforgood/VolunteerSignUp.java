@@ -27,6 +27,7 @@ public class VolunteerSignUp extends AppCompatActivity
     Volunteer vol;
     String orgPath;
     int index;
+    boolean volAdded;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -57,7 +58,7 @@ public class VolunteerSignUp extends AppCompatActivity
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations/");
 
-        ref.push().setValue(new Organization());
+        //ref.push().setValue(new Organization());
 
         // Attach a listener to read the data at the reference
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -70,7 +71,10 @@ public class VolunteerSignUp extends AppCompatActivity
                     if (org.getCode().equals(codeStr)) {
                         org.addVolunteer(vol);
                         index = vol.getIndex();
+                        Log.d("MeganTag", "index: " + index);
                         ds.getRef().setValue(org);
+                        volAdded = true;
+                        Log.d("MeganTag", "vol added? " + volAdded);
                     }
                 }
             }
@@ -81,40 +85,15 @@ public class VolunteerSignUp extends AppCompatActivity
             }
         });
 
-        ref.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d("MeganTag", "Called onChildAdded");
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d("MeganTag", "Called onChildChanged");
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
         // Add volunteer to this organization (NEED TO COMPLETE)
 
-        Intent intent = new Intent(this, VolunteerProfile.class);
-        Log.d("MeganTag", "Sending orgPath to VolunteerProfile: " + orgPath);
-        intent.putExtra("orgPath", orgPath);
-        Log.d("MeganTag", "Sending index to VolunteerProfile: " + index);
-        intent.putExtra("volIndex", index);
-        startActivity(intent);
+        if (volAdded) {
+            Intent intent = new Intent(this, VolunteerProfile.class);
+            Log.d("MeganTag", "Sending orgPath to VolunteerProfile: " + orgPath);
+            intent.putExtra("orgPath", orgPath);
+            Log.d("MeganTag", "Sending index to VolunteerProfile: " + index);
+            intent.putExtra("volIndex", index);
+            startActivity(intent);
+        }
     }
 }
