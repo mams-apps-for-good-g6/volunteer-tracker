@@ -21,7 +21,7 @@ public class Organization
     {
         name = organizationName;
         advisor = advisorName;
-        volunteers = new ArrayList<Volunteer>();
+        volunteers = new ArrayList<>();
         Random rand = new Random();
         code = Integer.toString(rand.nextInt(8999) + 1000);
     }
@@ -31,7 +31,7 @@ public class Organization
         code = ""; //generate random String
         name = "";
         advisor = new User("", "", "");
-        volunteers = new ArrayList<Volunteer>();
+        volunteers = new ArrayList<>();
     }
 
     // Methods
@@ -83,14 +83,14 @@ public class Organization
         return advisor;
     }
 
-     public String getVolunteerList()
+     //public String getVolunteerList()
      {
-          String r = new String("");
-          for(int i = 0; i < volunteers.size(); i++)
+       //   String r = new String("");
+       //   for(int i = 0; i < volunteers.size(); i++)
         {
-            r = r + volunteers.get(i).getFullName() + ": " + volunteers.get(i).getTotalHours() + "\n";
+       //     r = r + volunteers.get(i).getFullName() + ": " + volunteers.get(i).getTotalHours() + "\n";
         }
-        return r;
+        //return r;
     }
 
     public ArrayList<Volunteer> getVolunteers()
@@ -98,21 +98,21 @@ public class Organization
         return volunteers;
     }
 
-    public String getVolunteerLog(int number)
+    //public String getVolunteerLog(int number)
     {
-        return "Name: " + volunteers.get(number).getFullName() + "\n" + "Email: " + volunteers.get(number).getEmail() + "\n" + "Total Hours: " + volunteers.get(number).getTotalHours();
+    //    return "Name: " + volunteers.get(number).getFullName() + "\n" + "Email: " + volunteers.get(number).getEmail() + "\n" + "Total Hours: " + volunteers.get(number).getTotalHours();
     }
 
-    public double getAllTotalHours()
+    //public double getAllTotalHours()
     {
-        double total = 0;
+     //   double total = 0;
 
-        for(int i = 0; i < volunteers.size(); i++)
+     //   for(int i = 0; i < volunteers.size(); i++)
         {
-            total = total + volunteers.get(i).getTotalHours();
+     //       total = total + volunteers.get(i).getTotalHours();
         }
 
-        return total;
+     //   return total;
     }
 
 }
