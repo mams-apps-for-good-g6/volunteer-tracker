@@ -65,8 +65,9 @@ public class LogHours extends AppCompatActivity
         final int check = 0; // This it the index of the signed in volunteer, which we would need to get
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations/-Ld9uKTam5hwU1uK0CFb/volunteers/0");
+        DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + index);
 
+        Log.d("EvanTag", "organizations/" + orgPath + "/volunteers/" + index);
         Log.d("EvanTag", "We are here #4");
 
         // Attach a listener to read the data at the reference

@@ -41,8 +41,25 @@ public class VolunteerProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
 
-                TextView verifiedHours = findViewById(R.id.volunteerVerifiedHours);
-                verifiedHours.setText(Double.toString(vol.getTotalHours()));
+
+                // Verified Hours
+
+
+                // Unverified Hours
+                TextView unVerifiedHours = findViewById(R.id.volunteerUnverifiedHours);
+                unVerifiedHours.setText(Double.toString(vol.getTotalHours()));
+
+                // Name
+
+
+                // Email
+
+
+                // Organization
+
+
+                // Organization Code
+
 
                 TextView name = findViewById(R.id.VolunteerName);
                 name.setText(vol.getFullName());
