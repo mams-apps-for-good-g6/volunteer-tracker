@@ -42,7 +42,7 @@ public class VolunteerProfile extends AppCompatActivity {
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
 
 
-                // Verified Hour
+                // Verified Hours
                 double verHours = 0;
 
                 for(LogEntry inLog: vol.getLogEntries())

@@ -158,12 +158,6 @@
             android:orientation="horizontal"/>
 
         <Button
-            android:id="@+id/SaveVolunteerInformation"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:text="Update Information" />
-
-        <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="63dp"
