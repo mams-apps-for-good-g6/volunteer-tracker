@@ -33,4 +33,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AdvisorSignUp.class);
         startActivity(intent);
     }
+
+    public void toSignIn(View v)
+    {
+        Intent intent = new Intent(this, SignIn.class);
+        startActivity(intent);
+    }
 }

@@ -51,7 +51,7 @@ public class VolunteerSignUp extends AppCompatActivity
 
         // Create a volunteer using inputted information
 
-        vol = new Volunteer(firstStr, lastStr, emailStr);
+        vol = new Volunteer(firstStr, lastStr, emailStr, codeStr);
 
         // Find organization with the user's code in firebase
 
@@ -66,6 +66,7 @@ public class VolunteerSignUp extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     orgPath = ds.getKey();
+                    vol.setOrgPath(orgPath);
                     Log.d("MeganTag", "reference for ds: " + orgPath);
                     Organization org = ds.getValue(Organization.class);
                     if (org.getCode().equals(codeStr)) {
@@ -89,9 +90,7 @@ public class VolunteerSignUp extends AppCompatActivity
 
         if (volAdded) {
             Intent intent = new Intent(this, VolunteerProfile.class);
-            Log.d("MeganTag", "Sending orgPath to VolunteerProfile: " + orgPath);
             intent.putExtra("orgPath", orgPath);
-            Log.d("MeganTag", "Sending index to VolunteerProfile: " + index);
             intent.putExtra("volIndex", index);
             startActivity(intent);
         }

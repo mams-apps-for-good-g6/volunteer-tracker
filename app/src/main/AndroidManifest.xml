@@ -16,6 +16,7 @@
         <activity android:name=".VolunteerProfile" />
         <activity android:name=".HourLog"/>
         <activity android:name=".AdvisorProfile"/>
+        <activity android:name=".SignIn"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

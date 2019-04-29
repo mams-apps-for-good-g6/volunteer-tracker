@@ -9,15 +9,17 @@ public class Volunteer extends User
     private double totalHours;
     private ArrayList<LogEntry> logEntries;
     private int index;
+    private String orgPath;
 
     // CONSTRUCTOR
 
-    public Volunteer(String first, String last, String email)
+    public Volunteer(String first, String last, String email, String path)
     {
         super(first, last, email);
         totalHours = 0;
         index = 0;
         logEntries = new ArrayList<>();
+        orgPath="";
     }
 
     public Volunteer() {
@@ -25,6 +27,7 @@ public class Volunteer extends User
         totalHours=0;
         index = 0;
         logEntries = new ArrayList<>();
+        orgPath="";
     }
 
     // METHODS
@@ -46,6 +49,10 @@ public class Volunteer extends User
     public void setIndex(int i){index = i;}
 
     public int getIndex(){return index;}
+
+    public void setOrgPath(String path){orgPath=path;}
+
+    public String getOrgPath(){return orgPath;}
 
     public double getTotalHours() {return totalHours;}
 
