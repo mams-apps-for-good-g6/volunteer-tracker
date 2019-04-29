@@ -43,6 +43,17 @@ public class VolunteerProfile extends AppCompatActivity {
 
 
                 // Verified Hours
+                double verHours = 0;
+
+                for(LogEntry inLog: vol.getLogEntries())
+                {
+                    if(inLog.getApprovalStatus() == 1)
+                    {
+                      verHours = verHours + inLog.getHours();
+                    }
+                }
+                TextView verifiedHours = findViewById(R.id.volunteerVerifiedHours);
+                verifiedHours.setText(Double.toString(verHours));
 
 
                 // Unverified Hours
@@ -50,22 +61,16 @@ public class VolunteerProfile extends AppCompatActivity {
                 unVerifiedHours.setText(Double.toString(vol.getTotalHours()));
 
                 // Name
-
-
-                // Email
-
-
-                // Organization
-
-
-                // Organization Code
-
-
                 TextView name = findViewById(R.id.VolunteerName);
                 name.setText(vol.getFullName());
 
+                // Email
                 TextView email = findViewById(R.id.VolunteerEmail);
                 email.setText(vol.getEmail());
+
+                // Organization
+                TextView volOrg = findViewById(R.id.VolunteerOrganization);
+                volOrg.setText(vol.getOrgName());
             }
 
             @Override
