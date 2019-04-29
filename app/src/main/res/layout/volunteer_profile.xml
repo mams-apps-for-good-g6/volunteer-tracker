@@ -169,7 +169,7 @@
             android:id="@+id/ViewVolunteerHourLog"
             android:layout_width="match_parent"
             android:layout_height="63dp"
-            android:onClick="toHourLog"
+            android:onClick="toHourLogRecyclerView"
             android:text="View Hour Log" />
 
     </LinearLayout>

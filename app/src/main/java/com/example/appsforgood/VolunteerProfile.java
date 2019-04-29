@@ -87,8 +87,8 @@ public class VolunteerProfile extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toHourLog(View v) {
-        Intent intent = new Intent(this, HourLog.class);
+    public void toHourLogRecyclerView(View v) {
+        Intent intent = new Intent(this, HourLogRecyclerView.class);
         startActivity(intent);
     }
 }

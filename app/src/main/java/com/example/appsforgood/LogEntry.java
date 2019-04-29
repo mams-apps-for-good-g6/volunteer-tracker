@@ -57,6 +57,8 @@ public class LogEntry
         return hours;
     }
 
+    public String getStringHours() {return Double.toString(hours);}
+
     /**
      * Gets the date of the volunteering
      * @return the date of the volunteering
@@ -114,6 +116,11 @@ public class LogEntry
     public int getApprovalStatus()
     {
         return validate;
+    }
+
+    public String getStringApprovalStatus()
+    {
+        return Integer.toString(validate);
     }
 
     public static ArrayList<LogEntry> createLogEbntries(int numContacts) {

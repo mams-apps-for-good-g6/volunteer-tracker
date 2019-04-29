@@ -72,7 +72,7 @@ public class AdvisorProfile extends AppCompatActivity
     }
 
     public void toHourLog(View v) {
-        Intent intent = new Intent(this, HourLog.class);
+        Intent intent = new Intent(this, HourLogRecyclerView.class);
         startActivity(intent);
     }
 }
