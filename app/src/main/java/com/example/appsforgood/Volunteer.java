@@ -10,6 +10,7 @@ public class Volunteer extends User
     private ArrayList<LogEntry> logEntries;
     private int index;
     private String orgPath;
+    private String orgName;
 
     // CONSTRUCTOR
 
@@ -20,6 +21,7 @@ public class Volunteer extends User
         index = 0;
         logEntries = new ArrayList<>();
         orgPath="";
+        orgName="";
     }
 
     public Volunteer() {
@@ -28,6 +30,7 @@ public class Volunteer extends User
         index = 0;
         logEntries = new ArrayList<>();
         orgPath="";
+        orgName="";
     }
 
     // METHODS
@@ -45,6 +48,10 @@ public class Volunteer extends User
         logEntries.add(new LogEntry(charityName, hours, date, contactName, contactEmail));
         totalHours+=hours;
     }
+
+    public void setOrgName(String name){orgName=name;}
+
+    public String getOrgName(){return orgName;}
 
     public void setIndex(int i){index = i;}
 

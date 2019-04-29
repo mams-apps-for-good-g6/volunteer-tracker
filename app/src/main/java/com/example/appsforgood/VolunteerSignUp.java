@@ -66,9 +66,10 @@ public class VolunteerSignUp extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     orgPath = ds.getKey();
-                    vol.setOrgPath(orgPath);
                     Log.d("MeganTag", "reference for ds: " + orgPath);
+                    vol.setOrgPath(orgPath);
                     Organization org = ds.getValue(Organization.class);
+                    vol.setOrgName(org.getName());
                     if (org.getCode().equals(codeStr)) {
                         org.addVolunteer(vol);
                         index = vol.getIndex();
