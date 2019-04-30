@@ -129,8 +129,16 @@
             android:layout_width="match_parent"
             android:layout_height="105dp"
             android:onClick="toHourLog"
-            android:textSize="20sp"
-            android:text="View Students' Hour Log" />
+            android:text="View Student List"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:onClick="toVerifyList"
+            android:text="Verify Students' Hours"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
