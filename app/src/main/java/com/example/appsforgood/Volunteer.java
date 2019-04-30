@@ -14,7 +14,7 @@ public class Volunteer extends User
 
     // CONSTRUCTOR
 
-    public Volunteer(String first, String last, String email, String path)
+    public Volunteer(String first, String last, String email)
     {
         super(first, last, email);
         totalHours = 0;
@@ -34,20 +34,6 @@ public class Volunteer extends User
     }
 
     // METHODS
-
-    /**
-     * Adds a log entry to the user's list of log entries.
-     * @param charityName name of the organization that the volunteer served at
-     * @param hours hours served
-     * @param date date served
-     * @param contactName contact person's full name
-     * @param contactEmail contact person's email address
-     */
-    public void logHours(String charityName, double hours, String date, String contactName, String contactEmail)
-    {
-        logEntries.add(new LogEntry(charityName, hours, date, contactName, contactEmail));
-        totalHours+=hours;
-    }
 
     public void setOrgName(String name){orgName=name;}
 
@@ -98,7 +84,14 @@ public class Volunteer extends User
     public void addLogEntry(LogEntry log)
     {
         logEntries.add(log);
-        totalHours += log.getHours();
+        int index = logEntries.size()-1;
+        log.setIndex(index);
+        totalHours+=log.getHours();
+    }
+
+    public void setLogEntry(int index, LogEntry log)
+    {
+        logEntries.set(index, log);
     }
 
     public ArrayList<LogEntry> getLogEntries()

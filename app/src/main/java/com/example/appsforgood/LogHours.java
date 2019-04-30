@@ -54,7 +54,7 @@ public class LogHours extends AppCompatActivity
         Log.d("EvanTag", "We are here #2");
 
         // Create a new LogEntry from the inputted data
-        log = new LogEntry(charityNameStr, hoursDouble, dateStr, contactPersonStr, contactEmailStr);
+        log = new LogEntry(charityNameStr, hoursDouble, dateStr, contactPersonStr, contactEmailStr, "organizations/" + orgPath + "/volunteers/" + index + "/logEntries/");
 
         //Send it off to firebase
 
@@ -75,12 +75,10 @@ public class LogHours extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                         Volunteer vol = dataSnapshot.getValue(Volunteer.class);
-                        Log.d("EvanTag", "We are here #5");
                         vol.addLogEntry(log);
-                        Log.d("EvanTag", "We are here #6");
+                        log.setPath(Integer.toString(log.getIndex()));
+                        vol.setLogEntry(log.getIndex(), log);
                         dataSnapshot.getRef().setValue(vol);
-
-
             }
 
             @Override
@@ -96,7 +94,7 @@ public class LogHours extends AppCompatActivity
 
 
         // After hours are logged, user is sent to their hour log
-        Intent intent = new Intent(this, HourLog.class);
+        Intent intent = new Intent(this, HourLogRecyclerView.class);
         intent.putExtra("orgPath", orgPath);
         intent.putExtra("volIndex", index);
         startActivity(intent);

@@ -125,12 +125,6 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/SaveAdminInformation"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:text="Update Information" />
-
-        <Button
             android:id="@+id/ViewAdvisorHourLog"
             android:layout_width="match_parent"
             android:layout_height="105dp"

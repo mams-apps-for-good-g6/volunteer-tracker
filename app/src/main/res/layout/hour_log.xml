@@ -20,7 +20,7 @@
         android:id="@+id/generateCode"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:onClick="displayCode"
+        android:onClick="toLogHours"
         android:text="Add log hour entry"
         android:textSize="14sp" />
 

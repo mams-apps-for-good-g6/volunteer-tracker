@@ -51,16 +51,13 @@ public class VolunteerSignUp extends AppCompatActivity
 
         // Create a volunteer using inputted information
 
-        vol = new Volunteer(firstStr, lastStr, emailStr, codeStr);
+        vol = new Volunteer(firstStr, lastStr, emailStr);
 
         // Find organization with the user's code in firebase
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations/");
 
-        //ref.push().setValue(new Organization());
-
-        // Attach a listener to read the data at the reference
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -68,8 +65,10 @@ public class VolunteerSignUp extends AppCompatActivity
                     orgPath = ds.getKey();
                     Log.d("MeganTag", "reference for ds: " + orgPath);
                     vol.setOrgPath(orgPath);
+
                     Organization org = ds.getValue(Organization.class);
                     vol.setOrgName(org.getName());
+
                     if (org.getCode().equals(codeStr)) {
                         org.addVolunteer(vol);
                         index = vol.getIndex();

@@ -12,6 +12,8 @@ public class LogEntry
     private String contactName;
     private String contactEmail;
     private int validate; // 0 = PENDING, 1 = APPROVED, -1 = NOT APPROVED
+    private String path;
+    private int index;
 
     // Constructor
 
@@ -23,7 +25,7 @@ public class LogEntry
      * @param contactPerson The name of the contact that will be contacted in order to approve your hours
      * @param email The email of the person that should be contacted to approve your hours
      */
-    public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email)
+    public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email, String path)
     {
         charityName = name;
         hours = hoursServed;
@@ -31,6 +33,7 @@ public class LogEntry
         contactName = contactPerson;
         contactEmail = email;
         validate = 0;
+        path="";
     }
 
     /**
@@ -44,9 +47,24 @@ public class LogEntry
         contactName = "";
         contactEmail = "";
         validate = 0;
+        path="";
     }
 
     // Methods
+
+    public void setPath(String index)
+    {
+        path += index;
+    }
+
+    public String getPath()
+    {
+        return path;
+    }
+
+    public void setIndex(int i){index = i;}
+
+    public int getIndex(){return index;}
 
     /**
      * Gets the hours this entry volunteered for
@@ -127,7 +145,7 @@ public class LogEntry
         ArrayList<LogEntry> contacts = new ArrayList<LogEntry>();
 
         for (int i = 1; i <= numContacts; i++) {
-            contacts.add(new LogEntry("name", (i/1.0), "date", "contact person", "email"));
+            contacts.add(new LogEntry("name", (i/1.0), "date", "contact person", "email", ""));
         }
 
         return contacts;
