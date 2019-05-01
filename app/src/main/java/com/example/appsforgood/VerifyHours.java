@@ -19,7 +19,7 @@ public class VerifyHours extends AppCompatActivity
         Bundle bundle = intent.getExtras();
         ArrayList<LogEntry> verifyLogsList = (ArrayList<LogEntry>) bundle.getSerializable("verifyLogsList");
 
-        // Recycle view this
+        // Recycle view thiss
     }
 
 }
