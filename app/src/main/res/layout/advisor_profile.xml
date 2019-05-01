@@ -71,13 +71,14 @@
 
             <EditText
                 android:id="@+id/AdvisorEmail"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 android:ems="10"
                 android:hint="NotAFakeEmail@gmail.com"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,16 +129,8 @@
             android:id="@+id/ViewAdvisorHourLog"
             android:layout_width="match_parent"
             android:layout_height="105dp"
-            android:onClick="toHourLog"
-            android:text="View Student List"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="match_parent"
-            android:layout_height="105dp"
-            android:onClick="toVerifyList"
-            android:text="Verify Students' Hours"
+            android:onClick="toStudentList"
+            android:text="View Students"
             android:textSize="20sp" />
 
     </LinearLayout>

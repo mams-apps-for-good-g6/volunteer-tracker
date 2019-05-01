@@ -18,6 +18,7 @@
         <activity android:name=".AdvisorProfile"/>
         <activity android:name=".SignIn"/>
         <activity android:name=".HourLogRecyclerView"/>
+        <activity android:name=".StudentListRecyclerView"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -20,7 +20,8 @@ public class SignIn extends AppCompatActivity
     String emailStr;
     String orgPath;
     int index;
-    boolean bool;
+    boolean volunteer;
+    boolean advisor;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +52,14 @@ public class SignIn extends AppCompatActivity
                             orgPath=v.getOrgPath();
                             index=v.getIndex();
                             Log.d("MeganTag", "Path: " + orgPath + " Index: " + index);
-                            bool=true;
+                            volunteer=true;
                         }
+                    }
+
+                    if (org.getAdvisor().getEmail().equals(emailStr))
+                    {
+                        orgPath = ds.getKey();
+                        advisor=true;
                     }
                 }
             }
@@ -63,11 +70,17 @@ public class SignIn extends AppCompatActivity
             }
         });
 
-        if(bool) {
+        if(volunteer) {
             Intent intent = new Intent(this, VolunteerProfile.class);
             intent.putExtra("orgPath", orgPath);
             Log.d("MeganTag", "sending " + orgPath + " " + index);
             intent.putExtra("volIndex", index);
+            startActivity(intent);
+        }
+
+        if(advisor) {
+            Intent intent = new Intent(this, AdvisorProfile.class);
+            intent.putExtra("orgPath", orgPath);
             startActivity(intent);
         }
     }

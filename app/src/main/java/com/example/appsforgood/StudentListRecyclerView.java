@@ -20,13 +20,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class HourLogRecyclerView extends AppCompatActivity {
+public class StudentListRecyclerView extends AppCompatActivity {
     //Data
     private ArrayList<LogEntry> logEntries;
     private static final String TAG = "MainActivity";
-    private String orgPath;
-    private int index;
-    private boolean bool;
+    boolean bool;
+    String orgPath;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,30 +37,27 @@ public class HourLogRecyclerView extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         orgPath = bundle.getString("orgPath");
 
-        Intent intent2 = getIntent();
-        Bundle bundle2 = intent2.getExtras();
-        index = bundle2.getInt("volIndex");
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
+        final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/");
 
         Log.d("MeganTag", "I am here 1");
 
         // Attach a listener to read the data at the reference
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("MeganTag", "I am here 2");
-                Volunteer vol = dataSnapshot.getValue(Volunteer.class);
-                logEntries = vol.getLogEntries();
-                bool=true;
-            }
+        //ref.addListenerForSingleValueEvent(new ValueEventListener() {
+           // @Override
+           // public void onDataChange(DataSnapshot dataSnapshot) {
+            //    Log.d("MeganTag", "I am here 2");
+            //    Volunteer vol = dataSnapshot.getValue(Volunteer.class);
+            //    logEntries = vol.getLogEntries();
+            //    bool=true;
+            //}
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
+          //  @Override
+          //  public void onCancelled(DatabaseError databaseError) {
+          //      System.out.println("The read failed: " + databaseError.getCode());
+          //  }
+        //});
 
         Log.d("MeganTag", "I am here 3");
 
@@ -92,17 +88,11 @@ public class HourLogRecyclerView extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void toVolunteerProfile(View v) {
-        Intent intent = new Intent(this, VolunteerProfile.class);
+    public void toAdvisorProfile(View v)
+    {
+        Intent intent = new Intent(this, AdvisorProfile.class);
         intent.putExtra("orgPath", orgPath);
-        intent.putExtra("volIndex", index);
         startActivity(intent);
     }
 
-    public void toLogHours(View v) {
-        Intent intent = new Intent(this, LogHours.class);
-        intent.putExtra("orgPath", orgPath);
-        intent.putExtra("volIndex", index);
-        startActivity(intent);
-    }
 }
