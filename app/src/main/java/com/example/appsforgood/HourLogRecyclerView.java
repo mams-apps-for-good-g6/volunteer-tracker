@@ -31,7 +31,7 @@ public class HourLogRecyclerView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_list);
+        setContentView(R.layout.hour_log);
         Log.d(TAG, "onCreate: started");
 
         Intent intent = getIntent();
