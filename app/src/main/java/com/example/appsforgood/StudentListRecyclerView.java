@@ -43,7 +43,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
 
         Log.d("MeganTag", "I am here 1");
 
-        // Attach a listener to read the data at the reference
+        // Attach a listener to read the data at the refererence
         //ref.addListenerForSingleValueEvent(new ValueEventListener() {
            // @Override
            // public void onDataChange(DataSnapshot dataSnapshot) {
