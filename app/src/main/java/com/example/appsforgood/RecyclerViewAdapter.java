@@ -15,7 +15,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<LogEntry> logEntries = new ArrayList<>();
+    private ArrayList<LogEntry> logEntries;
     private Context context;
 
     public RecyclerViewAdapter(Context con, ArrayList<LogEntry> logEntriesList) {
