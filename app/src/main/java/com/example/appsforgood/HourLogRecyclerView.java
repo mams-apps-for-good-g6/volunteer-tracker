@@ -36,38 +36,9 @@ public class HourLogRecyclerView extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        orgPath = bundle.getString("orgPath");
+        logEntries = bundle.getParcelableArrayList("logEntries");
 
-        Intent intent2 = getIntent();
-        Bundle bundle2 = intent2.getExtras();
-        index = bundle2.getInt("volIndex");
-
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
-
-        Log.d("MeganTag", "I am here 1");
-
-        // Attach a listener to read the data at the reference
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("MeganTag", "I am here 2");
-                Volunteer vol = dataSnapshot.getValue(Volunteer.class);
-                logEntries = vol.getLogEntries();
-                bool=true;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-
-        Log.d("MeganTag", "I am here 3");
-
-        if(bool) {
-            initRecyclerView();
-        }
+        initRecyclerView();
     }
 
     private void initLogEntries()

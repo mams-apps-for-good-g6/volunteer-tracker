@@ -13,10 +13,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class VolunteerProfile extends AppCompatActivity {
 
     String orgPath;
     int index;
+    ArrayList<LogEntry> logEntries;
+    Boolean bool;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,9 +92,32 @@ public class VolunteerProfile extends AppCompatActivity {
     }
 
     public void toHourLogRecyclerView(View v) {
-        Intent intent = new Intent(this, HourLogRecyclerView.class);
-        intent.putExtra("orgPath", orgPath);
-        intent.putExtra("volIndex", index);
-        startActivity(intent);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
+
+        Log.d("MeganTag", "I am here 1");
+
+        // Attach a listener to read the data at the reference
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("MeganTag", "I am here 2");
+                Volunteer vol = dataSnapshot.getValue(Volunteer.class);
+                logEntries = vol.getLogEntries();
+                bool=true;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+        if(bool) {
+            Intent intent = new Intent(this, HourLogRecyclerView.class);
+            intent.putParcelableArrayListExtra("logEntries", logEntries);
+            startActivity(intent);
+        }
     }
 }

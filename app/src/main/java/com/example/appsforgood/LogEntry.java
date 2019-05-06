@@ -1,8 +1,11 @@
 package com.example.appsforgood;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class LogEntry
+public class LogEntry implements Parcelable
 {
 
     // Data
@@ -14,6 +17,46 @@ public class LogEntry
     private int validate; // 0 = PENDING, 1 = APPROVED, -1 = NOT APPROVED
     private String path;
     private int index;
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags)
+    {
+        out.writeString(charityName);
+        out.writeDouble(hours);
+        out.writeString(date);
+        out.writeString(contactName);
+        out.writeString(contactEmail);
+        out.writeInt(validate);
+        out.writeString(path);
+        out.writeInt(index);
+    }
+
+    public static final Parcelable.Creator<LogEntry> CREATOR = new Parcelable.Creator<LogEntry>() {
+        public LogEntry createFromParcel(Parcel in) {
+            return new LogEntry(in);
+        }
+
+        public LogEntry[] newArray(int size) {
+            return new LogEntry[size];
+        }
+    };
+
+    private LogEntry(Parcel in) {
+        charityName = in.readString();
+        hours = in.readDouble();
+        date = in.readString();
+        contactName = in.readString();
+        contactEmail = in.readString();
+        validate = in.readInt();
+        path = in.readString();
+        index = in.readInt();
+    }
+
 
     // Constructor
 
