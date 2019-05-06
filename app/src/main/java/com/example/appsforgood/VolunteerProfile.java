@@ -98,13 +98,13 @@ public class VolunteerProfile extends AppCompatActivity {
 
         Log.d("MeganTag", "I am here 1");
 
-        // Attach a listener to read the data at the reference
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("MeganTag", "I am here 2");
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
                 logEntries = vol.getLogEntries();
+                Log.d("MeganTag", "Getting logEntris: " + logEntries.get(0).getCharityName());
                 bool=true;
             }
 
