@@ -66,7 +66,7 @@ public class HourLogRecyclerView extends AppCompatActivity {
         Log.d("MeganTag", "I am here 3");
 
         if(bool) {
-            initLogEntries();
+            initRecyclerView();
         }
     }
 
