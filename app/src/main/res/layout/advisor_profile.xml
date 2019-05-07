@@ -15,21 +15,23 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:paddingBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/MyAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
             android:text="My Account"
             android:textSize="30sp"
-            android:paddingBottom="20dp"
             tools:layout_editor_absoluteX="139dp"
             tools:layout_editor_absoluteY="84dp" />
 
@@ -43,16 +45,16 @@
                 android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 android:paddingBottom="2dp"
-                android:text="Name:" />
+                android:text="Name:"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/AdvisorName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -66,8 +68,8 @@
                 android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:text="Email:" />
+                android:text="Email:"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/AdvisorEmail"
@@ -91,16 +93,16 @@
                 android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 android:paddingBottom="10dp"
-                android:text="Organization:" />
+                android:text="Organization:"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/AdvisorOrganization"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -113,16 +115,16 @@
                 android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 android:paddingBottom="10dp"
-                android:text="Organization Code:" />
+                android:text="Organization Code:"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/AdvisorOrganizationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Button

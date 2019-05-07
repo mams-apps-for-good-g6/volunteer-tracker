@@ -36,6 +36,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         Log.d(TAG,"onBindViewHolder: called.");
 
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getCharityName());
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getStringHours());
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getDate());
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getStringApprovalStatus());
+
         holder.charity.setText(logEntries.get(position).getCharityName());
         holder.numberOfHours.setText(logEntries.get(position).getStringHours());
         holder.date.setText(logEntries.get(position).getDate());

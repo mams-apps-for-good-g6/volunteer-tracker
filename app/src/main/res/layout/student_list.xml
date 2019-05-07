@@ -24,7 +24,7 @@
         android:text="Back to Profile" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/HourLogList"
+        android:id="@+id/student_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/hourlog_listitem" />
