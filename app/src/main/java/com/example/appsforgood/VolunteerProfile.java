@@ -1,5 +1,6 @@
 package com.example.appsforgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,8 +22,11 @@ public class VolunteerProfile extends AppCompatActivity {
     int index;
     ArrayList<LogEntry> logEntries;
     Boolean bool;
+    Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
+        context = this.getBaseContext();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteer_profile);
 
@@ -40,7 +44,7 @@ public class VolunteerProfile extends AppCompatActivity {
         final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
 
         // Attach a listener to read the data at the reference
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
@@ -98,14 +102,18 @@ public class VolunteerProfile extends AppCompatActivity {
 
         Log.d("MeganTag", "I am here 1");
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("MeganTag", "I am here 2");
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
                 logEntries = vol.getLogEntries();
-                Log.d("MeganTag", "Getting logEntris: " + logEntries.get(0).getCharityName());
+                Log.d("MeganTag", "Getting logEntries: " + logEntries.get(0).getCharityName());
                 bool=true;
+
+                Intent intent = new Intent(context, HourLogRecyclerView.class);
+                intent.putParcelableArrayListExtra("logEntries", logEntries);
+                startActivity(intent);
             }
 
             @Override
@@ -113,11 +121,5 @@ public class VolunteerProfile extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
-
-        if(bool) {
-            Intent intent = new Intent(this, HourLogRecyclerView.class);
-            intent.putParcelableArrayListExtra("logEntries", logEntries);
-            startActivity(intent);
-        }
     }
 }

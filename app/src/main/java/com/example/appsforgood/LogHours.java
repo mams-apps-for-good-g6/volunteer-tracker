@@ -94,7 +94,7 @@ public class LogHours extends AppCompatActivity
 
 
         // After hours are logged, user is sent to their hour log
-        Intent intent = new Intent(this, HourLogRecyclerView.class);
+        Intent intent = new Intent(this, VolunteerProfile.class);
         intent.putExtra("orgPath", orgPath);
         intent.putExtra("volIndex", index);
         startActivity(intent);
