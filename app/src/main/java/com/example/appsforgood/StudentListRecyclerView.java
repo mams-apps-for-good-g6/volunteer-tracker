@@ -80,7 +80,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.student_list_recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, students);
+        StudentListAdapter adapter = new StudentListAdapter(this, volunteers);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
