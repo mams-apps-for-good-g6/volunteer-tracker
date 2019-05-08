@@ -1,5 +1,6 @@
 package com.example.appsforgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class SignIn extends AppCompatActivity
     int index;
     boolean volunteer;
     boolean advisor;
+    private Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class SignIn extends AppCompatActivity
     }
 
     public void toProfile(View v){
+        context = this.getBaseContext();
 
         EditText email = findViewById(R.id.email);
         emailStr = email.getText().toString();
@@ -39,7 +42,7 @@ public class SignIn extends AppCompatActivity
         //ref.push().setValue(new Organization());
 
         // Attach a listener to read the data at the reference
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -53,6 +56,12 @@ public class SignIn extends AppCompatActivity
                             index=v.getIndex();
                             Log.d("MeganTag", "Path: " + orgPath + " Index: " + index);
                             volunteer=true;
+
+                            Intent intent = new Intent(context, VolunteerProfile.class);
+                            intent.putExtra("orgPath", orgPath);
+                            Log.d("MeganTag", "sending " + orgPath + " " + index);
+                            intent.putExtra("volIndex", index);
+                            startActivity(intent);
                         }
                     }
 
@@ -60,6 +69,10 @@ public class SignIn extends AppCompatActivity
                     {
                         orgPath = ds.getKey();
                         advisor=true;
+
+                        Intent intent = new Intent(context, AdvisorProfile.class);
+                        intent.putExtra("orgPath", orgPath);
+                        startActivity(intent);
                     }
                 }
             }
@@ -70,18 +83,18 @@ public class SignIn extends AppCompatActivity
             }
         });
 
-        if(volunteer) {
-            Intent intent = new Intent(this, VolunteerProfile.class);
-            intent.putExtra("orgPath", orgPath);
-            Log.d("MeganTag", "sending " + orgPath + " " + index);
-            intent.putExtra("volIndex", index);
-            startActivity(intent);
-        }
+//        if(volunteer) {
+//            Intent intent = new Intent(this, VolunteerProfile.class);
+//            intent.putExtra("orgPath", orgPath);
+//            Log.d("MeganTag", "sending " + orgPath + " " + index);
+//            intent.putExtra("volIndex", index);
+//            startActivity(intent);
+//        }
 
-        if(advisor) {
-            Intent intent = new Intent(this, AdvisorProfile.class);
-            intent.putExtra("orgPath", orgPath);
-            startActivity(intent);
-        }
+//        if(advisor) {
+//            Intent intent = new Intent(this, AdvisorProfile.class);
+//            intent.putExtra("orgPath", orgPath);
+//            startActivity(intent);
+//        }
     }
 }

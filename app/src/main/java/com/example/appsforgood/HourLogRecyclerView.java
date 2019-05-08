@@ -36,53 +36,23 @@ public class HourLogRecyclerView extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        orgPath = bundle.getString("orgPath");
-
-        Intent intent2 = getIntent();
-        Bundle bundle2 = intent2.getExtras();
-        index = bundle2.getInt("volIndex");
-
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
-
-        Log.d("MeganTag", "I am here 1");
-
-        // Attach a listener to read the data at the reference
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("MeganTag", "I am here 2");
-                Volunteer vol = dataSnapshot.getValue(Volunteer.class);
-                logEntries = vol.getLogEntries();
-                bool=true;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-
-        Log.d("MeganTag", "I am here 3");
-
-        if(bool) {
-            initLogEntries();
-        }
-    }
-
-    private void initLogEntries()
-    {
-        Log.d(TAG, "initLogEntries: preparing log entries");
-
-        for(int i = 0; i < 25; i++) {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
-            Date date = new Date();
-            LogEntry entry = new LogEntry(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
-            logEntries.add(entry);
-        }
-
+        logEntries = bundle.getParcelableArrayList("logEntries");
         initRecyclerView();
     }
+
+//    private void initLogEntries()
+//    {
+//        Log.d(TAG, "initLogEntries: preparing log entries");
+//
+//        for(int i = 0; i < 25; i++) {
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
+//            Date date = new Date();
+//            LogEntry entry = new LogEntry(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
+//            logEntries.add(entry);
+//        }
+//
+//        initRecyclerView();
+//    }
 
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");

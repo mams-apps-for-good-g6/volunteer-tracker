@@ -1,5 +1,6 @@
 package com.example.appsforgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,12 +14,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class VolunteerProfile extends AppCompatActivity {
 
     String orgPath;
     int index;
+    ArrayList<LogEntry> logEntries;
+    Boolean bool;
+    Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
+        context = this.getBaseContext();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteer_profile);
 
@@ -36,7 +44,7 @@ public class VolunteerProfile extends AppCompatActivity {
         final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
 
         // Attach a listener to read the data at the reference
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
@@ -88,9 +96,30 @@ public class VolunteerProfile extends AppCompatActivity {
     }
 
     public void toHourLogRecyclerView(View v) {
-        Intent intent = new Intent(this, HourLogRecyclerView.class);
-        intent.putExtra("orgPath", orgPath);
-        intent.putExtra("volIndex", index);
-        startActivity(intent);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
+
+        Log.d("MeganTag", "I am here 1");
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("MeganTag", "I am here 2");
+                Volunteer vol = dataSnapshot.getValue(Volunteer.class);
+                logEntries = vol.getLogEntries();
+                Log.d("MeganTag", "Getting logEntries: " + logEntries.get(0).getCharityName());
+                bool=true;
+
+                Intent intent = new Intent(context, HourLogRecyclerView.class);
+                intent.putParcelableArrayListExtra("logEntries", logEntries);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
     }
 }

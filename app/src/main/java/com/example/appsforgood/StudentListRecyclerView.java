@@ -22,7 +22,7 @@ import java.util.Date;
 
 public class StudentListRecyclerView extends AppCompatActivity {
     //Data
-    private ArrayList<LogEntry> logEntries;
+    private ArrayList<LogEntry> students;
     private static final String TAG = "MainActivity";
     boolean bool;
     String orgPath;
@@ -59,7 +59,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
           //  }
         //});
 
-        Log.d("MeganTag", "I am here 3");
+        Log.d("MeganTag", "I am here 4");
 
         if(bool) {
             initLogEntries();
@@ -70,20 +70,20 @@ public class StudentListRecyclerView extends AppCompatActivity {
     {
         Log.d(TAG, "initLogEntries: preparing log entries");
 
-        for(int i = 0; i < 25; i++) {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
-            Date date = new Date();
-            LogEntry entry = new LogEntry(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
-            logEntries.add(entry);
-        }
+//        for(int i = 0; i < 25; i++) {
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
+//            Date date = new Date();
+//            Volunteer volunteer = new Volunteer(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
+//            logEntries.add(entry);
+//        }
 
         initRecyclerView();
     }
 
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");
-        RecyclerView recyclerView = findViewById(R.id.HourLogList);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, logEntries);
+        RecyclerView recyclerView = findViewById(R.id.student_list_recycler_view);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, students);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -94,5 +94,4 @@ public class StudentListRecyclerView extends AppCompatActivity {
         intent.putExtra("orgPath", orgPath);
         startActivity(intent);
     }
-
 }

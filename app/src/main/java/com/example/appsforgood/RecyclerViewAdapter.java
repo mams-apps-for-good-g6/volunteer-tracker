@@ -15,7 +15,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<LogEntry> logEntries = new ArrayList<>();
+    private ArrayList<LogEntry> logEntries;
     private Context context;
 
     public RecyclerViewAdapter(Context con, ArrayList<LogEntry> logEntriesList) {
@@ -35,6 +35,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position)
     {
         Log.d(TAG,"onBindViewHolder: called.");
+
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getCharityName());
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getStringHours());
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getDate());
+        Log.d(TAG,"Charity Name: " + logEntries.get(position).getStringApprovalStatus());
 
         holder.charity.setText(logEntries.get(position).getCharityName());
         holder.numberOfHours.setText(logEntries.get(position).getStringHours());
