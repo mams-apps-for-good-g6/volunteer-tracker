@@ -1,11 +1,13 @@
 package com.example.appsforgood;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,6 +41,24 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
         holder.student_name.setText(verifyLogsList.get(position).getVolunteerName());
         holder.charity_name.setText(verifyLogsList.get(position).getCharityName());
         holder.hours_served.setText(Double.toString(verifyLogsList.get(position).getHours()));
+
+        holder.verify_button.setOnClickListener(new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View view)
+        {
+            //do verifying stuff here
+        }
+    });
+
+        holder.decline_button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                //do declining stuff here
+            }
+        });
     }
 
     @Override
@@ -54,6 +74,8 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
         TextView student_name;
         TextView charity_name;
         TextView hours_served;
+        Button verify_button;
+        Button decline_button;
 
         public ViewHolder(View itemView)
         {
@@ -63,6 +85,8 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
             student_name = itemView.findViewById(R.id.student_name);
             charity_name = itemView.findViewById(R.id.charity_name);
             hours_served = itemView.findViewById(R.id.hours_served);
+            verify_button = itemView.findViewById(R.id.verify_button);
+            decline_button = itemView.findViewById(R.id.decline_button);
         }
     }
 }

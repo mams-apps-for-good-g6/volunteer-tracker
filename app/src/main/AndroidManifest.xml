@@ -20,6 +20,7 @@
         <activity android:name=".HourLogRecyclerView"/>
         <activity android:name=".StudentListRecyclerView"/>
         <activity android:name=".VerifyHours"/>
+        <activity android:name=".AdvisorHourLogRecyclerView"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

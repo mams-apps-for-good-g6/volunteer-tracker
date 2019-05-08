@@ -2,6 +2,7 @@ package com.example.appsforgood;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,18 +54,18 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
         Log.d("Megan", "Sending info about volunteer if clicked: " + vol.getFullName() + ". Index: " + Integer.toString(index));
 
-//        holder.studentListRecyclerView.setOnClickListener(new View.OnClickListener()
-//    {
-//        @Override
-//        public void onClick(View view)
-//        {
-//            Intent intent = new Intent(context, AdvisorHourLogRecyclerView.class);
-//            intent.putParcelableArrayListExtra("logEntries", logEntries);
-//            intent.putExtra("orgPath", orgPath);
-//            intent.putExtra("index", index);
-//            context.startActivity(intent);
-//        }
-//    });
+        holder.student_listitem.setOnClickListener(new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View view)
+        {
+            Intent intent = new Intent(context, AdvisorHourLogRecyclerView.class);
+            intent.putParcelableArrayListExtra("logEntries", logEntries);
+            intent.putExtra("orgPath", orgPath);
+            intent.putExtra("index", index);
+            context.startActivity(intent);
+        }
+    });
     }
     @Override
     public int getItemCount()
@@ -78,14 +79,15 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
         TextView student_name;
         TextView student_totalhours;
+        ConstraintLayout student_listitem;
 
         public ViewHolder(View itemView)
         {
             super(itemView);
             studentListRecyclerView = itemView.findViewById(R.id.student_list_recycler_view);
-
             student_name = itemView.findViewById(R.id.student_name);
             student_totalhours = itemView.findViewById(R.id.student_totalhours);
+            student_listitem = itemView.findViewById(R.id.student_listitem);
         }
     }
 }
