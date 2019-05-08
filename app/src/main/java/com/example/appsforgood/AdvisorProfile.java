@@ -38,6 +38,8 @@ public class AdvisorProfile extends AppCompatActivity
 
         setKey(orgPath);
 
+        //ADVISOR PROFILE BETTER
+
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("organizations/" + orgPath);
 

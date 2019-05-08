@@ -30,7 +30,7 @@ public class VerifyHours extends AppCompatActivity
 
         Log.d("EvanTag", "This is our Array List: " + print);
 
-        // Recycle view thiss
+        // Recycle view thisss
     }
 
 }
