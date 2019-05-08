@@ -1,6 +1,7 @@
 package com.example.appsforgood;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
-
     private ArrayList<Volunteer> studentList;
     private Context context;
 
@@ -41,8 +41,17 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
         holder.student_name.setText(studentList.get(position).getFullName());
         holder.student_totalhours.setText(Double.toString(studentList.get(position).getTotalHours()));
-    }
 
+        holder.studentListRecyclerView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(context, AdvisorHourLogRecyclerView.class);
+                context.startActivity(intent);
+            }
+        });
+    }
     @Override
     public int getItemCount()
     {
