@@ -22,7 +22,7 @@ import java.util.Date;
 
 public class StudentListRecyclerView extends AppCompatActivity {
     //Data
-    private ArrayList<LogEntry> volunteers;
+    private ArrayList<LogEntry> students;
     private static final String TAG = "MainActivity";
     boolean bool;
     String orgPath;
@@ -59,7 +59,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
           //  }
         //});
 
-        Log.d("MeganTag", "I am here 3");
+        Log.d("MeganTag", "I am here 4");
 
         if(bool) {
             initLogEntries();
@@ -83,7 +83,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.student_list_recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, volunteers);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, students);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -94,5 +94,4 @@ public class StudentListRecyclerView extends AppCompatActivity {
         intent.putExtra("orgPath", orgPath);
         startActivity(intent);
     }
-
 }
