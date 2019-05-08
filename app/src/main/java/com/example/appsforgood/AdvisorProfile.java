@@ -39,29 +39,30 @@ public class AdvisorProfile extends AppCompatActivity
         setKey(orgPath);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference("organizations/");
+        final DatabaseReference ref = database.getReference("organizations/" + orgPath);
 
         // Attach a listener to read the data at the reference
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot datasnapshot: dataSnapshot.getChildren()) {
-                    Organization org = datasnapshot.getValue(Organization.class);
-                    Log.d(TAG, org.toString());
+                Organization org = dataSnapshot.getValue(Organization.class);
 
-                    TextView advisorName = findViewById(R.id.AdvisorName);
-                    advisorName.setText(org.getAdvisor().getFullName());
+                Log.d(TAG, "1The code is: " + org.getCode());
+                Log.d(TAG, "1The name is: " + org.getName());
 
-                    TextView email = findViewById(R.id.AdvisorEmail);
-                    email.setText(org.getAdvisor().getEmail());
+                TextView advisorName = findViewById(R.id.AdvisorName);
+                advisorName.setText(org.getAdvisor().getFullName());
 
-                    TextView orgName = findViewById(R.id.AdvisorOrganization);
-                    orgName.setText(org.getName());
+                TextView email = findViewById(R.id.AdvisorEmail);
+                email.setText(org.getAdvisor().getEmail());
 
-                    TextView code = findViewById(R.id.AdvisorOrganizationCode);
-                    code.setText(org.getCode());
-                }
+                TextView orgName = findViewById(R.id.AdvisorOrganization);
+                orgName.setText(org.getName());
+
+                TextView code = findViewById(R.id.AdvisorOrganizationCode);
+                code.setText(org.getCode());
+
             }
 
             @Override
@@ -86,33 +87,32 @@ public class AdvisorProfile extends AppCompatActivity
         Log.d("EvanTag", "OrgPath is: " + orgPath);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference("organizations/");
+        final DatabaseReference ref = database.getReference("organizations/" + orgPath);
 
         // Attach a listener to read the data at the reference
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot datasnapshot: dataSnapshot.getChildren()) {
-                    Organization org = datasnapshot.getValue(Organization.class);
-                    Log.d(TAG, org.toString());
+                Organization org = dataSnapshot.getValue(Organization.class);
 
-                    ArrayList<Volunteer> volunteers = org.getVolunteers();
+                Log.d(TAG, "2The code is: " + org.getCode());
+                Log.d(TAG, "2The name is: " + org.getName());
 
-                    for(Volunteer vol : volunteers)
+                ArrayList<Volunteer> volunteers = org.getVolunteers();
+
+                for(Volunteer vol : volunteers)
+                {
+                    for(LogEntry log : vol.getLogEntries())
                     {
-                        for(LogEntry log : vol.getLogEntries())
+                        if(log.getApprovalStatus() == 0)
                         {
-                            if(log.getApprovalStatus() == 0)
-                            {
-                                verifyLogsList.add(log);
-                            }
+                            verifyLogsList.add(log);
                         }
                     }
-
-                    // Now we have the arraylist full or LogEntries that are pending
-
                 }
+
+                // Now we have the arraylist full or LogEntries that are pending
             }
 
             @Override
@@ -126,8 +126,8 @@ public class AdvisorProfile extends AppCompatActivity
         // This is still the same method
 
         // Leave this class, and go to a new XML that's a recycler view of the arraylist I'm sending it
-        Intent intent = new Intent(this, VerifyHours.class);
-        intent.putExtra("verifyLogsList", verifyLogsList);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, VerifyHours.class);
+        intent2.putExtra("verifyLogsList", verifyLogsList);
+        startActivity(intent2);
     }
 }

@@ -69,16 +69,13 @@
                 android:textSize="20sp"
                 android:text="Email:" />
 
-            <EditText
+            <TextView
                 android:id="@+id/AdvisorEmail"
-                style="@style/Widget.AppCompat.AutoCompleteTextView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="NotAFakeEmail@gmail.com"
-                android:inputType="textEmailAddress"
                 android:textSize="20sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -131,6 +128,14 @@
             android:layout_height="105dp"
             android:onClick="toStudentList"
             android:text="View Students"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/VerifyHours"
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:onClick="toVerifyList"
+            android:text="Verify Students' Hours"
             android:textSize="20sp" />
 
     </LinearLayout>
