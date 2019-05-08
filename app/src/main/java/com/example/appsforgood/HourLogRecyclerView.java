@@ -38,6 +38,17 @@ public class HourLogRecyclerView extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         logEntries = bundle.getParcelableArrayList("logEntries");
         initRecyclerView();
+
+        Intent intent1 = getIntent();
+        Bundle bundle1 = intent1.getExtras();
+        index = bundle1.getInt("index");
+        initRecyclerView();
+
+        Intent intent2 = getIntent();
+        Bundle bundle2 = intent2.getExtras();
+        orgPath = bundle2.getString("orgPath");
+        initRecyclerView();
+        Log.d("MeganTag", "OrgPath in recycler view: " + orgPath);
     }
 
 //    private void initLogEntries()
@@ -66,6 +77,7 @@ public class HourLogRecyclerView extends AppCompatActivity {
         Intent intent = new Intent(this, VolunteerProfile.class);
         intent.putExtra("orgPath", orgPath);
         intent.putExtra("volIndex", index);
+        Log.d("MeganTag", "In HourLogRecyclerView, orgPath: " + orgPath);
         startActivity(intent);
     }
 

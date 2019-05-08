@@ -1,5 +1,6 @@
 package com.example.appsforgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,10 +28,11 @@ public class VolunteerSignUp extends AppCompatActivity
     Volunteer vol;
     String orgPath;
     int index;
-    boolean volAdded;
+    Context context;
 
     protected void onCreate(Bundle savedInstanceState)
     {
+        context = this.getBaseContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteer_signup);
     }
@@ -74,8 +76,11 @@ public class VolunteerSignUp extends AppCompatActivity
                         index = vol.getIndex();
                         Log.d("MeganTag", "index: " + index);
                         ds.getRef().setValue(org);
-                        volAdded = true;
-                        Log.d("MeganTag", "vol added? " + volAdded);
+
+                        Intent intent = new Intent(context, VolunteerProfile.class);
+                        intent.putExtra("orgPath", orgPath);
+                        intent.putExtra("volIndex", index);
+                        startActivity(intent);
                     }
                 }
             }
@@ -86,13 +91,5 @@ public class VolunteerSignUp extends AppCompatActivity
             }
         });
 
-        // Add volunteer to this organization (NEED TO COMPLETE)
-
-        if (volAdded) {
-            Intent intent = new Intent(this, VolunteerProfile.class);
-            intent.putExtra("orgPath", orgPath);
-            intent.putExtra("volIndex", index);
-            startActivity(intent);
-        }
     }
 }

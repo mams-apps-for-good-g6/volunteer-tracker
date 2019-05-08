@@ -54,12 +54,10 @@ public class SignIn extends AppCompatActivity
                         {
                             orgPath=v.getOrgPath();
                             index=v.getIndex();
-                            Log.d("MeganTag", "Path: " + orgPath + " Index: " + index);
-                            volunteer=true;
 
                             Intent intent = new Intent(context, VolunteerProfile.class);
                             intent.putExtra("orgPath", orgPath);
-                            Log.d("MeganTag", "sending " + orgPath + " " + index);
+                            Log.d("MeganTag", "SIGNING IN. ORGPATH: " + orgPath);
                             intent.putExtra("volIndex", index);
                             startActivity(intent);
                         }

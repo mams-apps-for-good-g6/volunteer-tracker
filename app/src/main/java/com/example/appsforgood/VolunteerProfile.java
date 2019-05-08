@@ -49,7 +49,6 @@ public class VolunteerProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
 
-
                 // Verified Hours
                 double verHours = 0;
 
@@ -60,6 +59,7 @@ public class VolunteerProfile extends AppCompatActivity {
                       verHours = verHours + inLog.getHours();
                     }
                 }
+
                 TextView verifiedHours = findViewById(R.id.volunteerVerifiedHours);
                 verifiedHours.setText(Double.toString(verHours));
 
@@ -113,6 +113,8 @@ public class VolunteerProfile extends AppCompatActivity {
 
                 Intent intent = new Intent(context, HourLogRecyclerView.class);
                 intent.putParcelableArrayListExtra("logEntries", logEntries);
+                intent.putExtra("orgPath", orgPath);
+                intent.putExtra("volIndex", index);
                 startActivity(intent);
             }
 

@@ -26,6 +26,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     boolean bool;
     String orgPath;
+    private ArrayList<Volunteer> volunteers;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,31 +40,27 @@ public class StudentListRecyclerView extends AppCompatActivity {
 
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/");
+        final DatabaseReference ref = database.getReference("organizations/" + orgPath);
 
         Log.d("MeganTag", "I am here 1");
 
         // Attach a listener to read the data at the refererence
-        //ref.addListenerForSingleValueEvent(new ValueEventListener() {
-           // @Override
-           // public void onDataChange(DataSnapshot dataSnapshot) {
-            //    Log.d("MeganTag", "I am here 2");
-            //    Volunteer vol = dataSnapshot.getValue(Volunteer.class);
-            //    logEntries = vol.getLogEntries();
-            //    bool=true;
-            //}
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("MeganTag", "I am here 2");
+                Organization org = dataSnapshot.getValue(Organization.class);
+                volunteers = org.getVolunteers();
+                initRecyclerView();
+            }
 
-          //  @Override
-          //  public void onCancelled(DatabaseError databaseError) {
-          //      System.out.println("The read failed: " + databaseError.getCode());
-          //  }
-        //});
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
 
         Log.d("MeganTag", "I am here 4");
-
-        if(bool) {
-            initLogEntries();
-        }
     }
 
     private void initLogEntries()
