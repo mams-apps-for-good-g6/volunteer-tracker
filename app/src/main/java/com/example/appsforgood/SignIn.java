@@ -57,7 +57,6 @@ public class SignIn extends AppCompatActivity
 
                             Intent intent = new Intent(context, VolunteerProfile.class);
                             intent.putExtra("orgPath", orgPath);
-                            Log.d("MeganTag", "SIGNING IN. ORGPATH: " + orgPath);
                             intent.putExtra("volIndex", index);
                             startActivity(intent);
                         }
@@ -66,7 +65,6 @@ public class SignIn extends AppCompatActivity
                     if (org.getAdvisor().getEmail().equals(emailStr))
                     {
                         orgPath = ds.getKey();
-                        advisor=true;
 
                         Intent intent = new Intent(context, AdvisorProfile.class);
                         intent.putExtra("orgPath", orgPath);

@@ -68,7 +68,7 @@ public class LogEntry implements Parcelable
      * @param contactPerson The name of the contact that will be contacted in order to approve your hours
      * @param email The email of the person that should be contacted to approve your hours
      */
-    public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email, String path)
+    public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email, String p)
     {
         charityName = name;
         hours = hoursServed;
@@ -95,9 +95,9 @@ public class LogEntry implements Parcelable
 
     // Methods
 
-    public void setPath(String index)
+    public void setPath(String p)
     {
-        path += index;
+        path = p;
     }
 
     public String getPath()

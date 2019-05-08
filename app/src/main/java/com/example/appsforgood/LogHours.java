@@ -76,7 +76,7 @@ public class LogHours extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                         Volunteer vol = dataSnapshot.getValue(Volunteer.class);
                         vol.addLogEntry(log);
-                        log.setPath(Integer.toString(log.getIndex()));
+                        log.setPath(orgPath + "/" + Integer.toString(log.getIndex()));
                         vol.setLogEntry(log.getIndex(), log);
                         dataSnapshot.getRef().setValue(vol);
             }

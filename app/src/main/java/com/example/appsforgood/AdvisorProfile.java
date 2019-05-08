@@ -1,5 +1,6 @@
 package com.example.appsforgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,8 @@ public class AdvisorProfile extends AppCompatActivity
 {
     private String TAG = "EvanTag";
     private String orgPath = "";
-    private ArrayList<LogEntry> verifyLogsList = new ArrayList<>();
+    private ArrayList<LogEntry> verifyLogsList;
+    private Context context;
 
     private void setKey(String k)
     {
@@ -31,6 +33,10 @@ public class AdvisorProfile extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.advisor_profile);
+
+        context = this.getBaseContext();
+
+        verifyLogsList = new ArrayList();
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -105,16 +111,22 @@ public class AdvisorProfile extends AppCompatActivity
 
                 for(Volunteer vol : volunteers)
                 {
+                    Log.d("Megan", "Getting vol: " + vol.getFullName());
                     for(LogEntry log : vol.getLogEntries())
                     {
+                        Log.d("Megan", "Getting entry: " + log.getCharityName());
                         if(log.getApprovalStatus() == 0)
                         {
+                            Log.d("Megan", "Getting status: " + log.getStringApprovalStatus());
                             verifyLogsList.add(log);
                         }
                     }
                 }
 
-                // Now we have the arraylist full or LogEntries that are pending
+                Intent intent2 = new Intent(context, VerifyHours.class);
+                Log.d("Megan", "logs list size: " + Integer.toString(verifyLogsList.size()));
+                intent2.putExtra("verifyLogsList", verifyLogsList);
+                startActivity(intent2);
             }
 
             @Override
@@ -124,12 +136,5 @@ public class AdvisorProfile extends AppCompatActivity
             }
         });
 
-
-        // This is still the same method
-
-        // Leave this class, and go to a new XML that's a recycler view of the arraylist I'm sending it
-        Intent intent2 = new Intent(this, VerifyHours.class);
-        intent2.putExtra("verifyLogsList", verifyLogsList);
-        startActivity(intent2);
     }
 }
