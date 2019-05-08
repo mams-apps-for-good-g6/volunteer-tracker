@@ -47,7 +47,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(context, AdvisorHourLogRecyclerView.class);
+                Intent intent = new Intent(context, HourLogRecyclerView.class);
                 context.startActivity(intent);
             }
         });

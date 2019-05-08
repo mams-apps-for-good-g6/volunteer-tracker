@@ -49,7 +49,7 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        RelativeLayout studentListRecyclerView;
+        RelativeLayout verifyHoursRecyclerView;
 
         TextView student_name;
         TextView charity_name;
@@ -58,7 +58,7 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
         public ViewHolder(View itemView)
         {
             super(itemView);
-            studentListRecyclerView = itemView.findViewById(R.id.student_list_recycler_view);
+            verifyHoursRecyclerView = itemView.findViewById(R.id.verify_hours_recycler_view);
 
             student_name = itemView.findViewById(R.id.student_name);
             charity_name = itemView.findViewById(R.id.charity_name);
