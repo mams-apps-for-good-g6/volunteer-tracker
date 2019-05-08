@@ -3,6 +3,8 @@ package com.example.appsforgood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.Arrays;
 public class VerifyHours extends AppCompatActivity
 {
 
+    private ArrayList<LogEntry> verifyLogsList;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -19,17 +22,16 @@ public class VerifyHours extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        ArrayList<LogEntry> verifyLogsList = (ArrayList<LogEntry>) bundle.getSerializable("verifyLogsList");
+        verifyLogsList = (ArrayList<LogEntry>) bundle.getSerializable("verifyLogsList");
+        initRecyclerView();
+    }
 
-        String print = new String("\n");
-
-        for(LogEntry log: verifyLogsList)
-        {
-            print = print + log.getPath() + "\n";
-        }
-
-        Log.d("EvanTag", "This is our Array List: " + print);
-
+    private void initRecyclerView(){
+        Log.d("TAG","initRecyclerView: init recyclerview");
+        RecyclerView recyclerView = findViewById(R.id.verify_hours_recycler_view);
+        VerifyHoursAdapter adapter = new VerifyHoursAdapter(this, verifyLogsList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }

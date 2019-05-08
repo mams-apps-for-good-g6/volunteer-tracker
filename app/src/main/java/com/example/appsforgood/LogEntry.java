@@ -17,6 +17,7 @@ public class LogEntry implements Parcelable
     private int validate; // 0 = PENDING, 1 = APPROVED, -1 = NOT APPROVED
     private String path;
     private int index;
+    private String volunteerName;
 
     @Override
     public int describeContents() {
@@ -34,6 +35,7 @@ public class LogEntry implements Parcelable
         out.writeInt(validate);
         out.writeString(path);
         out.writeInt(index);
+        out.writeString(volunteerName);
     }
 
     public static final Parcelable.Creator<LogEntry> CREATOR = new Parcelable.Creator<LogEntry>() {
@@ -55,6 +57,7 @@ public class LogEntry implements Parcelable
         validate = in.readInt();
         path = in.readString();
         index = in.readInt();
+        volunteerName = in.readString();
     }
 
 
@@ -68,7 +71,7 @@ public class LogEntry implements Parcelable
      * @param contactPerson The name of the contact that will be contacted in order to approve your hours
      * @param email The email of the person that should be contacted to approve your hours
      */
-    public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email, String p)
+    public LogEntry(String name, double hoursServed, String dateServed, String contactPerson, String email, String p, String volunteer)
     {
         charityName = name;
         hours = hoursServed;
@@ -77,6 +80,7 @@ public class LogEntry implements Parcelable
         contactEmail = email;
         validate = 0;
         path="";
+        volunteerName = volunteer;
     }
 
     /**
@@ -94,6 +98,10 @@ public class LogEntry implements Parcelable
     }
 
     // Methods
+
+    public void setVolunteerName(String name) {volunteerName = name;}
+
+    public String getVolunteerName() {return volunteerName;}
 
     public void setPath(String p)
     {
@@ -184,11 +192,16 @@ public class LogEntry implements Parcelable
         return Integer.toString(validate);
     }
 
+    public void setApprovalStatus(Integer newInt)
+    {
+        validate = newInt;
+    }
+
     public static ArrayList<LogEntry> createLogEbntries(int numContacts) {
         ArrayList<LogEntry> contacts = new ArrayList<LogEntry>();
 
         for (int i = 1; i <= numContacts; i++) {
-            contacts.add(new LogEntry("name", (i/1.0), "date", "contact person", "email", ""));
+            contacts.add(new LogEntry("name", (i/1.0), "date", "contact person", "email", "", ""));
         }
 
         return contacts;

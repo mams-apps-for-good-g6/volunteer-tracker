@@ -34,21 +34,18 @@ public class HourLogRecyclerView extends AppCompatActivity {
         setContentView(R.layout.hour_log);
         Log.d(TAG, "onCreate: started");
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        logEntries = bundle.getParcelableArrayList("logEntries");
-        initRecyclerView();
-
         Intent intent1 = getIntent();
         Bundle bundle1 = intent1.getExtras();
         index = bundle1.getInt("index");
-        initRecyclerView();
 
         Intent intent2 = getIntent();
         Bundle bundle2 = intent2.getExtras();
         orgPath = bundle2.getString("orgPath");
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        logEntries = bundle.getParcelableArrayList("logEntries");
         initRecyclerView();
-        Log.d("MeganTag", "OrgPath in recycler view: " + orgPath);
     }
 
 //    private void initLogEntries()

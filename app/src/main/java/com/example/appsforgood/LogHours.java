@@ -54,7 +54,7 @@ public class LogHours extends AppCompatActivity
         Log.d("EvanTag", "We are here #2");
 
         // Create a new LogEntry from the inputted data
-        log = new LogEntry(charityNameStr, hoursDouble, dateStr, contactPersonStr, contactEmailStr, "organizations/" + orgPath + "/volunteers/" + index + "/logEntries/");
+        log = new LogEntry(charityNameStr, hoursDouble, dateStr, contactPersonStr, contactEmailStr, "organizations/" + orgPath + "/volunteers/" + index + "/logEntries/", "");
 
         //Send it off to firebase
 
@@ -77,6 +77,7 @@ public class LogHours extends AppCompatActivity
                         Volunteer vol = dataSnapshot.getValue(Volunteer.class);
                         vol.addLogEntry(log);
                         log.setPath(orgPath + "/" + Integer.toString(log.getIndex()));
+                        log.setVolunteerName(vol.getFullName());
                         vol.setLogEntry(log.getIndex(), log);
                         dataSnapshot.getRef().setValue(vol);
             }
