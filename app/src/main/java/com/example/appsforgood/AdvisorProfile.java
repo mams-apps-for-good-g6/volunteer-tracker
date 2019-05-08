@@ -89,7 +89,7 @@ public class AdvisorProfile extends AppCompatActivity
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("organizations/" + orgPath);
 
-        // Attach a listener to read the data at the reference
+        // Attach listener to read the data at the reference
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
