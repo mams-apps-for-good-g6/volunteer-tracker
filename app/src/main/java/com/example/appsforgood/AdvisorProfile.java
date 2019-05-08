@@ -21,14 +21,9 @@ import java.util.Map;
 public class AdvisorProfile extends AppCompatActivity
 {
     private String TAG = "EvanTag";
-    private String orgPath = "";
+    private String orgPath;
     private ArrayList<LogEntry> verifyLogsList;
     private Context context;
-
-    private void setKey(String k)
-    {
-        orgPath = k;
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +35,7 @@ public class AdvisorProfile extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String orgPath = bundle.getString("orgPath");
-
-        setKey(orgPath);
+        orgPath = bundle.getString("orgPath");
 
         //ADVISOR PROFILE BETTER
 
@@ -90,9 +83,8 @@ public class AdvisorProfile extends AppCompatActivity
     }
 
     public void toVerifyList(View v) {
-        //Intent intent = new Intent(this, HourLog.class);
-        //startActivity(intent);
-        Log.d("EvanTag", "OrgPath is: " + orgPath);
+
+        Log.d("Megan", "OrgPath: " + orgPath);
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("organizations/" + orgPath);
@@ -125,7 +117,8 @@ public class AdvisorProfile extends AppCompatActivity
 
                 Intent intent2 = new Intent(context, VerifyHours.class);
                 Log.d("Megan", "logs list size: " + Integer.toString(verifyLogsList.size()));
-                intent2.putExtra("verifyLogsList", verifyLogsList);
+                intent2.putParcelableArrayListExtra("verifyLogsList", verifyLogsList);
+                intent2.putExtra("orgPath", orgPath);
                 startActivity(intent2);
             }
 

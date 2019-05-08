@@ -94,7 +94,7 @@ public class LogHours extends AppCompatActivity
         Log.d("EvanTag", "We are here #7");
 
 
-        // After hours are logged, user is sent to their hour log
+        // After hours are logged, user is sent to their profile
         Intent intent = new Intent(this, VolunteerProfile.class);
         intent.putExtra("orgPath", orgPath);
         intent.putExtra("volIndex", index);

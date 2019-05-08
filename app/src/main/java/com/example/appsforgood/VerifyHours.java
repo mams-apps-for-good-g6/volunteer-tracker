@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ public class VerifyHours extends AppCompatActivity
 {
 
     private ArrayList<LogEntry> verifyLogsList;
+    private String orgPath;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -22,7 +24,12 @@ public class VerifyHours extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        verifyLogsList = (ArrayList<LogEntry>) bundle.getSerializable("verifyLogsList");
+        verifyLogsList = bundle.getParcelableArrayList("verifyLogsList");
+        initRecyclerView();
+
+        Intent intent2 = getIntent();
+        Bundle bundle2 = intent2.getExtras();
+        orgPath = bundle2.getString("orgPath");
         initRecyclerView();
     }
 
@@ -32,6 +39,13 @@ public class VerifyHours extends AppCompatActivity
         VerifyHoursAdapter adapter = new VerifyHoursAdapter(this, verifyLogsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void toAdvisorProfile(View v)
+    {
+        Intent intent = new Intent(this, AdvisorProfile.class);
+        intent.putExtra("orgPath", orgPath);
+        startActivity(intent);
     }
 
 }

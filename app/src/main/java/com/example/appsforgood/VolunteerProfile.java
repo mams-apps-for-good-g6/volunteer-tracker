@@ -21,7 +21,6 @@ public class VolunteerProfile extends AppCompatActivity {
     String orgPath;
     int index;
     ArrayList<LogEntry> logEntries;
-    Boolean bool;
     Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,11 +90,14 @@ public class VolunteerProfile extends AppCompatActivity {
     public void toLogHours(View v) {
         Intent intent = new Intent(this, LogHours.class);
         intent.putExtra("orgPath", orgPath);
+        Log.d("Megan", "sending index to log hours: " + Integer.toString(index));
         intent.putExtra("volIndex", index);
         startActivity(intent);
     }
 
     public void toHourLogRecyclerView(View v) {
+
+        Log.d("Megan", "index after clicking recycler view: " + Integer.toString(index));
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
@@ -108,13 +110,11 @@ public class VolunteerProfile extends AppCompatActivity {
                 Log.d("MeganTag", "I am here 2");
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
                 logEntries = vol.getLogEntries();
-                Log.d("MeganTag", "Getting logEntries: " + logEntries.get(0).getCharityName());
-                bool=true;
 
                 Intent intent = new Intent(context, HourLogRecyclerView.class);
                 intent.putParcelableArrayListExtra("logEntries", logEntries);
                 intent.putExtra("orgPath", orgPath);
-                intent.putExtra("volIndex", index);
+                intent.putExtra("index", index);
                 startActivity(intent);
             }
 

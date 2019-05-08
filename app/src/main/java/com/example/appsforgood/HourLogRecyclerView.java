@@ -26,7 +26,6 @@ public class HourLogRecyclerView extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private String orgPath;
     private int index;
-    private boolean bool;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,6 +36,8 @@ public class HourLogRecyclerView extends AppCompatActivity {
         Intent intent1 = getIntent();
         Bundle bundle1 = intent1.getExtras();
         index = bundle1.getInt("index");
+
+        Log.d("Megan", "Index gotten from intent in hour log: " + index);
 
         Intent intent2 = getIntent();
         Bundle bundle2 = intent2.getExtras();
@@ -74,7 +75,7 @@ public class HourLogRecyclerView extends AppCompatActivity {
         Intent intent = new Intent(this, VolunteerProfile.class);
         intent.putExtra("orgPath", orgPath);
         intent.putExtra("volIndex", index);
-        Log.d("MeganTag", "In HourLogRecyclerView, orgPath: " + orgPath);
+        Log.d("MeganTag", "In HourLogRecyclerView, index: " + index);
         startActivity(intent);
     }
 

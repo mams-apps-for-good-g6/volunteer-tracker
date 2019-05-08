@@ -65,6 +65,7 @@ public class SignIn extends AppCompatActivity
                     if (org.getAdvisor().getEmail().equals(emailStr))
                     {
                         orgPath = ds.getKey();
+                        Log.d("Megan", "orgPath at advisor sign in: " + orgPath);
 
                         Intent intent = new Intent(context, AdvisorProfile.class);
                         intent.putExtra("orgPath", orgPath);
