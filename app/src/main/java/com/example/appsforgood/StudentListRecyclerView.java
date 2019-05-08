@@ -22,9 +22,7 @@ import java.util.Date;
 
 public class StudentListRecyclerView extends AppCompatActivity {
     //Data
-    private ArrayList<LogEntry> students;
     private static final String TAG = "MainActivity";
-    boolean bool;
     String orgPath;
     private ArrayList<Volunteer> volunteers;
 
@@ -37,7 +35,6 @@ public class StudentListRecyclerView extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         orgPath = bundle.getString("orgPath");
-
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("organizations/" + orgPath);
@@ -80,7 +77,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.student_list_recycler_view);
-        StudentListAdapter adapter = new StudentListAdapter(this, volunteers);
+        StudentListAdapter adapter = new StudentListAdapter(this, volunteers, orgPath);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

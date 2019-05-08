@@ -49,20 +49,6 @@ public class HourLogRecyclerView extends AppCompatActivity {
         initRecyclerView();
     }
 
-//    private void initLogEntries()
-//    {
-//        Log.d(TAG, "initLogEntries: preparing log entries");
-//
-//        for(int i = 0; i < 25; i++) {
-//            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
-//            Date date = new Date();
-//            LogEntry entry = new LogEntry(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
-//            logEntries.add(entry);
-//        }
-//
-//        initRecyclerView();
-//    }
-
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.HourLogList);

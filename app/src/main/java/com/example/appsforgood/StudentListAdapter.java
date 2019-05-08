@@ -16,11 +16,16 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Volunteer> studentList;
+    private ArrayList<LogEntry> logEntries;
     private Context context;
+    private String orgPath;
+    private int index;
 
-    public StudentListAdapter(Context con, ArrayList<Volunteer> listOfStudents) {
+    public StudentListAdapter(Context con, ArrayList<Volunteer> listOfStudents, String path) {
         studentList = listOfStudents;
         context = con;
+        orgPath = path;
+        index = 0;
     }
 
     @Override
@@ -42,15 +47,24 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.student_name.setText(studentList.get(position).getFullName());
         holder.student_totalhours.setText(Double.toString(studentList.get(position).getTotalHours()));
 
-        holder.studentListRecyclerView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(context, HourLogRecyclerView.class);
-                context.startActivity(intent);
-            }
-        });
+        Volunteer vol = studentList.get(position);
+        logEntries = vol.getLogEntries();
+        index = vol.getIndex();
+
+        Log.d("Megan", "Sending info about volunteer if clicked: " + vol.getFullName() + ". Index: " + Integer.toString(index));
+
+//        holder.studentListRecyclerView.setOnClickListener(new View.OnClickListener()
+//    {
+//        @Override
+//        public void onClick(View view)
+//        {
+//            Intent intent = new Intent(context, AdvisorHourLogRecyclerView.class);
+//            intent.putParcelableArrayListExtra("logEntries", logEntries);
+//            intent.putExtra("orgPath", orgPath);
+//            intent.putExtra("index", index);
+//            context.startActivity(intent);
+//        }
+//    });
     }
     @Override
     public int getItemCount()

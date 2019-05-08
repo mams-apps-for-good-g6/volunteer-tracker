@@ -26,7 +26,6 @@ public class AdvisorHourLogRecyclerView extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private String orgPath;
     private int index;
-    private boolean bool;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,31 +33,32 @@ public class AdvisorHourLogRecyclerView extends AppCompatActivity {
         setContentView(R.layout.advisor_hourlog);
         Log.d(TAG, "onCreate: started");
 
+        Intent intent1 = getIntent();
+        Bundle bundle1 = intent1.getExtras();
+        index = bundle1.getInt("index");
+
+        Log.d("Megan", "Index gotten from intent in hour log: " + index);
+
+        Intent intent2 = getIntent();
+        Bundle bundle2 = intent2.getExtras();
+        orgPath = bundle2.getString("orgPath");
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         logEntries = bundle.getParcelableArrayList("logEntries");
         initRecyclerView();
     }
 
-//    private void initLogEntries()
-//    {
-//        Log.d(TAG, "initLogEntries: preparing log entries");
-//
-//        for(int i = 0; i < 25; i++) {
-//            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
-//            Date date = new Date();
-//            LogEntry entry = new LogEntry(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
-//            logEntries.add(entry);
-//        }
-//
-//        initRecyclerView();
-//    }
 
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.advisor_hourlog);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, logEntries);
+        AdvisorHourLogAdapter adapter = new AdvisorHourLogAdapter(this, logEntries);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void toAdvisorProfile(View v) {
+
     }
 }
