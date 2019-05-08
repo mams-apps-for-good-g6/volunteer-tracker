@@ -27,5 +27,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
+        <Button
+            android:id="@+id/verify_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="VERIFY" />
+
+        <Button
+            android:id="@+id/decline_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DECLINE" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
