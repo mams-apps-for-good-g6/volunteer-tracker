@@ -10,20 +10,19 @@
 
         <TextView
             android:id="@+id/student_name"
-            android:layout_width="wrap_content"
+            android:layout_width="92dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/charity_name"
-            android:layout_width="wrap_content"
+            android:layout_width="95dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/hours_served"
-            android:layout_width="wrap_content"
+            android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 

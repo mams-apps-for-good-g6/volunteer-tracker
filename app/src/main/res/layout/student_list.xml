@@ -23,11 +23,39 @@
         android:onClick="toAdvisorProfile"
         android:text="Back to Profile" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NAME" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TOTAL HOURS" />
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/student_list_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/hourlog_listitem" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/hourlog_listitem">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="* Click on a volunteer to view their hour log." />
 
 
 </LinearLayout>

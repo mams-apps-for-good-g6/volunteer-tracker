@@ -14,13 +14,54 @@
             android:id="@+id/back_to_student_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="toAdvisorProfile"
+            android:onClick="toStudentList"
             android:text="Back to Volunteer List" />
 
         <TextView
             android:id="@+id/volunteer_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/charity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Charity Name" />
+
+            <TextView
+                android:id="@+id/hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hours Served" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Contact Info" />
+
+            <TextView
+                android:id="@+id/approval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Approval Status" />
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/advisor_hourlog"

@@ -44,6 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.charity.setText(logEntries.get(position).getCharityName());
         holder.numberOfHours.setText(logEntries.get(position).getStringHours());
         holder.date.setText(logEntries.get(position).getDate());
+        holder.contactInfo.setText(logEntries.get(position).getContactEmail());
         holder.approval.setText(logEntries.get(position).getStringApprovalStatus());
     }
 
@@ -60,6 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView charity;
         TextView numberOfHours;
         TextView date;
+        TextView contactInfo;
         TextView approval;
 
         public ViewHolder(View itemView)
@@ -70,6 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             charity = itemView.findViewById(R.id.charity);
             numberOfHours = itemView.findViewById(R.id.number_of_hours);
             date = itemView.findViewById(R.id.date);
+            contactInfo = itemView.findViewById(R.id.contactInfo);
             approval = itemView.findViewById(R.id.approval);
         }
     }

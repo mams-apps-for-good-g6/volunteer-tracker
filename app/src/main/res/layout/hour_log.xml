@@ -25,16 +25,63 @@
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/profile_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="toVolunteerProfile"
         android:text="Back to Profile" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/charity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Charity Name" />
+
+        <TextView
+            android:id="@+id/hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hours Served" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Date" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Contact Info" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Approval Status*" />
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/HourLogList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="* 0 = unapproved, -1 = declined, 1 = approved" />
 
 
 </LinearLayout>

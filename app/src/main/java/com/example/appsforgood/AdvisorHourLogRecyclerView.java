@@ -66,7 +66,10 @@ public class AdvisorHourLogRecyclerView extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void toAdvisorProfile(View v) {
-
+    public void toStudentList(View v)
+    {
+        Intent intent = new Intent(this, StudentListRecyclerView.class);
+        intent.putExtra("orgPath", orgPath);
+        startActivity(intent);
     }
 }
