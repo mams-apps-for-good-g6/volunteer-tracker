@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,7 +38,7 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position)
+    public void onBindViewHolder(final ViewHolder holder, int position)
     {
         Log.d(TAG,"onBindViewHolder: called.");
 
@@ -50,9 +51,10 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
         @Override
         public void onClick(View view)
         {
-            //Hard-coded test log entry (DELETE LATER)
-            LogEntry log = new LogEntry("Name", 2.0, "2", "2", "2", "2","2");
+            LogEntry log = verifyLogsList.get(holder.getAdapterPosition());
             log.setApprovalStatus(1);
+            verifyLogsList.remove(holder.getAdapterPosition());
+            Toast.makeText(context, log.getVolunteerName() + "'s hours have been accepted",Toast.LENGTH_LONG).show();
 
             //Send it to firebase
             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -66,9 +68,10 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
             @Override
             public void onClick(View view)
             {
-                //Hard-coded test log entry (DELETE LATER)
-                LogEntry log = new LogEntry("Name", 2.0, "2", "2", "2", "2","2");
+                LogEntry log = verifyLogsList.get(holder.getAdapterPosition());
                 log.setApprovalStatus(-1);
+                verifyLogsList.remove(holder.getAdapterPosition());
+                Toast.makeText(context, log.getVolunteerName() + "'s hours have been declined",Toast.LENGTH_LONG).show();
 
                 //Send it to firebase
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
