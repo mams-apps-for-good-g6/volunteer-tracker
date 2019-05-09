@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.ViewHolder> {
@@ -47,7 +50,14 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
         @Override
         public void onClick(View view)
         {
-            //do verifying stuff here
+            //Hard-coded test log entry (DELETE LATER)
+            LogEntry log = new LogEntry("Name", 2.0, "2", "2", "2", "2","2");
+            log.setApprovalStatus(1);
+
+            //Send it to firebase
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference ref = database.getReference("organizations/" + log.getPath() + "/logEntries" + Integer.toString(log.getIndex()));
+            ref.setValue(log);
         }
     });
 
@@ -56,7 +66,14 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
             @Override
             public void onClick(View view)
             {
-                //do declining stuff here
+                //Hard-coded test log entry (DELETE LATER)
+                LogEntry log = new LogEntry("Name", 2.0, "2", "2", "2", "2","2");
+                log.setApprovalStatus(-1);
+
+                //Send it to firebase
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference ref = database.getReference("organizations/" + log.getPath() + "/logEntries" + Integer.toString(log.getIndex()));
+                ref.setValue(log);
             }
         });
     }
