@@ -43,9 +43,17 @@ public class AdvisorHourLogRecyclerView extends AppCompatActivity {
         Bundle bundle2 = intent2.getExtras();
         orgPath = bundle2.getString("orgPath");
 
+        Intent intent3 = getIntent();
+        Bundle bundle3 = intent3.getExtras();
+        String volName = bundle3.getString("volName");
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         logEntries = bundle.getParcelableArrayList("logEntries");
+
+        TextView name = findViewById(R.id.volunteer_name);
+        name.setText("Volunteer Name: " + volName);
+
         initRecyclerView();
     }
 

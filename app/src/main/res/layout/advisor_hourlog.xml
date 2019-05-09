@@ -15,7 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="toAdvisorProfile"
-            android:text="Back to Student List" />
+            android:text="Back to Volunteer List" />
+
+        <TextView
+            android:id="@+id/volunteer_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/advisor_hourlog"

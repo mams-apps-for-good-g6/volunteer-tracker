@@ -38,7 +38,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position)
+    public void onBindViewHolder(final ViewHolder holder, int position)
     {
         Log.d(TAG,"onBindViewHolder: called.");
 
@@ -48,21 +48,22 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.student_name.setText(studentList.get(position).getFullName());
         holder.student_totalhours.setText(Double.toString(studentList.get(position).getTotalHours()));
 
-        Volunteer vol = studentList.get(position);
-        logEntries = vol.getLogEntries();
-        index = vol.getIndex();
-
-        Log.d("Megan", "Sending info about volunteer if clicked: " + vol.getFullName() + ". Index: " + Integer.toString(index));
-
         holder.student_listitem.setOnClickListener(new View.OnClickListener()
     {
         @Override
         public void onClick(View view)
         {
+            Volunteer vol = studentList.get(holder.getAdapterPosition());
+            logEntries = vol.getLogEntries();
+            index = vol.getIndex();
+
+            Log.d("Megan", "Sending info about volunteer if clicked: " + vol.getFullName() + ". Index: " + Integer.toString(index));
+
             Intent intent = new Intent(context, AdvisorHourLogRecyclerView.class);
             intent.putParcelableArrayListExtra("logEntries", logEntries);
             intent.putExtra("orgPath", orgPath);
             intent.putExtra("index", index);
+            intent.putExtra("volName", vol.getFullName());
             context.startActivity(intent);
         }
     });
