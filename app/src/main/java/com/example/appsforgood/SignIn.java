@@ -42,7 +42,7 @@ public class SignIn extends AppCompatActivity
         //ref.push().setValue(new Organization());
 
         // Attach a listener to read the data at the reference
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {

@@ -57,8 +57,11 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
             Toast.makeText(context, log.getVolunteerName() + "'s hours have been accepted",Toast.LENGTH_LONG).show();
 
             //Send it to firebase
+
+            Log.d("Megan", "LogEntry path: organizations/" + log.getPath());
+
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference ref = database.getReference("organizations/" + log.getPath() + "/logEntries" + Integer.toString(log.getIndex()));
+            DatabaseReference ref = database.getReference("organizations/" + log.getPath());
             ref.setValue(log);
         }
     });
@@ -75,7 +78,7 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
 
                 //Send it to firebase
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference ref = database.getReference("organizations/" + log.getPath() + "/logEntries" + Integer.toString(log.getIndex()));
+                DatabaseReference ref = database.getReference("organizations/" + log.getPath());
                 ref.setValue(log);
             }
         });

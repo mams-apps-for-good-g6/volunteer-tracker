@@ -50,6 +50,8 @@ public class VolunteerProfile extends AppCompatActivity {
 
                 // Verified Hours
                 double verHours = 0;
+                double declinedHours=0;
+                double pendingHours=0;
 
                 for(LogEntry inLog: vol.getLogEntries())
                 {
@@ -57,15 +59,27 @@ public class VolunteerProfile extends AppCompatActivity {
                     {
                       verHours = verHours + inLog.getHours();
                     }
+                    if(inLog.getApprovalStatus() == -1)
+                    {
+                        declinedHours = declinedHours + inLog.getHours();
+                    }
+                    if(inLog.getApprovalStatus() == 0)
+                    {
+                        pendingHours = pendingHours + inLog.getHours();
+                    }
                 }
 
+                // Verified Hours
                 TextView verifiedHours = findViewById(R.id.volunteerVerifiedHours);
                 verifiedHours.setText(Double.toString(verHours));
 
+                // Pending Hours
+                TextView pending = findViewById(R.id.volunteerPendingHours);
+                pending.setText(Double.toString(pendingHours));
 
-                // Unverified Hours
-                TextView unVerifiedHours = findViewById(R.id.volunteerUnverifiedHours);
-                unVerifiedHours.setText(Double.toString(vol.getTotalHours()));
+                // Declined Hours
+                TextView declined = findViewById(R.id.volunteerDeclinedHours);
+                declined.setText(Double.toString(declinedHours));
 
                 // Name
                 TextView name = findViewById(R.id.VolunteerName);
