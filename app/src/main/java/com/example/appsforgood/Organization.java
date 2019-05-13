@@ -1,6 +1,5 @@
 package com.example.appsforgood;
 
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,7 +7,6 @@ import java.util.Random;
 
 public class Organization
 {
-    // This is push V2 2:18 3/25/19
 
     // Data
     private String code;
@@ -17,6 +15,12 @@ public class Organization
     private ArrayList<Volunteer> volunteers;
 
     // Constructors
+
+    /**
+     * Constructs an organization with a given name and advisor
+     * @param organizationName name of the organization
+     * @param advisorName organization's advisor (an Advisor orbject)
+     */
     public Organization(String organizationName, User advisorName)
     {
         name = organizationName;
@@ -26,6 +30,9 @@ public class Organization
         code = Integer.toString(rand.nextInt(8999) + 1000);
     }
 
+    /**
+     * Constructs an organization with a default name and advisor
+     */
     public Organization()
     {
         code = ""; //generate random String
@@ -36,12 +43,10 @@ public class Organization
 
     // Methods
 
-   // public String toString()
-    {
-   //     return "name: " + name + " code: " + code;
-    }
-
-
+    /**
+     * Adds a volunteer to the organization
+     * @param v the volunteer to be added
+     */
     public void addVolunteer(Volunteer v)
     {
         volunteers.add(v);
@@ -63,45 +68,51 @@ public class Organization
         }
     }
 
+    /**
+     * Gets the org code
+     * @return organiztion code
+     */
     public String getCode()
     {
         return code;
     }
 
+    /**
+     * Gets the org name
+     * @return organization name
+     */
     public String getName()
     {
         return name;
     }
 
+    /**
+     * Sets the org name
+     * @param newName organization name
+     */
     public void setName(String newName)
     {
         name = newName;
     }
 
+    /**
+     * Gets the org's advisor
+     * @return advisor (an Advisor object)
+     */
     public User getAdvisor()
     {
         return advisor;
     }
 
-     //public String getVolunteerList()
-     {
-       //   String r = new String("");
-       //   for(int i = 0; i < volunteers.size(); i++)
-        {
-       //     r = r + volunteers.get(i).getFullName() + ": " + volunteers.get(i).getTotalHours() + "\n";
-        }
-        //return r;
-    }
-
+    /**
+     * gets the ArrayList of volunteers
+     * @return organization's ArrayList of volunteers
+     */
     public ArrayList<Volunteer> getVolunteers()
     {
         return volunteers;
     }
 
-    //public String getVolunteerLog(int number)
-    {
-    //    return "Name: " + volunteers.get(number).getFullName() + "\n" + "Email: " + volunteers.get(number).getEmail() + "\n" + "Total Hours: " + volunteers.get(number).getTotalHours();
-    }
 
     //public double getAllTotalHours()
     {

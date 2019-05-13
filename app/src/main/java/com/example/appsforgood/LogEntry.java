@@ -19,6 +19,8 @@ public class LogEntry implements Parcelable
     private int index;
     private String volunteerName;
 
+    // Classes associated with sending an ArrayList of LogEntries thorugh an intent
+
     @Override
     public int describeContents() {
         return 0;
@@ -61,7 +63,7 @@ public class LogEntry implements Parcelable
     }
 
 
-    // Constructor
+    // Constructors
 
     /**
      * Create an instance of Log Entry
@@ -99,22 +101,46 @@ public class LogEntry implements Parcelable
 
     // Methods
 
+    /**
+     * Sets the name associated with this log entry
+     * @param name volunteer's name
+     */
     public void setVolunteerName(String name) {volunteerName = name;}
 
+    /**
+     * Sets the name associated with this log entry
+     * @return volunteer's name
+     */
     public String getVolunteerName() {return volunteerName;}
 
+    /**
+     * Sets the path to this log entry
+     * @param p the path, including the organization, volunteer, volunteer index, and log entry index
+     */
     public void setPath(String p)
     {
         path = p;
     }
 
+    /**
+     * Gets the path to this log entry
+     * @return path
+     */
     public String getPath()
     {
         return path;
     }
 
+    /**
+     * Sets the index of this log entry in the volunteer's ArrayList of log entries
+     * @param i index
+     */
     public void setIndex(int i){index = i;}
 
+    /**
+     * Gets the index of this log entry in the volunteer's ArrayList of log entries
+     * @return index
+     */
     public int getIndex(){return index;}
 
     /**
@@ -126,6 +152,10 @@ public class LogEntry implements Parcelable
         return hours;
     }
 
+    /**
+     * Gets the hours associated with this entry as a string
+     * @return string hours
+     */
     public String getStringHours() {return Double.toString(hours);}
 
     /**
@@ -187,23 +217,28 @@ public class LogEntry implements Parcelable
         return validate;
     }
 
+    /**
+     * gets the approval status as a string
+     * -1 = NOT APPROVED
+     * 0 = PENDING APPROVAL (default upon construction)
+     * 1 = APPROVED
+     * @return approval status as a string
+     */
     public String getStringApprovalStatus()
     {
         return Integer.toString(validate);
     }
 
+    /**
+     * Sets the approval status of this entry
+     * -1 = NOT APPROVED
+     * 0 = PENDING APPROVAL (default upon construction)
+     * 1 = APPROVED
+     * @param newInt approval status
+     */
     public void setApprovalStatus(Integer newInt)
     {
         validate = newInt;
     }
 
-    public static ArrayList<LogEntry> createLogEbntries(int numContacts) {
-        ArrayList<LogEntry> contacts = new ArrayList<LogEntry>();
-
-        for (int i = 1; i <= numContacts; i++) {
-            contacts.add(new LogEntry("name", (i/1.0), "date", "contact person", "email", "", ""));
-        }
-
-        return contacts;
-    }
 }

@@ -13,32 +13,42 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Allows the volunteer to log service hours and adds it to their hour log.
+ */
 public class LogHours extends AppCompatActivity
 {
-
     String orgPath;
     int index;
 
     LogEntry log;
 
-        protected void onCreate(Bundle savedInstanceState)
-        {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.log_hours);
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.log_hours);
 
-            Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            orgPath = bundle.getString("orgPath");
+        // Receiving the organization path through an intent
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        orgPath = bundle.getString("orgPath");
 
-            Intent intent2 = getIntent();
-            Bundle bundle2 = intent2.getExtras();
-            index = bundle2.getInt("volIndex");
+        // Receiving the volunteer's index through an intent
+        Intent intent2 = getIntent();
+        Bundle bundle2 = intent2.getExtras();
+        index = bundle2.getInt("volIndex");
         }
 
+    /**
+     * Gets the entered information and adds the entry to the user's ArrayList of log entries.
+     * @param v
+     */
     public void logHours(View v)
     {
         Log.d("EvanTag", "We are here #1");
+
         // Get the inputted values
+
         EditText charityName = findViewById(R.id.charityName);
         EditText hours = findViewById(R.id.hours);
         EditText date = findViewById(R.id.date);
@@ -54,23 +64,20 @@ public class LogHours extends AppCompatActivity
         Log.d("EvanTag", "We are here #2");
 
         // Create a new LogEntry from the inputted data
+
         log = new LogEntry(charityNameStr, hoursDouble, dateStr, contactPersonStr, contactEmailStr, "organizations/" + orgPath + "/volunteers/" + index + "/logEntries/", "");
 
-        //Send it off to firebase
-
-        // THIS IS A BIG PASTE HERE
 
         Log.d("EvanTag", "We are here #3");
 
-        final int check = 0; // This it the index of the signed in volunteer, which we would need to get
-
+        // References the database and creates a path to the volunteer
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + index);
 
         Log.d("EvanTag", "organizations/" + orgPath + "/volunteers/" + index);
         Log.d("EvanTag", "We are here #4");
 
-        // Attach a listener to read the data at the reference
+        // Gets the volunteer at the specified path and adds the LogEntry to their ArrayList of LogEntries
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

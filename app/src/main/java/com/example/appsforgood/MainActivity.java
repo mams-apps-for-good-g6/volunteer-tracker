@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+/**
+ * The first screen that the user sees when they open the app.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -31,18 +34,30 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(getApplicationContext());
     }
 
+    /**
+     * Sends the user to sign up as a volunteer.
+     * @param v
+     */
     public void toVolunteerSignUp(View v)
     {
         Intent intent = new Intent(this, VolunteerSignUp.class);
         startActivity(intent);
     }
 
+    /**
+     * Sends the user to sign up as an advisor.
+     * @param v
+     */
     public void toAdvisorSignUp(View v)
     {
         Intent intent = new Intent(this, AdvisorSignUp.class);
         startActivity(intent);
     }
 
+    /**
+     * Sends the user to sign in (can sign in as an advisor or volunteer).
+     * @param v
+     */
     public void toSignIn(View v)
     {
         Intent intent = new Intent(this, SignIn.class);

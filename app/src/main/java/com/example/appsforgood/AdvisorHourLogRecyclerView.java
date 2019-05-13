@@ -20,6 +20,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Creates the recycler view for the Advisor to view the HourLog of a clicked on Volunteer.
+ */
 public class AdvisorHourLogRecyclerView extends AppCompatActivity {
     //Data
     private ArrayList<LogEntry> logEntries;

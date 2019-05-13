@@ -15,6 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Allows an advisor to sign up and creates an Organization with the given Advisor
+ */
 public class AdvisorSignUp extends AppCompatActivity
 {
     private String TAG = "EvanTag ";
@@ -53,23 +56,19 @@ public class AdvisorSignUp extends AppCompatActivity
         if (user.checkEmpty()==false)
         {
             // Create an organization using inputted information
-
             Organization org = new Organization(OrgNameStr, user);
 
-            // Add organization to database under tag "organizations"
-
+            // Referencing the database
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference ref = database.getReference("organizations");
+
+            // Add organization to database under tag "organizations"
             DatabaseReference newRef = ref.push();
             newRef.setValue(org);
             String orgPath = newRef.getKey();
             Log.d("MeganTag", orgPath);
 
-            // Add org as a child of "organizations"
-            //Map<String, Organization> orgs = new HashMap<>();
-            //orgs.put(org.getCode(), org);
-            //usersRef.setValue(orgs);
-
+            // Sending the organization path through an intent
             Intent intent = new Intent(this, DisplayCode.class);
             intent.putExtra("orgPath", orgPath);
             startActivity(intent);

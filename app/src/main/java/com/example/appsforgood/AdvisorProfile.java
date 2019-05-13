@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The Advisor profile
+ */
 public class AdvisorProfile extends AppCompatActivity
 {
     private String TAG = "EvanTag";
@@ -30,27 +33,23 @@ public class AdvisorProfile extends AppCompatActivity
         setContentView(R.layout.advisor_profile);
 
         context = this.getBaseContext();
-
         verifyLogsList = new ArrayList();
 
+        // Receiving the organization path through an intent
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         orgPath = bundle.getString("orgPath");
 
-        //ADVISOR PROFILE BETTER
-
+        // References the database and creates a path to the organization
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference("organizations/" + orgPath);
 
-        // Attach a listener to read the data at the reference
+        // Gets the organization at the specified path and displays the advisor's information.
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Organization org = dataSnapshot.getValue(Organization.class);
-
-                Log.d(TAG, "1The code is: " + org.getCode());
-                Log.d(TAG, "1The name is: " + org.getName());
 
                 TextView advisorName = findViewById(R.id.AdvisorName);
                 advisorName.setText(org.getAdvisor().getFullName());
@@ -75,6 +74,10 @@ public class AdvisorProfile extends AppCompatActivity
 
     }
 
+    /**
+     * Sends the advisor to the recycler view that displays all volunteers in their organization.
+     * @param v
+     */
     public void toStudentList(View v)
     {
         Intent intent = new Intent(this, StudentListRecyclerView.class);
@@ -82,6 +85,10 @@ public class AdvisorProfile extends AppCompatActivity
         startActivity(intent);
     }
 
+    /**
+     * Sends the advisor to the recycler view that displays all unverified hour log entries in their organization.
+     * @param v
+     */
     public void toVerifyList(View v) {
 
         Log.d("Megan", "OrgPath: " + orgPath);

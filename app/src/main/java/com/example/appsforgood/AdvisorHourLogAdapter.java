@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * The adapter for the Advisor HourLog. Displays the hour log of the volunteer that was clicked on by the Advisor.
+ */
 public class AdvisorHourLogAdapter extends RecyclerView.Adapter<AdvisorHourLogAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
@@ -35,11 +38,6 @@ public class AdvisorHourLogAdapter extends RecyclerView.Adapter<AdvisorHourLogAd
     public void onBindViewHolder(ViewHolder holder, int position)
     {
         Log.d(TAG,"onBindViewHolder: called.");
-
-        Log.d(TAG,"Charity Name: " + logEntries.get(position).getCharityName());
-        Log.d(TAG,"Charity Name: " + logEntries.get(position).getStringHours());
-        Log.d(TAG,"Charity Name: " + logEntries.get(position).getDate());
-        Log.d(TAG,"Charity Name: " + logEntries.get(position).getStringApprovalStatus());
 
         holder.charity.setText(logEntries.get(position).getCharityName());
         holder.numberOfHours.setText(logEntries.get(position).getStringHours());

@@ -14,6 +14,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Displays the Advisor's organization code
+ */
 public class DisplayCode extends AppCompatActivity
 {private String TAG = "EvanTag";
 
@@ -28,15 +31,17 @@ public class DisplayCode extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_code);
 
+        // Receiving the organization path through an intent
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String orgPath = bundle.getString("orgPath");
         setKey(orgPath);
 
+        // References the database and creates a path to the organization's code
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations/" + orgPath + "/code");
 
-        // Attach a listener to read the data at the reference
+        // Getting the code of the organization at the specified path and displaying it.
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -54,6 +59,10 @@ public class DisplayCode extends AppCompatActivity
         });
     }
 
+    /**
+     * Sends the Advisor to their profile
+     * @param v
+     */
     public void toAdvisorProfile(View v)
     {
         Intent intent = new Intent(this, AdvisorProfile.class);
