@@ -58,7 +58,7 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
 
             //Send it to firebase
 
-            Log.d("Megan", "LogEntry path: organizations/" + log.getPath());
+            Log.d("Megan ", "LogEntry path: organizations/" + log.getPath());
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference ref = database.getReference("organizations/" + log.getPath());

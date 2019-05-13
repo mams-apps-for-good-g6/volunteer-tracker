@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class AdvisorSignUp extends AppCompatActivity
 {
-    private String TAG = "EvanTag";
+    private String TAG = "EvanTag ";
     Context context;
 
     protected void onCreate(Bundle savedInstanceState)
