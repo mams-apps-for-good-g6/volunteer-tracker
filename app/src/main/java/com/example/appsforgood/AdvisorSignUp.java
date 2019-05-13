@@ -1,11 +1,13 @@
 package com.example.appsforgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -16,9 +18,11 @@ import java.util.Map;
 public class AdvisorSignUp extends AppCompatActivity
 {
     private String TAG = "EvanTag";
+    Context context;
 
     protected void onCreate(Bundle savedInstanceState)
     {
+        context = this.getBaseContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.advisor_signup);
     }
@@ -37,26 +41,38 @@ public class AdvisorSignUp extends AppCompatActivity
         String lastStr = last.getText().toString();
         String emailStr = email.getText().toString();
 
-        // Create an organization using inputted information
+        User user = new User(firstStr, lastStr, emailStr);
 
-        Organization org = new Organization(OrgNameStr, new User(firstStr, lastStr, emailStr));
+        if(OrgNameStr.isEmpty())
+        {
+            Toast.makeText(context, "Please enter an organization name", Toast.LENGTH_SHORT).show();
+        }
 
-        // Add organization to database under tag "organizations"
+        user.emptyToast(context);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("organizations");
-        DatabaseReference newRef = ref.push();
-        newRef.setValue(org);
-        String orgPath = newRef.getKey();
-        Log.d("MeganTag", orgPath);
+        if (user.checkEmpty()==false)
+        {
+            // Create an organization using inputted information
 
-        // Add org as a child of "organizations"
-        //Map<String, Organization> orgs = new HashMap<>();
-        //orgs.put(org.getCode(), org);
-        //usersRef.setValue(orgs);
+            Organization org = new Organization(OrgNameStr, user);
 
-        Intent intent = new Intent(this, DisplayCode.class);
-        intent.putExtra("orgPath", orgPath);
-        startActivity(intent);
+            // Add organization to database under tag "organizations"
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference ref = database.getReference("organizations");
+            DatabaseReference newRef = ref.push();
+            newRef.setValue(org);
+            String orgPath = newRef.getKey();
+            Log.d("MeganTag", orgPath);
+
+            // Add org as a child of "organizations"
+            //Map<String, Organization> orgs = new HashMap<>();
+            //orgs.put(org.getCode(), org);
+            //usersRef.setValue(orgs);
+
+            Intent intent = new Intent(this, DisplayCode.class);
+            intent.putExtra("orgPath", orgPath);
+            startActivity(intent);
+        }
     }
 }

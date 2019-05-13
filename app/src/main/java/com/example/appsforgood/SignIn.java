@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,6 +46,8 @@ public class SignIn extends AppCompatActivity
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean empty1 = true;
+                boolean empty2 = true;
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     Organization org = ds.getValue(Organization.class);
                     ArrayList<Volunteer> volList = org.getVolunteers();
@@ -59,6 +62,8 @@ public class SignIn extends AppCompatActivity
                             intent.putExtra("orgPath", orgPath);
                             intent.putExtra("volIndex", index);
                             startActivity(intent);
+
+                            empty1 = false;
                         }
                     }
 
@@ -70,6 +75,13 @@ public class SignIn extends AppCompatActivity
                         Intent intent = new Intent(context, AdvisorProfile.class);
                         intent.putExtra("orgPath", orgPath);
                         startActivity(intent);
+
+                        empty2 = false;
+                    }
+
+                    if (empty1 && empty2 == true)
+                    {
+                        Toast.makeText(context, "Please enter your email to log in", Toast.LENGTH_LONG).show();
                     }
                 }
             }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -61,26 +62,36 @@ public class VolunteerSignUp extends AppCompatActivity
         DatabaseReference ref = database.getReference("organizations/");
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    orgPath = ds.getKey();
-                    Log.d("MeganTag", "reference for ds: " + orgPath);
-                    vol.setOrgPath(orgPath);
+                    if(vol.checkEmpty() == false)
+                    {
+                        orgPath = ds.getKey();
+                        Log.d("MeganTag", "reference for ds: " + orgPath);
+                        vol.setOrgPath(orgPath);
 
-                    Organization org = ds.getValue(Organization.class);
-                    vol.setOrgName(org.getName());
+                        Organization org = ds.getValue(Organization.class);
+                        vol.setOrgName(org.getName());
 
-                    if (org.getCode().equals(codeStr)) {
-                        org.addVolunteer(vol);
-                        index = vol.getIndex();
-                        Log.d("MeganTag", "index: " + index);
-                        ds.getRef().setValue(org);
+                        if (org.getCode().equals(codeStr)) {
+                            org.addVolunteer(vol);
+                            index = vol.getIndex();
+                            Log.d("MeganTag", "index: " + index);
+                            ds.getRef().setValue(org);
 
-                        Intent intent = new Intent(context, VolunteerProfile.class);
-                        intent.putExtra("orgPath", orgPath);
-                        intent.putExtra("volIndex", index);
-                        startActivity(intent);
+                            Intent intent = new Intent(context, VolunteerProfile.class);
+                            intent.putExtra("orgPath", orgPath);
+                            intent.putExtra("volIndex", index);
+                            startActivity(intent);
+                        }
+
+                        else
+                        {
+                            Toast.makeText(context, "Please enter a valid organization code", Toast.LENGTH_SHORT).show();
+                            vol.emptyToast(context);
+                        }
                     }
                 }
             }
