@@ -69,14 +69,14 @@ public class Volunteer extends User
     public int getIndex(){return index;}
 
     /**
-     *
-     * @param path
+     * sets the organization path
+     * @param path the memory address of the organization
      */
     public void setOrgPath(String path){orgPath=path;}
 
     /**
-     *
-     * @return
+     * gets the organization path
+     * @return the memory address of the organization
      */
     public String getOrgPath(){return orgPath;}
 
@@ -85,20 +85,6 @@ public class Volunteer extends User
      * @return
      */
     public double getTotalHours() {return totalHours;}
-
-    /**
-     * Returns a string object that displays all log entries. Each entry is displayed on its own line in the following form: charity Name, hours served, date served.
-     * @return the log of entries, with each entry displayed on its own line.
-     */
-    //public String getLog()
-    {
-    //    String log = "Charity \t Hours \t Date";
-    //    for (LogEntry entry: logEntries)
-        {
-    //        log = "\n" + entry.getCharityName() + "\t" + entry.getHours() + "\t" + entry.getDate();
-        }
-     //   return log;
-    }
 
     /**
      * Gets the number of hours served at a specified charity.
