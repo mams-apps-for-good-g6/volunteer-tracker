@@ -17,6 +17,7 @@
             android:paddingTop="50dp"
             android:paddingBottom="20dp"
             android:text="Log Hours"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="36sp" />
 
         <TextView
@@ -24,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Charity Name"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="24sp" />
 
         <EditText
@@ -38,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hours Served"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="24sp" />
 
         <EditText
@@ -53,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date Served"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="24sp" />
 
         <EditText
@@ -60,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="5/14/19"
             android:inputType="date" />
 
         <TextView
@@ -67,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contact Person Name"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="24sp" />
 
         <EditText
@@ -82,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contact Person Email"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="24sp" />
 
         <EditText
