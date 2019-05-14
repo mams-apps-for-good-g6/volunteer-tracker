@@ -88,6 +88,12 @@
             android:layout_height="75dp"
             android:onClick="displayCode"
             android:text="Create Account and Generate Organization Code"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
 
     </LinearLayout>

@@ -9,8 +9,11 @@
         android:layout_width="395dp"
         android:layout_height="715dp"
         android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="200dp"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/textView11"
@@ -30,6 +33,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="toProfile"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/colorPrimaryDark"
             android:text="Sign In" />
 
     </LinearLayout>
