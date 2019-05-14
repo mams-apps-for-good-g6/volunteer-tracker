@@ -27,9 +27,10 @@
             android:id="@+id/MyAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My Account"
-            android:textSize="30sp"
             android:paddingBottom="20dp"
+            android:text="My Account"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="139dp"
             tools:layout_editor_absoluteY="84dp" />
 
@@ -43,9 +44,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
                 android:paddingBottom="2dp"
-                android:text="Verified Hours:" />
+                android:text="Verified Hours:"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/pending"
@@ -54,6 +56,7 @@
                 android:layout_weight="1"
                 android:paddingBottom="2dp"
                 android:text="Pending Hours:"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp" />
 
             <TextView
@@ -62,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Declined Hours:"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -108,16 +112,17 @@
                 android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 android:paddingBottom="2dp"
-                android:text="Name:" />
+                android:text="Name:"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/VolunteerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -132,14 +137,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Email:"
-                android:textSize="20sp" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/VolunteerEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -153,16 +159,17 @@
                 android:layout_width="7dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 android:paddingBottom="10dp"
-                android:text="Organization:" />
+                android:text="Organization:"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/VolunteerOrganization"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="647dp" />
         </LinearLayout>

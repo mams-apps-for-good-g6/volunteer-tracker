@@ -18,6 +18,7 @@
             android:paddingTop="50dp"
             android:paddingBottom="20dp"
             android:text="Sign Up as a Volunteer"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="36sp" />
 
         <TextView
@@ -25,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Organization Code"
-            android:textSize="20sp" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/organizationCode"
@@ -34,14 +36,15 @@
             android:ems="10"
             android:hint="####"
             android:inputType="number"
-            android:textSize="26sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/firstNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="First Name"
-            android:textSize="20sp" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/firstName"
@@ -50,14 +53,15 @@
             android:ems="10"
             android:hint="First Name"
             android:inputType="textPersonName"
-            android:textSize="26sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/lastNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Last Name"
-            android:textSize="20sp" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/lastName"
@@ -66,14 +70,15 @@
             android:ems="10"
             android:hint="Last Name"
             android:inputType="textPersonName"
-            android:textSize="26sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/emailLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email Address"
-            android:textSize="20sp" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/email"
@@ -82,15 +87,22 @@
             android:ems="10"
             android:hint="NotAFakeEmail@gmail.com"
             android:inputType="textEmailAddress"
-            android:textSize="26sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="75dp"
+            android:background="@color/colorPrimary"
             android:onClick="toVolunteerProfile"
+            android:text="Create Account"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp"
-            android:text="Create Account" />
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
