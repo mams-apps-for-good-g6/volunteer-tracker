@@ -23,6 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Allows a volunteer to create a profile
+ * Adds the volunteer to an organization based on a pre-existing organization code
+ */
 public class VolunteerSignUp extends AppCompatActivity
 {
     String codeStr;
@@ -31,6 +35,11 @@ public class VolunteerSignUp extends AppCompatActivity
     int index;
     Context context;
 
+    /**
+     * Creates an instance of the volunteer sign up
+     * corresponding xml: volunteer_signup
+     * @param savedInstanceState data received from MainActivity
+     */
     protected void onCreate(Bundle savedInstanceState)
     {
         context = this.getBaseContext();
@@ -38,6 +47,15 @@ public class VolunteerSignUp extends AppCompatActivity
         setContentView(R.layout.volunteer_signup);
     }
 
+    /**
+     * Sends data from this class to the volunteer profile
+     * data sent: first name of volunteer, last name of volunteer, volunteer's email, and the organization code to which they belong
+     * All data is inputted by user
+     * New volunteer is added to an organization's ArrayList in firebase based on inputted and pre-existing code
+     * No "empty volunteers" (without any information) can be added to firebase
+     * user will not be permitted to create an account without completing all fields (a toast will be created to notify the user if any fields are empty)
+     * @param v an instance of the View class
+     */
     public void toVolunteerProfile(View v)
     {
         // Convert user input to String objects.
