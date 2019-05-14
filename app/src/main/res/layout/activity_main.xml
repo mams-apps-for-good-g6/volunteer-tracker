@@ -37,7 +37,7 @@
             android:layout_height="200dp"
             android:paddingTop="10dp"
             android:paddingBottom="50dp"
-            app:srcCompat="@drawable/color_hand"
+            app:srcCompat="@drawable/hand_logo"
             tools:layout_editor_absoluteX="145dp"
             tools:layout_editor_absoluteY="217dp" />
 
