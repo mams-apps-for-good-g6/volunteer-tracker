@@ -16,6 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * The volunteer profile which displays the volunteer's information
+ */
 public class VolunteerProfile extends AppCompatActivity {
 
     String orgPath;
@@ -23,6 +26,10 @@ public class VolunteerProfile extends AppCompatActivity {
     ArrayList<LogEntry> logEntries;
     Context context;
 
+    /**
+     * Assigns information for the XML to display
+     * @param savedInstanceState information received from the volunteer sign up class
+     */
     protected void onCreate(Bundle savedInstanceState) {
         context = this.getBaseContext();
 
@@ -101,6 +108,11 @@ public class VolunteerProfile extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sends volunteer to the Log Hours page to allows them to create an hour entry for the advisor to approve
+     * Sends data (organization path and the index of the volunteer within the organization's ArrayList) to the LogHours page
+     * @param v an instance fo the View class
+     */
     public void toLogHours(View v) {
         Intent intent = new Intent(this, LogHours.class);
         intent.putExtra("orgPath", orgPath);
@@ -109,6 +121,11 @@ public class VolunteerProfile extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Sends the volunteer to their existing hour log recycler view which
+     * the hour log recycler view contains all existing hour log entries
+     * @param v an instance of the View class
+     */
     public void toHourLogRecyclerView(View v) {
 
         Log.d("Megan", "index after clicking recycler view: " + Integer.toString(index));

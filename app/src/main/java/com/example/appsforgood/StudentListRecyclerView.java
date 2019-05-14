@@ -68,7 +68,7 @@ public class StudentListRecyclerView extends AppCompatActivity {
 ////            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
 ////            Date date = new Date();
 ////            Volunteer volunteer = new Volunteer(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
-////            logEntries.add(entry);
+////            logEntries.add(entry);]
 ////        }
 //
 //        initRecyclerView();
