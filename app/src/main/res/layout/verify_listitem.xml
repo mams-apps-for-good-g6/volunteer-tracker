@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
+            android:textAlignment="center"
             android:text="VERIFY" />
 
         <Button
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
+            android:textAlignment="center"
             android:text="DECLINE" />
 
     </LinearLayout>
