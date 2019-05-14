@@ -55,7 +55,7 @@ public class AdvisorHourLogRecyclerView extends AppCompatActivity {
         logEntries = bundle.getParcelableArrayList("logEntries");
 
         TextView name = findViewById(R.id.volunteer_name);
-        name.setText("Volunteer Name: " + volName);
+        name.setText(volName);
 
         initRecyclerView();
     }
