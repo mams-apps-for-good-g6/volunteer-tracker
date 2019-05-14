@@ -40,35 +40,40 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Charity Name" />
+                android:text="Charity Name"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <TextView
                 android:id="@+id/hours"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Hours Served" />
+                android:text="Hours Served"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <TextView
                 android:id="@+id/date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Date" />
+                android:text="Date"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Contact Information" />
+                android:text="Contact Information"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
             <TextView
                 android:id="@+id/approval"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Approval Status" />
+                android:text="Approval Status"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
