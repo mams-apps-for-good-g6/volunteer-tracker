@@ -50,7 +50,7 @@ public class VolunteerProfile extends AppCompatActivity {
         final DatabaseReference ref = database.getReference("organizations/" + orgPath + "/volunteers/" + Integer.toString(index));
 
         // Attach a listener to read the data at the reference
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Volunteer vol = dataSnapshot.getValue(Volunteer.class);
