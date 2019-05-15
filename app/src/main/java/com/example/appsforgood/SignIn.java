@@ -37,7 +37,7 @@ public class SignIn extends AppCompatActivity
 
     /**
      * Gets the inputted email and sends the user to the respective profile
-     * @param v
+     * @param v View
      */
     public void toProfile(View v){
 
