@@ -56,49 +56,45 @@ public class SignIn extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                boolean empty1 = true;
-                boolean empty2 = true;
+                if(emailStr.isEmpty() == false)
+                {
+                    // Looping through the organizations
+                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                // Looping through the organizations
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Organization org = ds.getValue(Organization.class);
+                        ArrayList<Volunteer> volList = org.getVolunteers();
 
-                    Organization org = ds.getValue(Organization.class);
-                    ArrayList<Volunteer> volList = org.getVolunteers();
-
-                    // Signing in as a volunteer if the email matches a volunteer
-                    for (Volunteer v : volList)
-                    {
-                        if (v.getEmail().equals(emailStr))
+                        // Signing in as a volunteer if the email matches a volunteer
+                        for (Volunteer v : volList)
                         {
-                            orgPath=v.getOrgPath();
-                            index=v.getIndex();
+                            if (v.getEmail().equals(emailStr))
+                            {
+                                orgPath=v.getOrgPath();
+                                index=v.getIndex();
 
-                            Intent intent = new Intent(context, VolunteerProfile.class);
+                                Intent intent = new Intent(context, VolunteerProfile.class);
+                                intent.putExtra("orgPath", orgPath);
+                                intent.putExtra("volIndex", index);
+                                startActivity(intent);
+                            }
+                        }
+
+                        // Signing in as an advisor if the email matches an advisor
+                        if (org.getAdvisor().getEmail().equals(emailStr))
+                        {
+                            orgPath = ds.getKey();
+                            Log.d("Megan", "orgPath at advisor sign in: " + orgPath);
+
+                            Intent intent = new Intent(context, AdvisorProfile.class);
                             intent.putExtra("orgPath", orgPath);
-                            intent.putExtra("volIndex", index);
                             startActivity(intent);
-
-                            empty1 = false;
                         }
                     }
+                }
 
-                    // Signing in as an advisor if the email matches an advisor
-                    if (org.getAdvisor().getEmail().equals(emailStr))
-                    {
-                        orgPath = ds.getKey();
-                        Log.d("Megan", "orgPath at advisor sign in: " + orgPath);
-
-                        Intent intent = new Intent(context, AdvisorProfile.class);
-                        intent.putExtra("orgPath", orgPath);
-                        startActivity(intent);
-
-                        empty2 = false;
-                    }
-
-                    if (empty1 && empty2 == true)
-                    {
-                        Toast.makeText(context, "Please enter your email to log in", Toast.LENGTH_LONG).show();
-                    }
+                else
+                {
+                    Toast.makeText(context, "Please enter a valid email", Toast.LENGTH_SHORT).show();
                 }
             }
 
