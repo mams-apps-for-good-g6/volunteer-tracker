@@ -44,6 +44,10 @@ public class VerifyHours extends AppCompatActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     *
+     * @param v
+     */
     public void toAdvisorProfile(View v)
     {
         Intent intent = new Intent(this, AdvisorProfile.class);

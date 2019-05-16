@@ -105,7 +105,7 @@ public class User
         empty();
         if (emp)
         {
-            Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, error, Toast.LENGTH_LONG).show();
         }
     }
 

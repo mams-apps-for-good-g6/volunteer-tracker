@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * Defines the recycler view for the advisor's view student page
+ */
 public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
@@ -22,6 +25,12 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     private String orgPath;
     private int index;
 
+    /**
+     * Creates an instance of the student list adapter to define the student list recycler view
+     * @param con context of the student list recycler view page
+     * @param listOfStudents ArrayList of the organization's students
+     * @param path
+     */
     public StudentListAdapter(Context con, ArrayList<Volunteer> listOfStudents, String path) {
         studentList = listOfStudents;
         context = con;
@@ -29,6 +38,12 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         index = 0;
     }
 
+    /**
+     *
+     * @param parent
+     * @param viewType number of list items needed to populate the recycler view with all of the ArrayList volunteer objects
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {

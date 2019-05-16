@@ -37,7 +37,7 @@ public class SignIn extends AppCompatActivity
 
     /**
      * Gets the inputted email and sends the user to the respective profile
-     * @param v
+     * @param v View blah
      */
     public void toProfile(View v){
 
@@ -55,8 +55,7 @@ public class SignIn extends AppCompatActivity
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                if(emailStr.isEmpty() == false)
+                if (emailStr.isEmpty() == false)
                 {
                     // Looping through the organizations
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -77,7 +76,14 @@ public class SignIn extends AppCompatActivity
                                 intent.putExtra("volIndex", index);
                                 startActivity(intent);
                             }
+
+                            else
+                            {
+                                Toast.makeText(context, "Your email does not match an existing profile", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, "Please make an account or enter a different email", Toast.LENGTH_LONG).show();
+                            }
                         }
+
 
                         // Signing in as an advisor if the email matches an advisor
                         if (org.getAdvisor().getEmail().equals(emailStr))
@@ -89,12 +95,18 @@ public class SignIn extends AppCompatActivity
                             intent.putExtra("orgPath", orgPath);
                             startActivity(intent);
                         }
+
+                        else
+                        {
+                            Toast.makeText(context, "Your email does not match an existing profile", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Please make an account or enter a different email", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
 
                 else
                 {
-                    Toast.makeText(context, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_LONG).show();
                 }
             }
 

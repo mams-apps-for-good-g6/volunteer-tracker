@@ -31,6 +31,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         context = con;
     }
 
+    /**
+     *
+     * @param parent the recycler view
+     * @param viewType
+     * @return a list item at a specific index
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
@@ -39,6 +45,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return holder;
     }
 
+    /**
+     * Assigns the information of a volunteer to the corresponding list item text views depending the index
+     * @param holder the list item
+     * @param position the index of the volunteer within the ArrayList and the corresponding list item
+     */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
@@ -61,6 +72,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return logEntries.size();
     }
 
+    /**
+     * assigns the text views within the list item to a name
+     */
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         RelativeLayout parentLayout;
@@ -71,6 +85,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView contactInfo;
         TextView approval;
 
+        /**
+         * defines what each text view within the list item is
+         * @param itemView the list item
+         */
         public ViewHolder(View itemView)
         {
             super(itemView);

@@ -83,6 +83,15 @@ public class VolunteerSignUp extends AppCompatActivity
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("codestr length",Integer.toString(codeStr.length()));
+
+                if(codeStr.length() == 0)
+                {
+                    Toast.makeText(context, "Please enter an organization code", Toast.LENGTH_SHORT).show();
+                }
+
+                vol.emptyToast(context);
+
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if(vol.checkEmpty() == false)
                     {
@@ -103,12 +112,6 @@ public class VolunteerSignUp extends AppCompatActivity
                             intent.putExtra("orgPath", orgPath);
                             intent.putExtra("volIndex", index);
                             startActivity(intent);
-                        }
-
-                        else
-                        {
-                            Toast.makeText(context, "Please enter a valid organization code", Toast.LENGTH_SHORT).show();
-                            vol.emptyToast(context);
                         }
                     }
                 }
