@@ -23,12 +23,11 @@ import java.util.ArrayList;
  */
 public class SignIn extends AppCompatActivity
 {
-    String emailStr;
-    String orgPath;
-    int index;
-    boolean volunteer;
-    boolean advisor;
+    private String emailStr;
+    private String orgPath;
+    private int index;
     private Context context;
+    private boolean found;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +50,8 @@ public class SignIn extends AppCompatActivity
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("organizations/");
 
+        found = false;
+
         // Loops through the organizations and checks volunteers and advisor in each org to find the one with the proper email
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -70,6 +71,7 @@ public class SignIn extends AppCompatActivity
                                 orgPath = v.getOrgPath();
                                 index = v.getIndex();
 
+                                found=true;
                                 Intent intent = new Intent(context, VolunteerProfile.class);
                                 intent.putExtra("orgPath", orgPath);
                                 intent.putExtra("volIndex", index);
@@ -83,6 +85,7 @@ public class SignIn extends AppCompatActivity
                             orgPath = ds.getKey();
                             Log.d("Megan", "orgPath at advisor sign in: " + orgPath);
 
+                            found=true;
                             Intent intent = new Intent(context, AdvisorProfile.class);
                             intent.putExtra("orgPath", orgPath);
                             startActivity(intent);
@@ -90,15 +93,8 @@ public class SignIn extends AppCompatActivity
                     }
                 }
 
-                else if(emailStr.isEmpty())
-                {
-                    Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_SHORT).show();
-                }
-
-                else
-                {
-                    Toast.makeText(context, "Your email does not match an existing profile", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(context, "Please make an account or enter a different email", Toast.LENGTH_SHORT).show();
+                if (!found) {
+                    Toast.makeText(context, "Please enter a valid email", Toast.LENGTH_SHORT).show();
                 }
             }
 

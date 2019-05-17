@@ -18,6 +18,7 @@ public class LogEntry implements Parcelable
     private String path;
     private int index;
     private String volunteerName;
+    private String orgPath;
 
     // Classes associated with sending an ArrayList of LogEntries thorugh an intent
 
@@ -38,6 +39,7 @@ public class LogEntry implements Parcelable
         out.writeString(path);
         out.writeInt(index);
         out.writeString(volunteerName);
+        out.writeString(orgPath);
     }
 
     public static final Parcelable.Creator<LogEntry> CREATOR = new Parcelable.Creator<LogEntry>() {
@@ -60,6 +62,7 @@ public class LogEntry implements Parcelable
         path = in.readString();
         index = in.readInt();
         volunteerName = in.readString();
+        orgPath = in.readString();
     }
 
 
@@ -131,6 +134,17 @@ public class LogEntry implements Parcelable
         return path;
     }
 
+    /**
+     * Sets the memory address of the organization that this log entry is found in.
+     * @param path memory address of the organization
+     */
+    public void setOrgPath(String path) {orgPath=path;}
+
+    /**
+     * Gets the memory address of the organization that this log entry is found in.
+     * @return memory address of the organization
+     */
+    public String getOrgPath() {return orgPath;}
     /**
      * Sets the index of this log entry in the volunteer's ArrayList of log entries
      * @param i index

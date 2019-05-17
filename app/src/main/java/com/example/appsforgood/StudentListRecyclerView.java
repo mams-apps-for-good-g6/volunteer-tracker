@@ -60,20 +60,6 @@ public class StudentListRecyclerView extends AppCompatActivity {
         Log.d("MeganTag", "I am here 4");
     }
 
-//    private void initLogEntries()
-//    {
-//        Log.d(TAG, "initLogEntries: preparing log entries");
-//
-////        for(int i = 0; i < 25; i++) {
-////            DateFormat dateFormat = new SimpleDateFormat("yyyy.MM/dd");
-////            Date date = new Date();
-////            Volunteer volunteer = new Volunteer(Character.toString((char) i), (double) i, dateFormat.format(date), Character.toString((char) i), Character.toString((char) i), "path");
-////            logEntries.add(entry);]
-////        }
-//
-//        initRecyclerView();
-//    }
-
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.student_list_recycler_view);

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,7 +21,7 @@ public class LogHours extends AppCompatActivity
 {
     String orgPath;
     int index;
-
+    boolean wait;
     LogEntry log;
 
     protected void onCreate(Bundle savedInstanceState)
@@ -47,6 +48,8 @@ public class LogHours extends AppCompatActivity
     {
         Log.d("EvanTag", "We are here #1");
 
+        wait = false;
+
         // Get the inputted values
 
         EditText charityName = findViewById(R.id.charityName);
@@ -56,10 +59,41 @@ public class LogHours extends AppCompatActivity
         EditText contactEmail = findViewById(R.id.contactEmail);
 
         String charityNameStr = charityName.getText().toString();
-        Double hoursDouble = Double.parseDouble(hours.getText().toString());
+        if (charityNameStr.isEmpty()) {
+            charityNameStr += " ";
+            Toast.makeText(this, "Invalid charity name. Please enter a charity name.", Toast.LENGTH_LONG).show();
+            wait=true;
+        }
+
+        Double hoursDouble = 0.0;
+        if (!hours.getText().toString().isEmpty()) {
+            hoursDouble = Double.parseDouble(hours.getText().toString());
+        }
+        else {
+            Toast.makeText(this, "Invalid hour entry. Please enter your hours.", Toast.LENGTH_LONG).show();
+            wait=true;
+        }
+
         String dateStr = date.getText().toString();
+        if (dateStr.isEmpty()) {
+            dateStr+=" ";
+            wait=true;
+            Toast.makeText(this, "Invalid date. Please enter the date of service.", Toast.LENGTH_LONG).show();
+        }
+
         String contactPersonStr = contactPerson.getText().toString();
+        if (contactPersonStr.isEmpty()) {
+            contactPersonStr+=" ";
+            wait=true;
+            Toast.makeText(this, "Invalid contact name. Please enter a contact person.", Toast.LENGTH_LONG).show();
+        }
         String contactEmailStr = contactEmail.getText().toString();
+        if (contactEmailStr.isEmpty()) {
+            contactEmailStr+=" ";
+            wait=true;
+            Toast.makeText(this, "Invalid email. Please enter a contact email.", Toast.LENGTH_LONG).show();
+        }
+
 
         Log.d("EvanTag", "We are here #2");
 
@@ -77,24 +111,27 @@ public class LogHours extends AppCompatActivity
         Log.d("EvanTag", "organizations/" + orgPath + "/volunteers/" + index);
         Log.d("EvanTag", "We are here #4");
 
-        // Gets the volunteer at the specified path and adds the LogEntry to their ArrayList of LogEntries
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                        Volunteer vol = dataSnapshot.getValue(Volunteer.class);
-                        vol.addLogEntry(log);
-                        log.setPath(orgPath + "/volunteers/" + vol.getIndex() + "/logEntries/" + Integer.toString(log.getIndex()));
-                        log.setVolunteerName(vol.getFullName());
-                        vol.setLogEntry(log.getIndex(), log);
-                        dataSnapshot.getRef().setValue(vol);
-            }
+        if (!wait) {
+            // Gets the volunteer at the specified path and adds the LogEntry to their ArrayList of LogEntries
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Volunteer vol = dataSnapshot.getValue(Volunteer.class);
+                    vol.addLogEntry(log);
+                    log.setPath(orgPath + "/volunteers/" + vol.getIndex() + "/logEntries/" + Integer.toString(log.getIndex()));
+                    log.setOrgPath(orgPath);
+                    log.setVolunteerName(vol.getFullName());
+                    vol.setLogEntry(log.getIndex(), log);
+                    dataSnapshot.getRef().setValue(vol);
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-                Log.d("EvanTag", "We are here #6.5 (BAD!!)");
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.out.println("The read failed: " + databaseError.getCode());
+                    Log.d("EvanTag", "We are here #6.5 (BAD!!)");
+                }
+            });
+        }
 
         // END OF THE BIG PASTE HERE
 
@@ -102,9 +139,13 @@ public class LogHours extends AppCompatActivity
 
 
         // After hours are logged, user is sent to their profile
-        Intent intent = new Intent(this, VolunteerProfile.class);
-        intent.putExtra("orgPath", orgPath);
-        intent.putExtra("volIndex", index);
-        startActivity(intent);
+
+        if (!wait) {
+            Toast.makeText(this, "Your hours have been logged.",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, VolunteerProfile.class);
+            intent.putExtra("orgPath", orgPath);
+            intent.putExtra("volIndex", index);
+            startActivity(intent);
+        }
     }
 }

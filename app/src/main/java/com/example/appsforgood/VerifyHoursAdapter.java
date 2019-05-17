@@ -54,7 +54,7 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
             LogEntry log = verifyLogsList.get(holder.getAdapterPosition());
             log.setApprovalStatus(1);
             verifyLogsList.remove(holder.getAdapterPosition());
-            Toast.makeText(context, log.getVolunteerName() + "'s hours have been accepted. Return to your profile to see the changes.",Toast.LENGTH_LONG).show();
+            Toast.makeText(context, log.getVolunteerName() + "'s hours have been accepted.",Toast.LENGTH_LONG).show();
 
             //Send it to firebase
 
@@ -63,6 +63,10 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference ref = database.getReference("organizations/" + log.getPath());
             ref.setValue(log);
+
+            Intent intent = new Intent(context, AdvisorProfile.class);
+            intent.putExtra("orgPath", log.getOrgPath());
+            view.getContext().startActivity(intent);
         }
     });
 
@@ -74,12 +78,16 @@ public class VerifyHoursAdapter extends RecyclerView.Adapter<VerifyHoursAdapter.
                 LogEntry log = verifyLogsList.get(holder.getAdapterPosition());
                 log.setApprovalStatus(-1);
                 verifyLogsList.remove(holder.getAdapterPosition());
-                Toast.makeText(context, log.getVolunteerName() + "'s hours have been declined. Return to your profile to see the changes.",Toast.LENGTH_LONG).show();
+                Toast.makeText(context, log.getVolunteerName() + "'s hours have been declined.",Toast.LENGTH_LONG).show();
 
                 //Send it to firebase
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference ref = database.getReference("organizations/" + log.getPath());
                 ref.setValue(log);
+
+                Intent intent = new Intent(context, AdvisorProfile.class);
+                intent.putExtra("orgPath", log.getOrgPath());
+                view.getContext().startActivity(intent);
             }
         });
     }
