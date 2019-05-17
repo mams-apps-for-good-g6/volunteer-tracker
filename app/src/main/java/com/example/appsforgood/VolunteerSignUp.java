@@ -83,7 +83,7 @@ public class VolunteerSignUp extends AppCompatActivity
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("codestr length",Integer.toString(codeStr.length()));
+                String checkCode = "";
 
                 if(codeStr.length() == 0)
                 {
@@ -103,6 +103,7 @@ public class VolunteerSignUp extends AppCompatActivity
                         vol.setOrgName(org.getName());
 
                         if (org.getCode().equals(codeStr)) {
+                            checkCode = org.getCode();
                             org.addVolunteer(vol);
                             index = vol.getIndex();
                             Log.d("MeganTag", "index: " + index);
@@ -114,6 +115,11 @@ public class VolunteerSignUp extends AppCompatActivity
                             startActivity(intent);
                         }
                     }
+                }
+
+                if(codeStr.isEmpty() == false && checkCode.equals(codeStr) == false)
+                {
+                    Toast.makeText(context, "Your organization code is not valid", Toast.LENGTH_SHORT).show();
                 }
             }
 

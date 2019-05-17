@@ -37,7 +37,7 @@ public class SignIn extends AppCompatActivity
 
     /**
      * Gets the inputted email and sends the user to the respective profile
-     * @param v View blah
+     * @param v View
      */
     public void toProfile(View v){
 
@@ -66,24 +66,16 @@ public class SignIn extends AppCompatActivity
                         // Signing in as a volunteer if the email matches a volunteer
                         for (Volunteer v : volList)
                         {
-                            if (v.getEmail().equals(emailStr))
-                            {
-                                orgPath=v.getOrgPath();
-                                index=v.getIndex();
+                            if (v.getEmail().equals(emailStr)) {
+                                orgPath = v.getOrgPath();
+                                index = v.getIndex();
 
                                 Intent intent = new Intent(context, VolunteerProfile.class);
                                 intent.putExtra("orgPath", orgPath);
                                 intent.putExtra("volIndex", index);
                                 startActivity(intent);
                             }
-
-                            else
-                            {
-                                Toast.makeText(context, "Your email does not match an existing profile", Toast.LENGTH_LONG).show();
-                                Toast.makeText(context, "Please make an account or enter a different email", Toast.LENGTH_LONG).show();
-                            }
                         }
-
 
                         // Signing in as an advisor if the email matches an advisor
                         if (org.getAdvisor().getEmail().equals(emailStr))
@@ -95,18 +87,18 @@ public class SignIn extends AppCompatActivity
                             intent.putExtra("orgPath", orgPath);
                             startActivity(intent);
                         }
-
-                        else
-                        {
-                            Toast.makeText(context, "Your email does not match an existing profile", Toast.LENGTH_LONG).show();
-                            Toast.makeText(context, "Please make an account or enter a different email", Toast.LENGTH_LONG).show();
-                        }
                     }
+                }
+
+                else if(emailStr.isEmpty())
+                {
+                    Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_SHORT).show();
                 }
 
                 else
                 {
-                    Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Your email does not match an existing profile", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Please make an account or enter a different email", Toast.LENGTH_SHORT).show();
                 }
             }
 
